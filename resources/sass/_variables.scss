@@ -2,22 +2,17 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+$font-nunito: 'Nunito Sans', sans-serif;
+$font-merriweather: 'Merriweather', serif;
 
 // Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$white:#fff;
+$black:#000;
+$theme-green: #14A697;
+$theme-orange: #F25252;
+$theme-black: #383838;
+$heading-color: #4a4a4a;
+$btn-purple-gradient: #8526ec;
+$btn-green-gradeint: #21c6f4;
+$theme-light-gray: #eaeaea;
 
-h1 {
-    color: $blue;
-}

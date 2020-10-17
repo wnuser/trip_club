@@ -49886,6 +49886,13 @@ $(document).ready(function () {
     } else {
       $("header").removeClass("fixed-header");
     }
+  }); // sidebar
+
+  $(document).ready(function () {
+    $('.sidebar-click').click(function (e) {
+      $('.sidebar-admin').toggleClass('close-side');
+      $('.main-wrap-admin').toggleClass('wrap-full');
+    });
   });
 }); // testimonial js
 
@@ -49981,8 +49988,8 @@ $(".side-carousel").owlCarousel({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /opt/lampp/htdocs/TravelBlog/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/TravelBlog/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\trip_club\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\trip_club\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

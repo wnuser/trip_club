@@ -10,6 +10,13 @@ $(document).ready(function(){
       }
     })
   
+    // sidebar
+    $(document).ready(function(){
+        $('.sidebar-click').click(function(e){
+        $('.sidebar-admin').toggleClass('close-side');
+        $('.main-wrap-admin').toggleClass('wrap-full');
+          });
+       });
   });
       // testimonial js
     $(".populer-slider").owlCarousel({
