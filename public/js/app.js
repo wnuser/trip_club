@@ -49730,6 +49730,8 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./setting */ "./resources/js/setting.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -49865,6 +49867,99 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/setting.js":
+/*!*********************************!*\
+  !*** ./resources/js/setting.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $(window).scroll(function () {
+    var scroll = $(window).scrollTop();
+
+    if (scroll > 50) {
+      $("header").addClass("fixed-header");
+    } else {
+      $("header").removeClass("fixed-header");
+    }
+  });
+}); // testimonial js
+
+$(".populer-slider").owlCarousel({
+  items: 1,
+  margin: 20,
+  loop: true,
+  nav: true,
+  navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+  dots: true,
+  dotsEach: true,
+  center: false,
+  autoplay: false,
+  responsive: {
+    0: {
+      items: 1
+    },
+    768: {
+      items: 2
+    },
+    992: {
+      items: 3
+    },
+    1200: {
+      items: 3
+    }
+  }
+}); // custom js for carousels
+
+$(".main-slider").owlCarousel({
+  items: 3,
+  margin: 0,
+  loop: true,
+  nav: true,
+  navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+  dots: true,
+  dotsEach: true,
+  video: true,
+  center: false,
+  autoplay: true,
+  autoplayTimeout: 5000,
+  animateOut: 'fadeOut',
+  animateIn: 'fadeIn',
+  responsive: {
+    0: {
+      items: 1
+    },
+    768: {
+      items: 1
+    }
+  }
+}); // trend now carousel
+
+$(".side-carousel").owlCarousel({
+  items: 1,
+  margin: 0,
+  loop: true,
+  nav: true,
+  navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+  dots: true,
+  dotsEach: true,
+  video: true,
+  center: false,
+  autoplay: true,
+  autoplayTimeout: 5000,
+  responsive: {
+    0: {
+      items: 1
+    },
+    768: {
+      items: 1
+    }
+  }
+});
 
 /***/ }),
 
