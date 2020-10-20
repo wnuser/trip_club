@@ -17,6 +17,7 @@ $(document).ready(function(){
         $('.main-wrap-admin').toggleClass('wrap-full');
           });
        });
+       $('#records-table').DataTable();
   });
       // testimonial js
     $(".populer-slider").owlCarousel({
