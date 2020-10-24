@@ -8,9 +8,10 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="owl.carousel/css/owl.carousel.css"/>
-        <link rel="stylesheet" type="text/css" href="owl.carousel/css/owl.theme.default.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">    
+        <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css"/> -->
+
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">  
     </head>
     <body>
@@ -23,7 +24,7 @@
       <li class="nav-item mob-top d-lg-none">
         <a class="nav-link" data-toggle="modal" href="#pop-search"><i class="fas fa-search"></i></a>
       </li>
-  <a class="navbar-brand d-lg-none mob-centred-logo" href="index.html"><img src="images/logo-trans.svg" alt="logo"/> </a>
+  <a class="navbar-brand d-lg-none mob-centred-logo" href="index.html"><img src="{{ asset('Images/logo-trans.svg') }}" alt="logo"/> </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
     <span class="fa fa-bars"></span>
@@ -97,7 +98,7 @@
 
 <!-- Modal -->
 <div class="modal fade full-model" id="pop-trip" tabindex="-1" role="dialog" aria-labelledby="pop-trip" aria-hidden="true">
-  <div class="modal-dialog" role="document" style="background: url('images/all/form_background.jpg') center center no-repeat; background-size: cover;">
+  <div class="modal-dialog" role="document" style="background: url('Images/all/form_background.jpg') center center no-repeat; background-size: cover;">
     <div class="modal-content bg-trans">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -109,7 +110,7 @@
               <div class="row justify-content-center align-items-center">
                  <div class="col-lg-8 col-md-9 col-12">
                     <div class="text-center mb-4">
-                       <img src="images/logo-trans.svg" class="img-fluid" alt="logo" />
+                       <img src="{{ asset('Images/logo-trans.svg') }}" class="img-fluid" alt="logo" />
                     </div>
                     <div class="form-bx-modal row">
                          <div class="col-12 mb-3">
@@ -159,7 +160,7 @@
        <div class="container py-3">
         <div class="row">
           <div class="col-12 text-center">
-             <img src="images/logo-footer.png" class="img-fluid" alt="logo-footer"/>
+             <img src="{{ asset('Images/logo-footer.png') }}" class="img-fluid" alt="logo-footer"/>
           </div>
           <div class="col-12 footer-links">
               <ul>
@@ -198,10 +199,16 @@
 <!-- footer section ends -->
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="owl.carousel/js/owl.carousel.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script> -->
+<script src="{{ asset('js/app.js') }}" defer></script>
+
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-<script src="{{ asset('js/app.js') }}" defer></script>
 @stack('scripts')
+<script>
+  //   $(document).ready(function(){
+  // $(".owl-carousel").owlCarousel();
+  // });
+</script>
     </body>
 </html>

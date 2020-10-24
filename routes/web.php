@@ -20,6 +20,25 @@ Route::get('/Dashboard', function() {
     return view('admin.index');
 });
 
+/**
+ * User Side Routes
+ */
+Route::get('/Listing', 'ListingController@index')->name('listing');
+
 Route::get('/Admin/Blogs', function() {
     return view('admin.blogs');
 });
+
+Route::get('/search', function() {
+    return view('search');
+});
+
+Route::get('/single', function() {
+    return view('single');
+});
+
+Route::get('/Inspirations', function() {
+    return view('allCategory');
+});
+
+
