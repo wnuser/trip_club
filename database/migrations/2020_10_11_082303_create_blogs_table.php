@@ -18,7 +18,7 @@ class CreateBlogsTable extends Migration
             $table->String('name');
             $table->String('title');
             $table->integer('category');
-            $table->String('Image');
+            $table->String('image');
             $table->Text('Description');
             $table->String('front_category');
             $table->timestamps();

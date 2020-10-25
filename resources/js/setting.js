@@ -1,5 +1,9 @@
+
+var initialDataTable;
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel();
+    initialDataTable = $('#datatableInitiazer').DataTable();
+
 
     $(window).scroll(function(){
       var scroll = $(window).scrollTop();
@@ -19,7 +23,7 @@ $(document).ready(function(){
         $('.main-wrap-admin').toggleClass('wrap-full');
           });
        });
-       $('#records-table').DataTable();
+    //    $('#records-table').DataTable();
   });
       // testimonial js
     $(".populer-slider").owlCarousel({

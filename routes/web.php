@@ -11,6 +11,16 @@
 |
 */
 
+/**
+ * Admin blog routes
+ */
+// Route::get('/Admin/Blogs', 'AdminBlogController@index')->name('admin.blogs');
+Route::resource('AdminBlogs', AdminBlogController::class);
+Route::resource('BlogCategorys', BlogCategoryController::class);
+Route::resource('FrontSliders', FrontSliderController::class);
+Route::resource('Ads', AdsController::class);
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,9 +35,6 @@ Route::get('/Dashboard', function() {
  */
 Route::get('/Listing', 'ListingController@index')->name('listing');
 
-Route::get('/Admin/Blogs', function() {
-    return view('admin.blogs');
-});
 
 Route::get('/search', function() {
     return view('search');
@@ -42,3 +49,7 @@ Route::get('/Inspirations', function() {
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

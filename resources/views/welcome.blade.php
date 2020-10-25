@@ -48,6 +48,7 @@
              <div class="row">
                 <div class="col-12">
                    <!-- advetisement box -->
+                    <img src="{{asset('Images/all/blog_min_1.jpg')}}" class="img-fluid" alt="">
                 </div>
              </div>
              <div class="row">

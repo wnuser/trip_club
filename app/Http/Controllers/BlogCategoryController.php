@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\blogCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+
+use Illuminate\Support\Str;
 
 class BlogCategoryController extends Controller
 {
@@ -15,6 +18,8 @@ class BlogCategoryController extends Controller
     public function index()
     {
         //
+        $data     = blogCategory::get();
+        return view('admin.category.index', compact('data'));
     }
 
     /**
@@ -25,6 +30,7 @@ class BlogCategoryController extends Controller
     public function create()
     {
         //
+        return view('admin.category.create');
     }
 
     /**
@@ -36,6 +42,30 @@ class BlogCategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name'   => 'required',
+            'image'  => 'required'
+        ]);
+        if ($request->image) {
+            $image          = $request->image;
+            $image_new_name = time().$image->getClientOriginalName();
+            $image->move('Images/categories', $image_new_name);
+        }
+
+        $blogCategory        =   new blogCategory();
+        $blogCategory->name  =   $request->name;
+        if($request->image):
+            $blogCategory->image =   $image_new_name;
+        endif;
+
+        try {
+            //code...
+            $blogCategory->save();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        return back()->with('success', 'Category Created Successfully');
     }
 
     /**

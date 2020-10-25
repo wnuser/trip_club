@@ -15,6 +15,8 @@ class FrontSliderController extends Controller
     public function index()
     {
         //
+        $data     = frontSlider::get();
+        return view('admin.slider.index', compact('data'));
     }
 
     /**
@@ -25,6 +27,7 @@ class FrontSliderController extends Controller
     public function create()
     {
         //
+        return view('admin.slider.create');
     }
 
     /**
@@ -36,6 +39,30 @@ class FrontSliderController extends Controller
     public function store(Request $request)
     {
         //
+         //
+         $request->validate([
+            'image'        => 'required',
+            'hyper_link'   => 'required'
+        ]);
+        if ($request->image) {
+            $image          = $request->image;
+            $image_new_name = time().$image->getClientOriginalName();
+            $image->move('Images/uploads', $image_new_name);
+        }
+
+        $frontSlider              =   new frontSlider();
+        $frontSlider->image       =   $image_new_name;
+        $frontSlider->hyper_link  =   $request->hyper_link;
+       
+        try {
+            //code...
+            $frontSlider->save();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo $th->getMessage();
+        }
+        return back()->with('success', 'Slider Image Added  Successfully');
     }
 
     /**
