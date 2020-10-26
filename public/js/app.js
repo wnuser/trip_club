@@ -50999,10 +50999,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var initialDataTable;
+// var initialDataTable;
 $(document).ready(function () {
-  $(".owl-carousel").owlCarousel();
-  initialDataTable = $('#datatableInitiazer').DataTable();
+  $(".owl-carousel").owlCarousel(); // initialDataTable = $('#datatableInitiazer').DataTable();
+
   $(window).scroll(function () {
     var scroll = $(window).scrollTop();
 
@@ -51011,14 +51011,12 @@ $(document).ready(function () {
     } else {
       $("header").removeClass("fixed-header");
     }
-  }); // sidebar
-
-  $(document).ready(function () {
-    $('.sidebar-click').click(function (e) {
-      $('.sidebar-admin').toggleClass('close-side');
-      $('.main-wrap-admin').toggleClass('wrap-full');
-    });
-  }); //    $('#records-table').DataTable();
+  });
+  $('.sidebar-click').click(function (e) {
+    $('.sidebar-admin').toggleClass('close-side');
+    $('.main-wrap-admin').toggleClass('wrap-full');
+  });
+  $('#records-table').DataTable();
 }); // testimonial js
 
 $(".populer-slider").owlCarousel({
@@ -51113,8 +51111,8 @@ $(".side-carousel").owlCarousel({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /opt/lampp/htdocs/TravelBlog/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/TravelBlog/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\trip_club\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\trip_club\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,8 +1,8 @@
 
-var initialDataTable;
+// var initialDataTable;
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel();
-    initialDataTable = $('#datatableInitiazer').DataTable();
+    // initialDataTable = $('#datatableInitiazer').DataTable();
 
 
     $(window).scroll(function(){
@@ -16,15 +16,14 @@ $(document).ready(function(){
       }
     })
   
-    // sidebar
-    $(document).ready(function(){
-        $('.sidebar-click').click(function(e){
+    
+    $('.sidebar-click').click(function(e){
         $('.sidebar-admin').toggleClass('close-side');
         $('.main-wrap-admin').toggleClass('wrap-full');
           });
-       });
-    //    $('#records-table').DataTable();
+         $('#records-table').DataTable();
   });
+
       // testimonial js
     $(".populer-slider").owlCarousel({
              items: 1,
