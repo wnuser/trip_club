@@ -14,6 +14,10 @@
             <form action="{{route('AdminBlogs.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                <div class="form-group">
+                  <label for="">Enter User Name</label>
+                  <input type="text" name="user_name" class="form-control" placeholder="Enter User Name"> 
+               </div>
+               <div class="form-group">
                    <label for="">Enter Blog Title</label>
                    <input type="text" class="form-control" name="title" placeholder="Enter Blog Title">
                </div>
@@ -33,6 +37,14 @@
                <div class="form-group">
                   <label for="">Enter Description </label>
                   <textarea name="Description" class="form-control" id="" cols="30" rows="10"></textarea>
+               </div>
+               <div class="form-group">
+                  <label for="">Enter Meta Tags</label>
+                  <textarea  id="" cols="30" rows="5" class="form-control" name="meta_tag"></textarea>
+               </div>
+               <div class="form-group">
+                  <label for="">Enter Meta Description</label>
+                  <textarea name="meta_description" id="" cols="30" rows="5" class="form-control"></textarea>
                </div>
                <div class="form-group">
                     <button class="btn btn-primary">Submit</button>

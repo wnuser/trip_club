@@ -14,11 +14,16 @@
 /**
  * Admin blog routes
  */
-// Route::get('/Admin/Blogs', 'AdminBlogController@index')->name('admin.blogs');
-Route::resource('AdminBlogs', AdminBlogController::class);
-Route::resource('BlogCategorys', BlogCategoryController::class);
-Route::resource('FrontSliders', FrontSliderController::class);
-Route::resource('Ads', AdsController::class);
+Route::group(['Middleware' => ['auth']], function () {
+
+    Route::resource('AdminBlogs', AdminBlogController::class);
+    Route::resource('BlogCategorys', BlogCategoryController::class);
+    Route::resource('FrontSliders', FrontSliderController::class);
+    Route::resource('Ads', AdsController::class);
+    
+});
+
+
 
 
 Route::get('/', function () {

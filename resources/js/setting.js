@@ -1,8 +1,6 @@
 
-var initialDataTable;
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel();
-    initialDataTable = $('#datatableInitiazer').DataTable();
 
 
     $(window).scroll(function(){

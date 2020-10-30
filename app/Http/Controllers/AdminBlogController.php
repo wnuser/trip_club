@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\blogCategory;
 use App\Blog;
+use Auth;
 
 class AdminBlogController extends Controller
 {
@@ -42,6 +43,7 @@ class AdminBlogController extends Controller
     {
         //
         $request->validate([
+            'user_name'    => 'required',
             'title'        => 'required',
             'category'     => 'required',
             'image'        => 'required',
@@ -56,10 +58,14 @@ class AdminBlogController extends Controller
         }
 
         $Blog->title           =  $request->title;
+        $Blog->user_name       =  $request->user_name;
         $Blog->category        =  $request->category;
         $Blog->image           =  $image_new_name;
         $Blog->Description     =  $request->Description;
         $Blog->front_category  =  config('constants.FRONTCATEGORY.DEFAULT');
+        $Blog->meta_tag        =  $request->meta_tag;
+        $Blog->meta_description=  $request->meta_description;
+        $Blog->created_by      =  Auth::user()->id;
         $Blog->save();
 
         return back()->with('success', 'Blog created successfully');
