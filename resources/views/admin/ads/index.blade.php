@@ -8,7 +8,7 @@
     <a class="btn btn-primary mb-2" href="{{ route('BlogCategorys.create') }}"> <i class="fa fa-plus"></i> Create Ads</a>
       <div class="row">
          <div class="col-12">
-            <table id="records-table" class="table table-bordered">
+            <table id="datatableInitiazer" class="table table-bordered">
             <thead>
             <tr>
                 <th>S.No.</th>

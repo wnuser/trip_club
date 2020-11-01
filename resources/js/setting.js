@@ -1,8 +1,9 @@
 
-// var initialDataTable;
+var initialDataTable;
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel();
-    // initialDataTable = $('#datatableInitiazer').DataTable();
+    initialDataTable = $('#datatableInitiazer').DataTable();
+    // $('#records-table').DataTable({});
 
 
     $(window).scroll(function(){
@@ -20,8 +21,8 @@ $(document).ready(function(){
     $('.sidebar-click').click(function(e){
         $('.sidebar-admin').toggleClass('close-side');
         $('.main-wrap-admin').toggleClass('wrap-full');
-          });
-         $('#records-table').DataTable();
+    });
+        //  $('#records-table').DataTable();
   });
 
       // testimonial js

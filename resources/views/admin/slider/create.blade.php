@@ -18,6 +18,19 @@
                   <input type="file" class="form-control" name="image">
                </div>
                <div class="form-group">
+                  <label for="">Enter Title</label>
+                  <input type="text" class="form-control" name="title" placeholder="Enter Title">
+               </div>
+               <div class="form-group">
+                  <label for="">Choose Category</label>
+                  <select name="category" id="" class="form-control">
+                      <option value="">Please Choose</option>
+                      @foreach($categories as $value)
+                          <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
+                      @endforeach    
+                  </select>
+               </div>
+               <div class="form-group">
                   <label for="">Enter Hyper Link</label>
                   <input type="text" name="hyper_link" class="form-control" placeholder="Enter Hyper Link">
                </div>

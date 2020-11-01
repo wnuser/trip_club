@@ -20,15 +20,18 @@ Route::group(['Middleware' => ['auth']], function () {
     Route::resource('BlogCategorys', BlogCategoryController::class);
     Route::resource('FrontSliders', FrontSliderController::class);
     Route::resource('Ads', AdsController::class);
+
+
+    Route::get('/slider/delete/{id}', 'FrontSliderController@destroy')->name('slider.delete');
+    Route::get('/blogs/delete/{id}', 'AdminBlogController@destroy')->name('blog.delete');
+    Route::post('/change/frontCategory', 'AdminBlogController@changeFrontcategory')->name('change.frontCategory');
     
 });
 
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 
 Route::get('/Dashboard', function() {

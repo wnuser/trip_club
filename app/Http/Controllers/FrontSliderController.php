@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\frontSlider;
 use Illuminate\Http\Request;
+use App\blogCategory;
 
 class FrontSliderController extends Controller
 {
@@ -27,7 +28,8 @@ class FrontSliderController extends Controller
     public function create()
     {
         //
-        return view('admin.slider.create');
+        $categories    =   blogCategory::get();
+        return view('admin.slider.create', compact('categories'));
     }
 
     /**
@@ -39,10 +41,11 @@ class FrontSliderController extends Controller
     public function store(Request $request)
     {
         //
-         //
          $request->validate([
             'image'        => 'required',
-            'hyper_link'   => 'required'
+            'hyper_link'   => 'required',
+            'title'        => 'required',
+            'category'     => 'required'
         ]);
         if ($request->image) {
             $image          = $request->image;
@@ -53,6 +56,9 @@ class FrontSliderController extends Controller
         $frontSlider              =   new frontSlider();
         $frontSlider->image       =   $image_new_name;
         $frontSlider->hyper_link  =   $request->hyper_link;
+        $frontSlider->title       =   $request->title;
+        $frontSlider->category    =   $request->category;
+
        
         try {
             //code...
@@ -105,8 +111,19 @@ class FrontSliderController extends Controller
      * @param  \App\frontSlider  $frontSlider
      * @return \Illuminate\Http\Response
      */
-    public function destroy(frontSlider $frontSlider)
+    public function destroy($id)
     {
         //
+        try {
+            //code...
+            $deleteData    =  frontSlider::whereId($id)->delete();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->with('error', $th->getMessage());
+
+        }
+        
+        return back()->with('success', 'Slider Image Deleted Successfully');
     }
 }

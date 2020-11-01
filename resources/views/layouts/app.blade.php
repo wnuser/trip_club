@@ -17,6 +17,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+
+
 </head>
 <body>
     @include('layouts.header')

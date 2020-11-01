@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+ 
+require( 'datatables.net-bs4' );
 require('./bootstrap');
 require('./owlcarousel');
 require('./setting');

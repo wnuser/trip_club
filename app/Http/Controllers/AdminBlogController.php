@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\blogCategory;
 use App\Blog;
+use Illuminate\Support\Str;
+
 use Auth;
 
 class AdminBlogController extends Controller
@@ -65,7 +67,9 @@ class AdminBlogController extends Controller
         $Blog->front_category  =  config('constants.FRONTCATEGORY.DEFAULT');
         $Blog->meta_tag        =  $request->meta_tag;
         $Blog->meta_description=  $request->meta_description;
+        $Blog->alt_description =  $request->alt_description;
         $Blog->created_by      =  Auth::user()->id;
+        $Blog->slug            =  str_slug($request->title).time();
         $Blog->save();
 
         return back()->with('success', 'Blog created successfully');
@@ -114,5 +118,33 @@ class AdminBlogController extends Controller
     public function destroy($id)
     {
         //
+       
+
+        try {
+            //code...
+            $deleteBlog    =   Blog::whereId($id)->delete();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->with('error', $th->getMessage());
+        }
+
+        return back()->with('success', 'Blog has been deleted Successfully');
+
+    }
+
+    /**
+     * change front Category
+     */
+    public function changeFrontcategory(Request $request)
+    {
+        // echo "<pre>";
+        // print_r($request->all());
+
+        $blog                   =   Blog::find($request->blogId);
+        $blog->front_category   =   $request->front_category;
+        $blog->save();
+
+        return back()->with('success', 'Front Category Updated Successfully');
     }
 }

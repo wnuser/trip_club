@@ -18,6 +18,8 @@ class Slider extends Migration
             $table->bigIncrements('id');
             $table->string('image');
             $table->string('hyper_link');
+            $table->string('title');
+            $table->string('category');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes(); 

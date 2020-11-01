@@ -21,6 +21,9 @@ class CreateBlogsTable extends Migration
             $table->String('image');
             $table->Text('Description');
             $table->String('front_category');
+            $table->string('meta_tag');
+            $table->text('meta_description');
+            $table->string('alt_description');
             $table->timestamps();
             $table->softDeletes();
         });

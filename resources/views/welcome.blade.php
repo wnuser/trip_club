@@ -1,21 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+
 <main>
 <!-- main top section starts -->
 <section class="banner-sec">
    <div class="owl-carousel main-slider">
-       <a href="#">
-         <div class="item">
-          <img src="{{ asset('Images/banner/1.jpg') }}" alt="carousel-img" class="img-fluid" />  
-          <div class="carousel-caption">
-              <span class="cat-label">category</span>
-              <h1>Online job that skyrocket your income</h1>
-              <p><span class="date">September 20, 2020</span> / Posted by <span>Ahsun ansari</span></p>
-          </div>      
-        </div>
-       </a>
-        <a href="#">
+       
+       @foreach($frontSlider as $value)
+         <a href="{{ $value['hyper_link'] }}" target="_blank">
+            <div class="item">
+            <img src="{{ asset('Images/uploads/'.$value['image']) }}" alt="carousel-img" class="img-fluid" />  
+            <div class="carousel-caption">
+               <span class="cat-label"> {{ getCategoryName($value['id']) }} </span>
+               <h1>{{ $value['title'] }}</h1>
+               <p><span class="date">September 20, 2020</span> / Posted by <span>Ahsun ansari</span></p>
+            </div>      
+         </div>
+         </a>
+       @endforeach
+       
+        <!-- <a href="#">
           <div class="item">
            <img src="{{ asset('Images/banner/bg.jpg') }}" alt="carousel-img" class="img-fluid" />  
           <div class="carousel-caption">
@@ -35,7 +40,7 @@
               <p><span class="date">September 20, 2020</span> / Posted by <span>Ahsun ansari</span></p>
           </div>        
         </div>
-        </a>
+        </a> -->
     </div>
   </div>
 </section>
@@ -48,7 +53,7 @@
              <div class="row">
                 <div class="col-12">
                    <!-- advetisement box -->
-                    <img src="{{asset('Images/all/blog_min_1.jpg')}}" class="img-fluid" alt="">
+                    <!-- <img src="{{asset('Images/all/blog_min_1.jpg')}}" class="img-fluid" alt=""> -->
                 </div>
              </div>
              <div class="row">

@@ -22,7 +22,7 @@
                    <input type="text" class="form-control" name="title" placeholder="Enter Blog Title">
                </div>
                <div class="form-group">
-                    <label for="">choose blog Category</label>
+                    <label for="">Choose blog Category</label>
                    <select name="category" id="" class="form-control">
                        <option value="">Choose Category</option>
                      @foreach($categories as $value)
@@ -36,7 +36,7 @@
                </div>
                <div class="form-group">
                   <label for="">Enter Description </label>
-                  <textarea name="Description" class="form-control" id="" cols="30" rows="10"></textarea>
+                  <textarea name="Description" class="form-control" id="message_description" cols="30" rows="10"></textarea>
                </div>
                <div class="form-group">
                   <label for="">Enter Meta Tags</label>
@@ -45,6 +45,10 @@
                <div class="form-group">
                   <label for="">Enter Meta Description</label>
                   <textarea name="meta_description" id="" cols="30" rows="5" class="form-control"></textarea>
+               </div>
+               <div class="form-group">
+                    <label for="">Enter Image Alt Description</label>
+                    <textarea name="alt_description" id="" cols="30" rows="2" class="form-control"></textarea>
                </div>
                <div class="form-group">
                     <button class="btn btn-primary">Submit</button>
@@ -59,3 +63,9 @@
 </div>
 @endsection
 
+@push('scripts')
+<script>
+CKEDITOR.replace('message_description');
+</script>
+
+@endpush

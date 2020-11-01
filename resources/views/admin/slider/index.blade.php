@@ -12,6 +12,8 @@
             <thead>
             <tr>
                 <th>S.No.</th>
+                <th>Title</th>
+                <th>Category</th>
                 <th>Slider Image</th>
                 <th>Actions</th>
             </tr>
@@ -22,9 +24,13 @@
 
            <tr>
                 <td>{{ $count++ }}.</td>
-                <td> <img src="{{ asset('Images/categories/'.$value['image']) }}" alt="" height="100" width="150" >  </td>
+                <td> {{$value['title']}} </td>
+                <td> {{ getCategoryName($value['category']) }} </td>
+                <td> <img src="{{ asset('Images/uploads/'.$value['image']) }}" alt="" height="100" width="150" >  </td>
+
                 <td> <button class="btn btn-primary"> <i class="fa fa-edit"></i> </button> 
-                     <button class="btn btn-danger"> <i class="fa fa-trash"></i> </button>  </td>
+               
+                     <a class="btn btn-danger" href="{{ route('slider.delete', ['id'=> $value['id']]) }}" onclick="return confirm('Are You Sure....!')"> <i class="fa fa-trash"></i> </a>  </td>
             </tr>
            @endforeach
           

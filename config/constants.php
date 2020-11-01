@@ -4,9 +4,13 @@ return [
 
 
     'FRONTCATEGORY' => [
-        'TRENDING' => 1,
-        'POPULAR'  => 2,
-        'DEFAULT'  => 0,
+        'TRENDING' => '1',
+        'POPULAR'  => '2',
+    ],
+
+    'FRONTCATEGORYLABEL'  =>  [
+        '1'  => 'TRENDING',
+        '2'  => 'POPULAR'
     ]
     
 
