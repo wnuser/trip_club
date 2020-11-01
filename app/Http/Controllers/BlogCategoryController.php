@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\blogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-
+use App\Blog;
 use Illuminate\Support\Str;
 
 class BlogCategoryController extends Controller
@@ -20,6 +20,29 @@ class BlogCategoryController extends Controller
         //
         $data     = blogCategory::get();
         return view('admin.category.index', compact('data'));
+    }
+
+    /**
+     * all categories  to show on frontend
+     */
+    public function allCategories()
+    {
+        $categories   =  blogCategory::get();
+        return view('allCategory', compact('categories'));
+    }
+
+    /**
+     * showing all blogs related to single category
+     */
+    public function categoryBlogs($catId)
+    {
+        $Blogs           =    Blog::whereCategory($catId)->get();
+        $categoryData    =    blogCategory::whereId($catId)->first();
+        $categories      =   blogCategory::get();
+        $trendingBlogs   =   Blog::orderBy('id', 'desc')->whereFrontCategory(config('constants.FRONTCATEGORY.TRENDING'))->get();
+
+
+        return view('listing', compact('Blogs', 'categoryData', 'categories', 'trendingBlogs'));
     }
 
     /**

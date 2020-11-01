@@ -12,113 +12,18 @@
             </div>
       </div>
       <div class="row mt-3">
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/adventure.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Adventure</h4>
+         @foreach($categories as $catValue)
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+               <div class="cat-inner">
+                  <a href="{{ route('category.blogs', ['id'=> $catValue['id'] ]) }}">
+                  <img src="{{ asset('Images/categories/'.$catValue['image']) }}" class="img-fluid" alt="cat-inner"/>
+                  </a>
+                  <h4 class="mt-3">{{ $catValue['name'] }}</h4>
+               </div>
             </div>
-         </div>
+         @endforeach
+        
 
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/beaches.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Beaches</h4>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/family.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Family</h4>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/hill station.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Hill Station</h4>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/historical.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Historical</h4>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/honeymoon.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Honeymoon</h4>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/pilgrimage.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Pilgrimage</h4>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/roadtrips.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Roadtrips</h4>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/solo.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Solo</h4>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/tourist hub.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Tourist Hub</h4>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/trekking.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Trekking</h4>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="cat-inner">
-               <a href="#">
-                 <img src="{{ asset('Images/all/wildlife.jpg') }}" class="img-fluid" alt="cat-inner"/>
-               </a>
-               <h4 class="mt-3">Wildlife</h4>
-            </div>
-         </div>
       </div>
    </div>
 </section>

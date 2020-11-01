@@ -52,9 +52,12 @@ Route::get('/single', function() {
     return view('single');
 });
 
-Route::get('/Inspirations', function() {
-    return view('allCategory');
-});
+// Route::get('/Inspirations', function() {
+//     return view('allCategory');
+// });
+
+Route::get('/blogs/categories/', 'BlogCategoryController@allCategories')->name('all.categories');
+Route::get('/category/blogs/{id}', 'BlogCategoryController@categoryBlogs')->name('category.blogs');
 
 
 
