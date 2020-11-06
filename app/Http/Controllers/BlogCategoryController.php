@@ -36,8 +36,8 @@ class BlogCategoryController extends Controller
      */
     public function categoryBlogs($catId)
     {
-        $Blogs           =    Blog::whereCategory($catId)->get();
-        $categoryData    =    blogCategory::whereId($catId)->first();
+        $Blogs           =   Blog::whereCategory($catId)->get();
+        $categoryData    =   blogCategory::whereId($catId)->first();
         $categories      =   blogCategory::get();
         $trendingBlogs   =   Blog::orderBy('id', 'desc')->whereFrontCategory(config('constants.FRONTCATEGORY.TRENDING'))->get();
 

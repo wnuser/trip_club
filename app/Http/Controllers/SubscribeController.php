@@ -15,6 +15,8 @@ class SubscribeController extends Controller
     public function index()
     {
         //
+        $subscribeData   =   subscribe::get();
+        return view('admin.subscribers.index', compact('subscribeData'));
     }
 
     /**
@@ -36,6 +38,16 @@ class SubscribeController extends Controller
     public function store(Request $request)
     {
         //
+        // echo "<pre>";
+        // print_r($request->all());
+
+        $data     = $request->all();
+        unset($data['_token']);
+
+        $subscribe    = new subscribe();
+        $subscribe->fill($data)->save();
+
+        return back()->with('success', 'You have Subscribe Successfully');
     }
 
     /**
@@ -78,8 +90,21 @@ class SubscribeController extends Controller
      * @param  \App\subscribe  $subscribe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(subscribe $subscribe)
+    public function destroy($id)
     {
         //
+
+        try {
+            //code...
+            $subscribe   =  subscribe::whereId($id)->delete();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->with('success', $th->getMessage());
+
+        }
+
+        return back()->with('success', 'Subscribers has been deleted');
+
     }
 }

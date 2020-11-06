@@ -11,19 +11,7 @@
          @php  $frontCategories   = config('constants.FRONTCATEGORY');  
          
          @endphp
-         <!-- echo "<pre>";
-         print_r($fronCategories);
          
-
-         foreach($fronCategories as $key => $value)
-         {
-            echo $value;
-         }
-         exit; -->
-               
-         <!-- @endphp -->
-
-
             <table id="datatableInitiazer" class="table table-bordered">
             <thead>
             <tr>

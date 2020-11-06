@@ -20,18 +20,25 @@ Route::group(['Middleware' => ['auth']], function () {
     Route::resource('BlogCategorys', BlogCategoryController::class);
     Route::resource('FrontSliders', FrontSliderController::class);
     Route::resource('Ads', AdsController::class);
+    Route::resource('Subscribe', SubscribeController::class);
+    Route::resource('BlogQuery', BlogQueryController::class);
+    Route::resource('Subscribe', SubscribeController::class);
+    Route::resource('Blogquery', BlogQueryController::class);
 
 
     Route::get('/slider/delete/{id}', 'FrontSliderController@destroy')->name('slider.delete');
     Route::get('/blogs/delete/{id}', 'AdminBlogController@destroy')->name('blog.delete');
     Route::post('/change/frontCategory', 'AdminBlogController@changeFrontcategory')->name('change.frontCategory');
+    Route::get('/subscribe/delete/{id}', 'SubscribeController@destroy')->name('subscribe.delete');
+    Route::get('/blogquery/delete/{id}', 'BlogQueryController@destroy')->name('blogquery.delete');
     
 });
 
 
 
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('Home');
+Route::get('/blog/{id}', 'BlogController@show')->name('single.blog');
 
 
 Route::get('/Dashboard', function() {

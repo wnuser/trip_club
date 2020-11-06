@@ -15,6 +15,8 @@ class BlogQueryController extends Controller
     public function index()
     {
         //
+        $blogQueries    =   blogQuery::get();
+        return view('admin.blogqueries.index', compact('blogQueries'));
     }
 
     /**
@@ -36,6 +38,13 @@ class BlogQueryController extends Controller
     public function store(Request $request)
     {
         //
+
+        $data   =  $request->all();
+        $blogQuery  = new blogQuery();
+        $blogQuery->fill($data)->save();
+
+        return back()->with('success', 'Query Submitted Successfully');
+
     }
 
     /**
@@ -78,8 +87,18 @@ class BlogQueryController extends Controller
      * @param  \App\blogQuery  $blogQuery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(blogQuery $blogQuery)
+    public function destroy($blogId)
     {
         //
+        try {
+            //code...
+            $blogQuery   =  blogQuery::whereId($blogId)->delete();
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->with('success', $th->getMessage());
+
+        }
+
+        return back()->with('success', 'Blog Query has been deleted');
     }
 }

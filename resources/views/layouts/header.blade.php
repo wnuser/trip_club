@@ -13,7 +13,7 @@
          <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
             <ul class="navbar-nav">
                <li class="nav-item">
-                  <a class="nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link active" href="{{route('Home')}}">Home <span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="#">about</a>
@@ -31,7 +31,7 @@
                </li>
             </ul>
             <!--   Show this only lg screens and up   -->
-            <a class="navbar-brand d-none d-lg-block center-logo-desk" href="index.html"><img src="{{ asset('Images/logo-trans.svg') }}" alt="logo"/></a>
+            <a class="navbar-brand d-none d-lg-block center-logo-desk" href="{{ route('Home') }}"><img src="{{ asset('Images/logo-trans.svg') }}" alt="logo"/></a>
             <ul class="navbar-nav">
                <li class="nav-item">
                   <a class="nav-link btn-nav" data-toggle="modal" href="#pop-trip">post a trip</a>

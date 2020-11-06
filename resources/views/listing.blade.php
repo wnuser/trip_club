@@ -15,19 +15,23 @@
             @foreach($Blogs as $blogValue)
             <div class="row cat-post-list mb-3">
                  <div class="col-lg-5 col-md-12 col-12">
-                     <a href="#">
-                       <img src="{{asset('Images/uploads/'.$blogValue['image'])}}" alt="cat-img" class="img-fluid" />
+                     <a href="{{ route('single.blog', ['id'=> $blogValue['slug']]) }}" target="blank">
+                       <img src="{{asset('Images/uploads/'.$blogValue['image'])}}" alt="{{ $blogValue['alt_description'] }}" class="img-fluid" />
                      </a>
                  </div>
                  <div class="col-lg-7 col-md-12 col-12">
                     <span class="cat-label">{{ getCategoryName($blogValue['category']) }}</span>
-                    <a href="#"><h4>{{ $blogValue['title'] }}</h4></a>
+                    <a href="{{ route('single.blog', ['id'=> $blogValue['slug']]) }}" target="blank"><h4>{{ $blogValue['title'] }}</h4></a>
                     <div class="d-flex">
                        <div class="w-50">
-                         <span>September 20, 2020</span>
+                       @php     $createdBy          =   $blogValue['created_at'];
+                                $createdByArray     =   explode(" ", $createdBy); 
+                                $newDate            =   date("F d , Y", strtotime($createdByArray[0]));
+                       @endphp
+                         <span>{{$newDate}}</span>
                        </div>
                        <div class="w-50 text-right">
-                          <span><i class="fas fa-eye"></i> 800</span>
+                          <span><i class="fas fa-eye"></i>{{ $blogValue['clicks'] }}</span>
                        </div>
                     </div>
                     <!-- it has character or words limit -->

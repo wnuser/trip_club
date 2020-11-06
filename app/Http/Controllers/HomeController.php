@@ -33,7 +33,8 @@ class HomeController extends Controller
         $trendingBlogs   =   Blog::orderBy('id', 'desc')->whereFrontCategory(config('constants.FRONTCATEGORY.TRENDING'))->get();
         $popularBlogs    =   Blog::orderBy('id', 'desc')->whereFrontCategory(config('constants.FRONTCATEGORY.POPULAR'))->get();
         $categories      =   blogCategory::get();
+        $generalBlogs    =   Blog::orderBy('id', 'desc')->skip(5)->take(10)->get();
 
-        return view('welcome', compact('frontSlider', 'recentBlogs', 'defaultBlogs', 'trendingBlogs', 'popularBlogs', 'categories'));
+        return view('welcome', compact('frontSlider', 'recentBlogs', 'defaultBlogs', 'trendingBlogs', 'popularBlogs', 'categories', 'generalBlogs'));
     }
 }

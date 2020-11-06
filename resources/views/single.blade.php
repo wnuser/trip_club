@@ -1,4 +1,4 @@
-@extends('layouts.adminApp')
+@extends('layouts.app')
 
 @section('content')
 <main>
@@ -13,10 +13,10 @@
          <div class="col-lg-8 col-md-7 col-12 m-p-single">
              <div class="row">
                <div class="col-12 single-title">
-                  <h2>10 Museums That Will Blow Your Child’s Mind</h2>
+                  <h2>{{$blogData['title']}}</h2>
                </div>
                <div class="col-lg-6 col-md-12 col-12">
-                  <small>September 20, 2020 / Posted by Ahsun Ansari</small>
+                  <small>September 20, 2020 / Posted by {{ $blogData['user_name'] }}</small>
                </div>
                <div class="col-lg-6 col-md-12 col-12">
                   <p class="text-right share-bx">
@@ -31,10 +31,14 @@
                </div>
                <div class="col-12">
                    <div class="single-img-box">
-                       <img src="{{ asset('Images/all/article_page_banner.jpg') }}" class="img-fluid" alt="single-thumb" />
-                       <small>Photo Credits: <span>Ahsun Ansari</span></small>
+                       <img src="{{ asset('Images/uploads/'.$blogData['image']) }}" class="img-fluid" alt="{{ $blogData['alt_description'] }}" />
+                       <small>Photo Credits: <span>{{ $blogData['user_name'] }}</span></small>
                    </div>
-                   <ul class="single-post-ul">
+
+                   <p> {!! $blogData['Description'] !!} </p>
+                   
+                   
+                   <!-- <ul class="single-post-ul">
                      <li>Brittnee and Brentt Proha live full-time in a 429-square-foot RV with their five kids and dog.</li>
                      <li>Brittnee customized the RV to suit her family's needs, ensuring she can homeschool the kids from their mobile house.</li>
                      <li>The RV has 17 windows that create abundant natural light, a fireplace, a private room with bunk beds and a loft for the family's five kids, and a massive porch</li>
@@ -54,15 +58,21 @@
                    <p>Since tiny houses produce less waste, require less heating, and can be more environmentally friendly, the family knew it was the right fit.</p>
                    <p>"Initially, my husband wanted us all together in one cabin, but I argued on behalf of the kids for their own privacy," Keli told Insider.</p>
                    <p>Instead, the family decided to buy a few tiny houses — one for each family member</p>
+                    -->
+                   
+                   
                    <h5>Read more:</h5>
-                   <a href="#">I spent 3 days living in a 350-square-foot house in a community of tiny homes — see what it was like</a>
-                   <a href="#">23 photos that show the ugly truth of living in a tiny house</a>
-                   <a href="#">Tour a family's 300-square-foot tiny house</a>
+                   @foreach($similarBlogs as $similarValue)
+                      <a href="{{ route('single.blog', ['id'=> $similarValue['slug']]) }}"> {{ $similarValue['title'] }} </a>
+                   @endforeach
+                   <!-- <a href="#">23 photos that show the ugly truth of living in a tiny house</a>
+                   <a href="#">Tour a family's 300-square-foot tiny house</a> -->
                </div>
                <div class="col-12">
                   <div class="comments-box">
-                     <form action="">
+                     <form action="" method="POST">
                       <div class="row">
+                      @csrf
                          <div class="col-lg-12 col-12 mb-3">
                              <textarea class="cm-text" placeholder="Leave a comment" required=""></textarea>
                          </div>
@@ -122,82 +132,33 @@
                   </div>
                   <div class="col-12">
                      <div class="owl-carousel populer-slider">
-                          <div class="item">
-                              <div class="post-box">
-                                <a href="#">
-                                   <div class="p-img-bx">
-                                      <img src="{{ asset('Images/all/blog_min_1.jpg') }}" alt="post-thumb" class="img-fluid" />
-                                      <div class="hover-bx">
-                                         <p>
-                                         <span></span>
-                                         <span></span>
-                                         <span></span>
-                                         </p>
-                                      </div>
-                                   </div>
-                                   <span class="cat-label">category</span>
-                                   <h4>Envy of the World(A Blues for Terry Adkins)</h4>
-                                   <p><span class="date">September 20, 2020</span> <span>Posted by Ahsun ansari</span></p>
-                                </a>
-                             </div>
-                          </div>
-                          <div class="item">
-                              <div class="post-box">
-                                <a href="#">
-                                   <div class="p-img-bx">
-                                      <img src="images/all/blog_min_2.jpg" alt="post-thumb" class="img-fluid" />
-                                      <div class="hover-bx">
-                                         <p>
-                                         <span></span>
-                                         <span></span>
-                                         <span></span>
-                                         </p>
-                                      </div>
-                                   </div>
-                                   <span class="cat-label">category</span>
-                                   <h4>Envy of the World(A Blues for Terry Adkins)</h4>
-                                   <p><span class="date">September 20, 2020</span> <span>Posted by Ahsun ansari</span></p>
-                                </a>
-                             </div>
-                          </div>
-                          <div class="item">
-                              <div class="post-box">
-                                <a href="#">
-                                   <div class="p-img-bx">
-                                      <img src="images/all/blog_min_3.jpg" alt="post-thumb" class="img-fluid" />
-                                      <div class="hover-bx">
-                                         <p>
-                                         <span></span>
-                                         <span></span>
-                                         <span></span>
-                                         </p>
-                                      </div>
-                                   </div>
-                                   <span class="cat-label">category</span>
-                                   <h4>Envy of the World(A Blues for Terry Adkins)</h4>
-                                   <p><span class="date">September 20, 2020</span> <span>Posted by Ahsun ansari</span></p>
-                                </a>
-                             </div>
-                          </div>
-                          <div class="item">
-                              <div class="post-box">
-                                <a href="#">
-                                   <div class="p-img-bx">
-                                      <img src="images/all/blog_min_2.jpg" alt="post-thumb" class="img-fluid" />
-                                      <div class="hover-bx">
-                                         <p>
-                                         <span></span>
-                                         <span></span>
-                                         <span></span>
-                                         </p>
-                                      </div>
-                                   </div>
-                                   <span class="cat-label">category</span>
-                                   <h4>Envy of the World(A Blues for Terry Adkins)</h4>
-                                   <p><span class="date">September 20, 2020</span> <span>Posted by Ahsun ansari</span></p>
-                                </a>
-                             </div>
-                          </div>
+                     @foreach($popularBlogs as $popularValue)
+                              <div class="item">
+                                    <div class="post-box">
+                                    <a href="{{ route('single.blog', ['id'=> $popularValue['slug']]) }}" target="blank">
+                                       <div class="p-img-bx">
+                                          <img src="{{ asset('Images/uploads/'.$popularValue['image']) }}" alt="{{$popularValue['alt_description']}}" class="img-fluid" />
+                                          <div class="hover-bx">
+                                             <p>
+                                             <span></span>
+                                             <span></span>
+                                             <span></span>
+                                             </p>
+                                          </div>
+                                       </div>
+                                       <span class="cat-label">{{getCategoryName($popularValue['category'])}}</span>
+                                       <h4>{{ $popularValue['title'] }}</h4>
+                                       @php     $createdBy          =   $popularValue['created_at'];
+                                                $createdByArray     =   explode(" ", $createdBy); 
+                                                $newDate            =   date("F d , Y", strtotime($createdByArray[0]));
+                                                @endphp
+                                       <p><span class="date">{{$newDate}}</span> <span>Posted by {{ $popularValue['user_name'] }}</span></p>
+                                    </a>
+                                 </div>
+                              </div>
+                          @endforeach
+                         
+                        
                      </div>
                   </div>
               </div>
@@ -210,16 +171,18 @@
                   <div class="qoute-box" style="background: url(images/all/qoute-bg.jpg) center center no-repeat; background-size: cover;">
                      <h4>Want to experience the same in real?</h4>
                      <p>Contact us for a quote, help or enquiry</p>
-                     <form action="" class="mt-5">
+                     <form action="{{ route('BlogQuery.store') }}" method="POST" class="mt-5">
+                       @csrf
                        <div class="row">
                           <div class="col-12 mb-3">
                               <input type="text" name="name" required="" placeholder="Name">
+                              <input type="hidden" name="blog_info" value="{{ $blogData['title'] }}">
                           </div>
                           <div class="col-12 mb-3">
                               <input type="email" name="email" required="" placeholder="Email">
                           </div>
                           <div class="col-12 mb-3">
-                              <input type="number" name="mob" required="" placeholder="Mobile No">
+                              <input type="number" name="mobile" required="" placeholder="Mobile No">
                           </div>
                           <div class="col-12 mb-3">
                               <button type="submit" class="btn-qoute">Get a Quote</button>
@@ -472,14 +435,15 @@
                <div class="signup-box">
                   <h3>GET TRIP CLUB INDIA IN YOUR INBOX</h3>
                   <p>Get our best stuff sent straight to you!</p>
-                  <form action="">
+                  <form action="{{ route('Subscribe.store') }}" method="POST">
+                     @csrf
                      <div class="form-group">
-                        <input type="email" name="mail" placeholder="Enter your email" required="required">
+                        <input type="email" name="email" placeholder="Enter your email" required="required">
                      </div>
+                     <input type="checkbox" name="remember" id="check"> <label for="check">I have read and agree to the Privacy Policy</label>
                       <div class="form-group mb-0">
                          <button type="submit" class="btn-link">Subscribe Now</button>
                       </div>
-                      <input type="checkbox" name="remember" id="check"> <label for="check">I have read and agree to the Privacy Policy</label>
                   </form>
                </div>
             </div>
@@ -489,18 +453,9 @@
                    <span>CATEGORIES</span>
                </div>
                <div class="links-cat">
-                   <a href="#">Adventure</a>
-                   <a href="#">Beaches</a>
-                   <a href="#">Family</a>
-                   <a href="#">Hill Station</a>
-                   <a href="#">Historical</a>
-                   <a href="#">Honeymoon</a>
-                   <a href="#">Pilgrimage</a>
-                   <a href="#">Roadtrips</a>
-                   <a href="#">Solo</a>
-                   <a href="#">Tourist Places</a>
-                   <a href="#">Trekking</a>
-                   <a href="#">Wildlife</a>
+                  @foreach($categories as $catValue)
+                     <a href="{{route('category.blogs', ['id'=> $catValue['id']])}}">{{$catValue['name']}}</a>
+                  @endforeach
                </div>
             </div>
 

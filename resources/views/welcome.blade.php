@@ -20,27 +20,7 @@
          </a>
        @endforeach
        
-        <!-- <a href="#">
-          <div class="item">
-           <img src="{{ asset('Images/banner/bg.jpg') }}" alt="carousel-img" class="img-fluid" />  
-          <div class="carousel-caption">
-              <span class="cat-label">category</span>
-              <h1>Online job that skyrocket your income</h1>
-              <p><span class="date">September 20, 2020</span> / Posted by <span>Ahsun ansari</span></p>
-          </div>         
-        </div>
-        </a>
-        
-        <a href="#">
-          <div class="item">
-           <img src="{{ asset('Images/banner/1.jpg') }}" alt="carousel-img" class="img-fluid" />  
-          <div class="carousel-caption">
-              <span class="cat-label">category</span>
-              <h1>Online job that skyrocket your income</h1>
-              <p><span class="date">September 20, 2020</span> / Posted by <span>Ahsun ansari</span></p>
-          </div>        
-        </div>
-        </a> -->
+     
     </div>
   </div>
 </section>
@@ -62,10 +42,10 @@
               </div>
                @foreach($recentBlogs as $recentValue)
                <div class="col-lg-4 col-md-6 col-12 mb-3">
-                   <div class="post-box">
-                      <a href="#">
+                  <div class="post-box">
+                      <a href="{{ route('single.blog', ['id'=> $recentValue['slug']]) }}" target="blank">
                          <div class="p-img-bx">
-                            <img src="{{asset('Images/uploads/'.$recentValue['image'])}}" alt="post-thumb" class="img-fluid" />
+                            <img src="{{asset('Images/uploads/'.$recentValue['image'])}}" alt="{{$recentValue['alt_description']}}" class="img-fluid" />
                             <div class="hover-bx">
                                <p>
                                <span></span>
@@ -76,7 +56,12 @@
                          </div>
                          <span class="cat-label">{{getCategoryName($recentValue['category'])}}</span>
                          <h4>{{ $recentValue['title'] }}</h4>
-                         <p><span class="date">September 20, 2020</span>  <span>Posted by {{ $recentValue['user_name'] }}</span></p>
+                         @php    $createdBy          =   $recentValue['created_at'];
+                                 $createdByArray     =   explode(" ", $createdBy); 
+                                 $newDate            = date("F d , Y", strtotime($createdByArray[0]));
+                                 @endphp
+
+                         <p><span class="date">{{$newDate}}</span>  <span>Posted by {{ $recentValue['user_name'] }}</span></p>
                       </a>
                    </div>
                 </div>
@@ -88,19 +73,23 @@
 
                <div class="row cat-post-list mb-3">
                   <div class="col-lg-5 col-md-12 col-12">
-                        <a href="#">
-                        <img src="{{ asset('Images/uploads/'. $defaultValue['image']) }}" alt="cat-img" class="img-fluid" />
+                        <a href="{{ route('single.blog', ['id'=>$defaultValue['slug'] ]) }}"  target="blank">
+                        <img src="{{ asset('Images/uploads/'. $defaultValue['image']) }}" alt="{{$defaultValue['alt_description']}}" class="img-fluid" />
                         </a>
                   </div>
                   <div class="col-lg-7 col-md-12 col-12">
                      <span class="cat-label">{{ getCategoryName($defaultValue['category']) }}</span>
-                     <a href="#"><h4>{{ $defaultValue['title'] }}</h4></a>
+                     <a href="{{ route('single.blog', ['id'=>$defaultValue['slug'] ]) }}" target="blank"><h4>{{ $defaultValue['title'] }}</h4></a>
                      <div class="d-flex">
                         <div class="w-50">
-                           <span>{{ $defaultValue['created_at'] }}</span>
+                        @php    $createdBy          =   $defaultValue['created_at'];
+                                 $createdByArray     =   explode(" ", $createdBy); 
+                                 $newDate            = date("F d , Y", strtotime($createdByArray[0]));
+                                 @endphp
+                           <span>{{ $newDate }}</span>
                         </div>
                         <div class="w-50 text-right">
-                           <span><i class="fas fa-eye"></i> 800</span>
+                           <span><i class="fas fa-eye"></i>{{ $defaultValue['clicks'] }}</span>
                         </div>
                      </div>
                      <p> {{ str_limit(strip_tags($defaultValue->Description,100 )) }}</p>
@@ -109,9 +98,6 @@
 
              @endforeach
 
-
-
-            
               <!-- post row -->
               <div class="row">
                   <div class="col-12 tite-uline mt-4">
@@ -122,9 +108,9 @@
                           @foreach($popularBlogs as $popularValue)
                               <div class="item">
                                     <div class="post-box">
-                                    <a href="#">
+                                    <a href="{{ route('single.blog', ['id'=> $popularValue['slug']]) }}" target="blank">
                                        <div class="p-img-bx">
-                                          <img src="{{ asset('Images/uploads/'.$popularValue['image']) }}" alt="post-thumb" class="img-fluid" />
+                                          <img src="{{ asset('Images/uploads/'.$popularValue['image']) }}" alt="{{$popularValue['alt_description']}}" class="img-fluid" />
                                           <div class="hover-bx">
                                              <p>
                                              <span></span>
@@ -135,13 +121,16 @@
                                        </div>
                                        <span class="cat-label">{{getCategoryName($popularValue['category'])}}</span>
                                        <h4>{{ $popularValue['title'] }}</h4>
-                                       <p><span class="date">September 20, 2020</span> <span>Posted by {{ $popularValue['user_name'] }}</span></p>
+                                       @php    $createdBy          =   $defaultValue['created_at'];
+                                                $createdByArray     =   explode(" ", $createdBy); 
+                                                $newDate            = date("F d , Y", strtotime($createdByArray[0]));
+                                                @endphp
+                                       <p><span class="date">{{$newDate}}</span> <span>Posted by {{ $popularValue['user_name'] }}</span></p>
                                     </a>
                                  </div>
                               </div>
                           @endforeach
                          
-                        
                      </div>
                   </div>
               </div>
@@ -151,72 +140,36 @@
                     <!-- advertisement box -->
                  </div>
               </div>
-              <!-- ad row ends -->
-              <div class="row cat-post-list mb-3">
-                 <div class="col-lg-5 col-md-12 col-12">
-                     <a href="#">
-                       <img src="{{ asset('Images/all/blog_min_4.jpg') }}" alt="cat-img" class="img-fluid" />
-                     </a>
-                 </div>
-                 <div class="col-lg-7 col-md-12 col-12">
-                    <span class="cat-label">category</span>
-                    <a href="#"><h4>Hit the road, Jack: ’20: Legacy’ casts Rodriguez Hawkins in Thomas</h4></a>
-                    <div class="d-flex">
-                       <div class="w-50">
-                         <span>September 20, 2020</span>
-                       </div>
-                       <div class="w-50 text-right">
-                          <span><i class="fas fa-eye"></i> 800</span>
-                       </div>
-                    </div>
-                    <!-- it has character or words limit -->
-                    <p>Was certainty sing remaining along how dare dad apply discover only. Settled opinion how enjoy so shy joy greater one. No properly day fat surprise and interest...</p>
-                 </div>
-              </div>
-              <!-- post row -->
-              <div class="row cat-post-list mb-3">
-                 <div class="col-lg-5 col-md-12 col-12">
-                     <a href="#">
-                       <img src="{{ asset('Images/all/blog_min_4.jpg') }}" alt="cat-img" class="img-fluid" />
-                     </a>
-                 </div>
-                 <div class="col-lg-7 col-md-12 col-12">
-                    <span class="cat-label">category</span>
-                    <a href="#"><h4>Hit the road, Jack: ’20: Legacy’ casts Rodriguez Hawkins in Thomas</h4></a>
-                    <div class="d-flex">
-                       <div class="w-50">
-                         <span>September 20, 2020</span>
-                       </div>
-                       <div class="w-50 text-right">
-                          <span><i class="fas fa-eye"></i> 800</span>
-                       </div>
-                    </div>
-                    <!-- it has character or words limit -->
-                    <p>Was certainty sing remaining along how dare dad apply discover only. Settled opinion how enjoy so shy joy greater one. No properly day fat surprise and interest...</p>
-                 </div>
-              </div>
-              <!-- post row -->
-              <div class="row cat-post-list mb-3">
-                 <div class="col-lg-5 col-md-12 col-12">
-                     <a href="#">
-                       <img src="Images/all/blog_min_4.jpg" alt="cat-img" class="img-fluid" />
-                     </a>
-                 </div>
-                 <div class="col-lg-7 col-md-12 col-12">
-                    <span class="cat-label">category</span>
-                    <a href="#"><h4>Hit the road, Jack: ’20: Legacy’ casts Rodriguez Hawkins in Thomas</h4></a>
-                    <div class="d-flex">
-                       <div class="w-50">
-                         <span>September 20, 2020</span>
-                       </div>
-                       <div class="w-50 text-right">
-                          <span><i class="fas fa-eye"></i> 800</span>
-                       </div>
-                    </div>
-                    <!-- it has character or words limit -->
-                    <p>Was certainty sing remaining along how dare dad apply discover only. Settled opinion how enjoy so shy joy greater one. No properly day fat surprise and interest...</p>
-                 </div>
-              </div>
+              @foreach($generalBlogs as $generalValue)
+               <!-- ad row ends -->
+                  <div class="row cat-post-list mb-3">
+                  <div class="col-lg-5 col-md-12 col-12">
+                        <a href="{{ route('single.blog',['id'=> $generalValue['slug'] ]) }}" target="blank">
+                        <img src="{{ asset('Images/uploads/'.$generalValue['image']) }}" alt="{{ $generalValue['alt_description'] }}" class="img-fluid" />
+                        </a>
+                  </div>
+                  <div class="col-lg-7 col-md-12 col-12">
+                     <span class="cat-label">{{ getCategoryName($generalValue['category']) }}</span>
+                     <a href="{{ route('single.blog',['id'=> $generalValue['slug'] ]) }}" target="blank"><h4>{{ $generalValue['title'] }}</h4></a>
+                     <div class="d-flex">
+                        <div class="w-50">
+                        @php     $createdBy          =   $defaultValue['created_at'];
+                                 $createdByArray     =   explode(" ", $createdBy); 
+                                 $newDate            =   date("F d , Y", strtotime($createdByArray[0]));
+                                                @endphp
+                           <span>{{$newDate}}</span>
+                        </div>
+                        <div class="w-50 text-right">
+                           <span><i class="fas fa-eye"></i>{{ $generalValue['clicks'] }}</span>
+                        </div>
+                     </div>
+                     <!-- it has character or words limit -->
+                     <p>{{ str_limit(strip_tags($generalValue->Description,100 )) }} </p>
+                  </div>
+               </div>
+              @endforeach
+             
+             
               <!-- post row -->
               <div class="row">
                  <div class="col-12 text-center mt-3 mb-5">
@@ -239,7 +192,7 @@
                   <div class="item">
 
                   @foreach($trendingBlogs as $trendingValue)
-                     <a href="#" class="d-block">
+                     <a href="{{ route('single.blog', ['id'=> $trendingValue['slug'] ]) }}" target="blank" class="d-block">
                        <div class="d-flex">
                         <div class="img-trend w-25">
                             <img src="{{ asset('Images/uploads/'.$trendingValue['image']) }}" alt="cat-img" class="img-fluid" />
@@ -259,159 +212,7 @@
                      </a>     
                   @endforeach
                     
-                    
                   </div>
-                  <!-- item -->
-                   <div class="item">
-                     <a href="#" class="d-block">
-                       <div class="d-flex">
-                        <div class="img-trend w-25">
-                            <img src="Images/all/blog_min_1.jpg" alt="cat-img" class="img-fluid" />
-                            <div class="hover-bx">
-                                 <p>
-                                 <span></span>
-                                 <span></span>
-                                 <span></span>
-                                 </p>
-                              </div>
-                        </div>
-                        <div class="w-75">
-                           <h6>10 Museums that will blow your Child’s Mind</h6>
-                           <small>Posted by Ahsun ansari</small>
-                        </div>
-                     </div>
-                     </a>
-                     <a href="#" class="d-block">
-                       <div class="d-flex">
-                        <div class="img-trend w-25">
-                            <img src="Images/all/blog_min_4.jpg" alt="cat-img" class="img-fluid" />
-                            <div class="hover-bx">
-                                 <p>
-                                 <span></span>
-                                 <span></span>
-                                 <span></span>
-                                 </p>
-                              </div>
-                        </div>
-                        <div class="w-75">
-                           <h6>10 Museums that will blow your Child’s Mind</h6>
-                           <small>Posted by Ahsun ansari</small>
-                        </div>
-                     </div>
-                     </a>
-                     <a href="#" class="d-block">
-                       <div class="d-flex">
-                        <div class="img-trend w-25">
-                            <img src="Images/all/blog_min_3.jpg" alt="cat-img" class="img-fluid" />
-                            <div class="hover-bx">
-                                 <p>
-                                 <span></span>
-                                 <span></span>
-                                 <span></span>
-                                 </p>
-                              </div>
-                        </div>
-                        <div class="w-75">
-                           <h6>10 Museums that will blow your Child’s Mind</h6>
-                           <small>Posted by Ahsun ansari</small>
-                        </div>
-                     </div>
-                     </a>
-                     <a href="#" class="d-block">
-                       <div class="d-flex">
-                        <div class="img-trend w-25">
-                            <img src="Images/all/blog_min_2.jpg" alt="cat-img" class="img-fluid" />
-                            <div class="hover-bx">
-                                 <p>
-                                 <span></span>
-                                 <span></span>
-                                 <span></span>
-                                 </p>
-                              </div>
-                        </div>
-                        <div class="w-75">
-                           <h6>10 Museums that will blow your Child’s Mind</h6>
-                           <small>Posted by Ahsun ansari</small>
-                        </div>
-                     </div>
-                     </a>
-                  </div>
-                  <!-- item -->
-                   <div class="item">
-                     <a href="#" class="d-block">
-                       <div class="d-flex">
-                        <div class="img-trend w-25">
-                            <img src="Images/all/blog_min_1.jpg" alt="cat-img" class="img-fluid" />
-                            <div class="hover-bx">
-                                 <p>
-                                 <span></span>
-                                 <span></span>
-                                 <span></span>
-                                 </p>
-                              </div>
-                        </div>
-                        <div class="w-75">
-                           <h6>10 Museums that will blow your Child’s Mind</h6>
-                           <small>Posted by Ahsun ansari</small>
-                        </div>
-                     </div>
-                     </a>
-                     <a href="#" class="d-block">
-                       <div class="d-flex">
-                        <div class="img-trend w-25">
-                            <img src="Images/all/blog_min_2.jpg" alt="cat-img" class="img-fluid" />
-                            <div class="hover-bx">
-                                 <p>
-                                 <span></span>
-                                 <span></span>
-                                 <span></span>
-                                 </p>
-                              </div>
-                        </div>
-                        <div class="w-75">
-                           <h6>10 Museums that will blow your Child’s Mind</h6>
-                           <small>Posted by Ahsun ansari</small>
-                        </div>
-                     </div>
-                     </a>
-                     <a href="#" class="d-block">
-                       <div class="d-flex">
-                        <div class="img-trend w-25">
-                            <img src="Images/all/blog_min_3.jpg" alt="cat-img" class="img-fluid" />
-                            <div class="hover-bx">
-                                 <p>
-                                 <span></span>
-                                 <span></span>
-                                 <span></span>
-                                 </p>
-                              </div>
-                        </div>
-                        <div class="w-75">
-                           <h6>10 Museums that will blow your Child’s Mind</h6>
-                           <small>Posted by Ahsun ansari</small>
-                        </div>
-                     </div>
-                     </a>
-                     <a href="#" class="d-block">
-                       <div class="d-flex">
-                        <div class="img-trend w-25">
-                            <img src="Images/all/blog_min_4.jpg" alt="cat-img" class="img-fluid" />
-                            <div class="hover-bx">
-                                 <p>
-                                 <span></span>
-                                 <span></span>
-                                 <span></span>
-                                 </p>
-                              </div>
-                        </div>
-                        <div class="w-75">
-                           <h6>10 Museums that will blow your Child’s Mind</h6>
-                           <small>Posted by Ahsun ansari</small>
-                        </div>
-                     </div>
-                     </a>
-                  </div>
-                  <!-- item -->
                </div>
             </div>
 
@@ -419,14 +220,15 @@
                <div class="signup-box">
                   <h3>GET TRIP CLUB INDIA IN YOUR INBOX</h3>
                   <p>Get our best stuff sent straight to you!</p>
-                  <form action="">
+                  <form action="{{ route('Subscribe.store') }}" method="POST">
+                     @csrf
                      <div class="form-group">
-                        <input type="email" name="mail" placeholder="Enter your email" required="required">
+                        <input type="email" name="email" placeholder="Enter your email" required="required">
                      </div>
+                     <input type="checkbox" name="remember" id="check"> <label for="check">I have read and agree to the Privacy Policy</label>
                       <div class="form-group mb-0">
                          <button type="submit" class="btn-link">Subscribe Now</button>
                       </div>
-                      <input type="checkbox" name="remember" id="check"> <label for="check">I have read and agree to the Privacy Policy</label>
                   </form>
                </div>
             </div>

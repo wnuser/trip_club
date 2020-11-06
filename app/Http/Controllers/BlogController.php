@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use Illuminate\Http\Request;
+use App\blogCategory;
 
 class BlogController extends Controller
 {
@@ -16,6 +17,7 @@ class BlogController extends Controller
     {
         //
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -44,9 +46,16 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($slug)
     {
         //
+        $blogData        =   Blog::where('slug', $slug)->first();
+        $blogCategory    =   $blogData['category'];
+        $similarBlogs    =   Blog::where('slug', '!=', $slug)->whereCategory($blogCategory)->get();    
+        $popularBlogs    =   Blog::orderBy('id', 'desc')->whereFrontCategory(config('constants.FRONTCATEGORY.POPULAR'))->get();
+        $categories      =   blogCategory::get();
+
+        return view('single', compact('blogData', 'similarBlogs', 'popularBlogs','categories'));
     }
 
     /**
