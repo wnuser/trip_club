@@ -31,9 +31,9 @@
       <div class="row">
          <div class="col-lg-8 col-md-7 col-12">
              <div class="row">
-                <div class="col-12">
+                <div class="col-12 add-box">
                    <!-- advetisement box -->
-                    <!-- <img src="{{asset('Images/all/blog_min_1.jpg')}}" class="img-fluid" alt=""> -->
+                    <img src="{{asset('Images/all/blog_min_1.jpg')}}" class="img-fluid" alt="">
                 </div>
              </div>
              <div class="row">
@@ -136,8 +136,11 @@
               </div>
               <!-- populer row carousel -->
               <div class="row">
-                 <div class="col-12">
+                 <div class="col-12 add-box">
                     <!-- advertisement box -->
+                    <video width="400" autoplay controls>
+                       <source src="{{ asset('Images/uploads/sample.mp4') }}" type="video/mp4">
+                    </video>
                  </div>
               </div>
               @foreach($generalBlogs as $generalValue)
@@ -179,7 +182,7 @@
          </div>
          <div class="col-lg-4 col-md-5 col-12">
             <div class="row">
-               <div class="col-12">
+               <div class="col-12 add-box">
                    <!-- advertisement box -->
                </div>
             </div>
@@ -244,7 +247,7 @@
                </div>
             </div>
 
-            <div class="col-12">
+            <div class="col-12 add-box">
                <!-- advertisement box -->
             </div>
          </div>
