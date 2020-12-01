@@ -26,14 +26,22 @@
 </section>
 <!-- banner section ends -->
 
+
 <section class="category-sec">
    <div class="container">
+   @include('layouts.error')
+
       <div class="row">
          <div class="col-lg-8 col-md-7 col-12">
              <div class="row">
                 <div class="col-12 add-box">
                    <!-- advetisement box -->
-                    <img src="{{asset('Images/all/blog_min_1.jpg')}}" class="img-fluid" alt="">
+                   @php  $adDetails   =  getAdsDetails(1);   @endphp
+                   @if($adDetails['isRunning'])
+                    <a href="{{ route('click.count', ['id'=>$adDetails['id']]) }}" target="_blank" class="d-block">
+                        <img src="{{asset('Images/uploads/'.$adDetails['image'])}}" class="img-fluid" alt="">
+                    </a>  
+                   @endif  
                 </div>
              </div>
              <div class="row">
@@ -138,9 +146,15 @@
               <div class="row">
                  <div class="col-12 add-box">
                     <!-- advertisement box -->
-                    <video width="400" autoplay controls>
+                    <!-- <video width="400" autoplay controls>
                        <source src="{{ asset('Images/uploads/sample.mp4') }}" type="video/mp4">
-                    </video>
+                    </video> -->
+                    @php  $adDetails   =  getAdsDetails(3);   @endphp
+                    @if($adDetails['isRunning'])
+                    <a href="{{ route('click.count', ['id'=>$adDetails['id']]) }}" target="_blank" class="d-block">
+                        <img src="{{asset('Images/uploads/'.$adDetails['image'])}}" class="img-fluid" alt="">
+                    </a>  
+                   @endif  
                  </div>
               </div>
               @foreach($generalBlogs as $generalValue)
@@ -159,7 +173,7 @@
                         @php     $createdBy          =   $defaultValue['created_at'];
                                  $createdByArray     =   explode(" ", $createdBy); 
                                  $newDate            =   date("F d , Y", strtotime($createdByArray[0]));
-                                                @endphp
+                        @endphp
                            <span>{{$newDate}}</span>
                         </div>
                         <div class="w-50 text-right">
@@ -184,6 +198,12 @@
             <div class="row">
                <div class="col-12 add-box">
                    <!-- advertisement box -->
+                   @php  $adDetails   =  getAdsDetails(2);   @endphp
+                   @if($adDetails['isRunning'])
+                    <a href="{{ route('click.count', ['id'=>$adDetails['id']]) }}" target="_blank" class="d-block">
+                        <img src="{{asset('Images/uploads/'.$adDetails['image'])}}" class="img-fluid" alt="">
+                    </a>  
+                   @endif  
                </div>
             </div>
             <!-- inner row -->
@@ -192,9 +212,9 @@
             </div>
             <div class="col-12">
                <div class="owl-carousel side-carousel">
-                  <div class="item">
-
-                  @foreach($trendingBlogs as $trendingValue)
+               @foreach($supperArray as $subArray)
+               <div class="item">
+                  @foreach($subArray as $trendingValue)
                      <a href="{{ route('single.blog', ['id'=> $trendingValue['slug'] ]) }}" target="blank" class="d-block">
                        <div class="d-flex">
                         <div class="img-trend w-25">
@@ -214,8 +234,10 @@
                      </div>
                      </a>     
                   @endforeach
-                    
                   </div>
+
+               @endforeach
+                 
                </div>
             </div>
 
@@ -249,6 +271,12 @@
 
             <div class="col-12 add-box">
                <!-- advertisement box -->
+               @php  $adDetails   =  getAdsDetails(4);   @endphp
+                  @if($adDetails['isRunning'])
+                    <a href="{{ route('click.count', ['id'=>$adDetails['id']]) }}" target="_blank" class="d-block">
+                        <img src="{{asset('Images/uploads/'.$adDetails['image'])}}" class="img-fluid" alt="">
+                    </a>  
+                   @endif  
             </div>
          </div>
       </div>
@@ -259,3 +287,7 @@
 </main>
 
 @endsection
+
+<script>
+  
+</script>

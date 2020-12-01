@@ -55,10 +55,13 @@
                   <div class="row justify-content-center align-items-center">
                      <div class="col-lg-8 col-md-9 col-11">
                         <h4 class="text-center mb-4">FIND YOUR WAY!</h4>
-                        <div class="search-bx">
-                           <input type="search" name="search" placeholder="SEARCH" autofocus="autofocus">
-                           <button type="submit" class="btn-search"><i class="fas fa-search"></i> </button>
-                        </div>
+                        <form action="{{ route('search') }}" method="POST">
+                           <div class="search-bx">
+                              @csrf
+                              <input type="search" name="search" placeholder="SEARCH" autofocus="autofocus">
+                              <button type="submit" class="btn-search"><i class="fas fa-search"></i> </button>
+                           </div>
+                        </form>
                      </div>
                   </div>
                </div>
@@ -83,32 +86,37 @@
                      <div class="text-center mb-4">
                         <img src="{{ asset('Images/logo-trans.svg') }}" class="img-fluid" alt="logo" />
                      </div>
+                     <form action="{{ route('user.blog.post') }}" method="POST" enctype="multipart/form-data">
+
+                     @csrf
                      <div class="form-bx-modal row">
-                        <div class="col-12 mb-3">
-                           <input type="text" name="name" placeholder="Name" required="" />
-                        </div>
-                        <div class="col-12 mb-3">
-                           <input type="text" name="title" placeholder="Title" required="" />
-                        </div>
-                        <div class="col-12 mb-3">
-                           <select>
-                              <option>Category</option>
-                              <option>Category</option>
-                              <option>Category</option>
-                              <option>Category</option>
-                           </select>
-                        </div>
-                        <div class="col-12 mb-3">
-                           <textarea placeholder="Type your story..."></textarea>
-                        </div>
-                        <div class="col-12 mb-3">
-                           <input type="file" name="choose" id="choose">
-                           <label for="choose" class="choose-file-label">Add photos/Videos <span><i class="fas fa-paperclip"></i></span></label>
-                        </div>
-                        <div class="col-12 mb-5 text-center">
-                           <button type="submit">Publish</button>
-                        </div>
+                           <div class="col-12 mb-3">
+                              <input type="text" name="user_name" placeholder="Name" required="" />
+                           </div>
+                           <div class="col-12 mb-3">
+                              <input type="text" name="title" placeholder="Title" required="" />
+                           </div>
+                           <div class="col-12 mb-3">
+                              <select name="category">
+                              @php  $allCategories    =  allCategories();   @endphp 
+                              @foreach($allCategories as $value)
+                                 <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
+                              @endforeach
+                              </select>
+                           </div>
+                           <div class="col-12 mb-3">
+                              <textarea name="Description" placeholder="Type your story..." id="message_description"></textarea>
+                           </div>
+                           <div class="col-12 mb-3">
+                              <input type="file" name="image" id="choose">
+                              <label for="choose" class="choose-file-label">Add photo <span><i class="fas fa-paperclip"></i></span></label>
+                           </div>
+                           <div class="col-12 mb-5 text-center">
+                              <button type="submit">Publish</button>
+                           </div>
                      </div>
+                     </form>
+
                   </div>
                </div>
             </div>

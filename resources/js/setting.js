@@ -2,9 +2,15 @@
 var initialDataTable;
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel();
-    initialDataTable = $('#datatableInitiazer').DataTable();
-    // $('#records-table').DataTable({});
-
+    initialDataTable = $('#datatableInitiazer').DataTable({
+        // dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    });
 
     $(window).scroll(function(){
       var scroll = $(window).scrollTop();

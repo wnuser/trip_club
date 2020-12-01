@@ -14,7 +14,7 @@
 /**
  * Admin blog routes
  */
-Route::group(['Middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth']], function () { 
 
     Route::resource('AdminBlogs', AdminBlogController::class);
     Route::resource('BlogCategorys', BlogCategoryController::class);
@@ -24,6 +24,20 @@ Route::group(['Middleware' => ['auth']], function () {
     Route::resource('BlogQuery', BlogQueryController::class);
     Route::resource('Subscribe', SubscribeController::class);
     Route::resource('Blogquery', BlogQueryController::class);
+    Route::resource('AdsHistory', AdsHistoryController::class);
+    Route::resource('Comments', CommentController::class);
+
+    
+    /**Ads Routes */
+    Route::get('stop/Ad/{id}', 'AdsController@stopRunningAd')->name('stop.ad');
+    Route::get('ads/history/{id}', 'AdsHistoryController@show')->name('ads.history');
+    Route::post('ads/update', 'AdsController@update')->name('ad.update');
+    Route::post('search', 'SearchController@index')->name('search');
+    Route::get('click/count/{id}', 'AdsController@clicksCounts')->name('click.count');
+    Route::get('approve/commnet/{id}', 'CommentController@approveComment')->name('approve.comment');
+    Route::get('/Dashboard', function() {
+        return view('admin.index');
+    });
 
 
     Route::get('/slider/delete/{id}', 'FrontSliderController@destroy')->name('slider.delete');
@@ -34,16 +48,16 @@ Route::group(['Middleware' => ['auth']], function () {
     
 });
 
-
+Route::post('/post/comment', 'CommentController@store')->name('post.commnet');
+Route::post('/blog/upload', 'BlogController@blogUpload')->name('blog.image.upload');
+Route::post('/user/blog/post', 'BlogController@addUseBlog')->name('user.blog.post');
 
 
 Route::get('/', 'HomeController@index')->name('Home');
 Route::get('/blog/{id}', 'BlogController@show')->name('single.blog');
 
 
-Route::get('/Dashboard', function() {
-    return view('admin.index');
-});
+
 
 /**
  * User Side Routes

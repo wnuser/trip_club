@@ -15,7 +15,15 @@ class CreateAdsTable extends Migration
     {
         Schema::create('ads', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('company_name');
+            $table->string('image');
+            $table->string('hyper_link');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->string('clicks');
+            $table->integer('isRunning');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

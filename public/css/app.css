@@ -1741,6 +1741,13 @@ header .navbar .nav-link.btn-nav:hover {
   height: auto;
 }
 
+.blog-description img {
+  max-width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 /**
  * Owl Carousel v2.2.1
  * Copyright 2013-2017 David Deutsch

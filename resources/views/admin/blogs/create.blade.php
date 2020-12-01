@@ -65,7 +65,10 @@
 
 @push('scripts')
 <script>
-CKEDITOR.replace('message_description');
+CKEDITOR.replace('message_description',  {
+   filebrowserUploadUrl: "{{ route('blog.image.upload', ['_token' => csrf_token() ])}}",
+   filebrowserUploadMethod: 'form'
+});
 </script>
 
 @endpush

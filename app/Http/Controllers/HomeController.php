@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -30,11 +30,32 @@ class HomeController extends Controller
         $frontSlider     =   frontSlider::get();
         $recentBlogs     =   Blog::orderBy('id', 'desc')->take(3)->get();
         $defaultBlogs    =   Blog::orderBy('id', 'desc')->skip(3)->take(2)->get();
-        $trendingBlogs   =   Blog::orderBy('id', 'desc')->whereFrontCategory(config('constants.FRONTCATEGORY.TRENDING'))->get();
         $popularBlogs    =   Blog::orderBy('id', 'desc')->whereFrontCategory(config('constants.FRONTCATEGORY.POPULAR'))->get();
         $categories      =   blogCategory::get();
         $generalBlogs    =   Blog::orderBy('id', 'desc')->skip(5)->take(10)->get();
+        $trendingBlogs   =   Blog::orderBy('id', 'desc')->whereFrontCategory(config('constants.FRONTCATEGORY.TRENDING'))->get();
+        $trendingCount   =   $trendingBlogs->count();
 
-        return view('welcome', compact('frontSlider', 'recentBlogs', 'defaultBlogs', 'trendingBlogs', 'popularBlogs', 'categories', 'generalBlogs'));
+        $supperArray     =  array();
+        $subArray        =  array();
+        $count           =  0;
+       
+        foreach ($trendingBlogs as $key => $value) {
+
+            $subArray[$key]   =  $value->toArray();
+            $count++;
+            if($count%4 == 0)
+            {
+                $supperArray[$count]  = $subArray;
+                $subArray             = array();
+            } 
+            else {
+                if($count == $trendingCount){
+                $supperArray[$count]  = $subArray;
+                }
+            }
+        }
+
+        return view('welcome', compact('frontSlider', 'recentBlogs', 'defaultBlogs', 'trendingBlogs', 'popularBlogs', 'categories', 'generalBlogs', 'supperArray'));
     }
 }
