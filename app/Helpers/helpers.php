@@ -28,4 +28,20 @@ function allCategories() {
 }
 
 
+function getCategories($selected  = null)
+{
+    echo '<select name="category" id="" class="form-control">
+           <option value="">Choose Category</option>';
+    $allCategories   =  \App\blogCategory::get();
+    foreach ($allCategories as $key => $value) {
+        # code...
+        if($value['id']  == $selected) {
+            echo "<option value='".$value['id']."' selected>".$value['name']."</option>";
+        } else {
+            echo "<option value='".$value['id']."'>".$value['name']."</option>";
+        }
+    }
+    echo '</select>';
+}
+
 

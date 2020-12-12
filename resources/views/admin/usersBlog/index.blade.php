@@ -19,43 +19,44 @@
                 <th>Blog Title</th>
                 <th>Category</th>
                 <th>Image</th>
-                <th>Front Category</th>
                 <th>Actions</th>
             </tr>
            </thead>
            <tbody>
             @php   $count = 1;   @endphp
-            @foreach($data as $value)
+            @foreach($blogs as $value)
                <tr>
                   <td>{{ $count++ }}.</td>
                   <td>{{ $value['title'] }}</td>
                   <td>{{ getCategoryName($value['category']) }}</td>
                   <td> <img src="{{ asset('Images/uploads/'.$value['image']) }}" alt="" height="100" width="150"> </td>
+                  
                   <td> 
-                    @php  $catName    =   ($value['front_category']) ? config('constants.FRONTCATEGORYLABEL')[$value['front_category']] : false;   @endphp
-                    {{ $catName }}
-                  </td>
-                  <td> <a class="btn btn-primary btn-sm" href="{{ route('blog.edit', ['id'=>$value['id']]) }}"> <i class="fa fa-edit"></i> </a> 
                         <a class="btn btn-danger btn-sm" href="{{ route('blog.delete', ['id'=> $value['id'] ]) }}" onclick=" return confirm('Are You Sure .... !') " > <i class="fa fa-trash"></i> </a> 
-                        <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal{{$value['id']}}"> <i class="fa fa-info"></i> </button> 
+                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal{{$value['id']}}"> <i class="fa fa-edit"></i> </button> 
+                        @if($value['isAdmindone']  == 0)
+                        <a href="{{ route('users.blog.updated', ['id'=> $value['id']])  }}"  class="btn btn-warning btn-sm"> <i class="far fa-hand-point-right"></i> </a>
+                        @else
+                           <button class="btn btn-success btn-sm"> <i class="fa fa-hand-point-right"></i> </button>
+                        @endif
                   </td>
                </tr>
 
                <!-- The Modal -->
                   <div class="modal" id="myModal{{$value['id']}}">
-                  <div class="modal-dialog">
+                  <div class="modal-dialog modal-lg">
                      <div class="modal-content">
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                        <h4 class="modal-title">Change Front Category</h4>
+                        <h4 class="modal-title">Access Blog Data</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                        <form action="{{route('change.frontCategory')}}" method="POST">
-                           <div class="form-group">
+                        <form action="" method="POST">
+                           <!-- <div class="form-group">
                               @csrf
                                <select name="front_category" id="" class="form-control">
                                  <option value="">Select Category</option>
@@ -71,6 +72,24 @@
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" btn="submit">Submit</button>
+                            </div> -->
+                            <div class="form-group">
+                                <label for="">User Name</label>
+                                <input type="text" name="" id="" class="form-control" value="{{ $value['user_name'] }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Blog Title</label>
+                                <input type="text" name="" id="" class="form-control" value="{{ $value['title'] }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Category</label>
+                                {{ getCategoryName($value['category']) }}
+                            </div>
+                            <div class="form-group">
+                                <label for="">Description</label>
+                                <textarea name="description" id="message_description" cols="30" rows="10" class="form-control"><?php echo  $value['Description']; ?></textarea>
+                            </div>
+                            <div class="form-group">
                             </div>
                         </form>
                            
@@ -92,4 +111,14 @@
    </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+CKEDITOR.replace('message_description',  {
+   filebrowserUploadUrl: "{{ route('blog.image.upload', ['_token' => csrf_token() ])}}",
+   filebrowserUploadMethod: 'form'
+});
+</script>
+
+@endpush
 

@@ -45,6 +45,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/change/frontCategory', 'AdminBlogController@changeFrontcategory')->name('change.frontCategory');
     Route::get('/subscribe/delete/{id}', 'SubscribeController@destroy')->name('subscribe.delete');
     Route::get('/blogquery/delete/{id}', 'BlogQueryController@destroy')->name('blogquery.delete');
+    Route::get('/users/blogs/', 'AdminBlogController@getUsersblogs')->name('users.blogs');
+    Route::get('/user/blog/updated/{id}', 'AdminBlogController@adminDone')->name('users.blog.updated');
+    Route::get('/blog/edit/{id}', 'AdminBlogController@edit')->name('blog.edit');
+    Route::post('/blog/update', 'AdminBlogController@update')->name('blog.update');
     
 });
 

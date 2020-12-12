@@ -47,6 +47,7 @@ class BlogController extends Controller
         $Blog->image           =  $image_new_name;
         $Blog->Description     =  $request->Description;
         $Blog->created_by      =  0;
+        $Blog->isFromuser      =  1;
         $Blog->save();
 
         return back()->with('success', 'Blog created successfully');
