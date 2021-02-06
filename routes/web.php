@@ -38,6 +38,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/Dashboard', function() {
         return view('admin.index');
     });
+    Route::get('/edit/category/{id}', 'BlogCategoryController@edit')->name('edit.blog');
+    Route::post('/update/category', 'BlogCategoryController@update')->name('update.blog');
+    Route::get('/delete/category/{id}', 'BlogCategoryController@destroy')->name('delete.blog');
 
 
     Route::get('/slider/delete/{id}', 'FrontSliderController@destroy')->name('slider.delete');
@@ -69,9 +72,9 @@ Route::get('/blog/{id}', 'BlogController@show')->name('single.blog');
 Route::get('/Listing', 'ListingController@index')->name('listing');
 
 
-Route::get('/search', function() {
-    return view('search');
-});
+// Route::get('/search', function() {
+//     return view('search');
+// });
 
 Route::get('/single', function() {
     return view('single');

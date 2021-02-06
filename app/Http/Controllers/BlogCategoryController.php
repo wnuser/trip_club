@@ -108,9 +108,11 @@ class BlogCategoryController extends Controller
      * @param  \App\blogCategory  $blogCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(blogCategory $blogCategory)
+    public function edit($id)
     {
         //
+        $data   = blogCategory::whereId($id)->first();
+        return view('admin.category.edit', compact('data'));
     }
 
     /**
@@ -120,9 +122,31 @@ class BlogCategoryController extends Controller
      * @param  \App\blogCategory  $blogCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, blogCategory $blogCategory)
+    public function update(Request $request)
     {
         //
+        $request->validate([
+            'name'   => 'required',
+        ]);
+
+        if ($request->image) {
+            $image          = $request->image;
+            $image_new_name = time().$image->getClientOriginalName();
+            $image->move('Images/categories', $image_new_name);
+        }
+        // aprint($request->all());
+        $id     =   $request->id;
+
+        $blogCategory        =   blogCategory::whereId($id)->first();
+        $blogCategory->name  =   $request->name;
+        if($request->image) {
+            $blogCategory->image = $image_new_name;
+        }
+
+        $blogCategory->save();
+        
+        return back()->with('success', 'Category Updated Successfully');
+
     }
 
     /**
@@ -131,8 +155,17 @@ class BlogCategoryController extends Controller
      * @param  \App\blogCategory  $blogCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(blogCategory $blogCategory)
+    public function destroy($id)
     {
         //
+
+        try {
+            //code...
+            $blog    =  blogCategory::whereId($id)->delete();
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->with('error', $th->getMessage());
+        }
+        return back()->with('success', 'Blog  Category Deleted Successfully');
     }
 }

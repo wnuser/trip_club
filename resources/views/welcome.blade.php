@@ -12,7 +12,7 @@
             <div class="item">
             <img src="{{ asset('Images/uploads/'.$value['image']) }}" alt="carousel-img" class="img-fluid" />  
             <div class="carousel-caption">
-               <span class="cat-label"> {{ getCategoryName($value['id']) }} </span>
+               <span class="cat-label"> {{ getCategoryName($value['category']) }} </span>
                <h1>{{ $value['title'] }}</h1>
                <p><span class="date">September 20, 2020</span> / Posted by <span>Ahsun ansari</span></p>
             </div>      
@@ -285,9 +285,4 @@
 </section>
 
 </main>
-
 @endsection
-
-<script>
-  
-</script>

@@ -41,7 +41,7 @@ class SearchController extends Controller
                 }
             }
         }
-        return view('search', compact('result', 'supperArray', 'categories'));
+        return view('search', compact('result', 'supperArray', 'categories', 'searchKeywords'));
 
     }
 

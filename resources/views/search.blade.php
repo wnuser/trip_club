@@ -23,7 +23,7 @@
                   @if($result->isEmpty())
                      <h4>No Blog Found.....!</h4>
                   @else
-                  <h4>Result for <b>“SEARCH”</b></h4>
+                  <h4>Result for <b>“{{$searchKeywords}}”</b></h4>
                   @endif
                 </div>
              </div>
@@ -38,7 +38,7 @@
                      </a>
                  </div>
                  <div class="col-lg-7 col-md-12 col-12">
-                    <span class="cat-label">{{ getCategoryName($value['category']) }}  category</span>
+                    <span class="cat-label">{{ getCategoryName($value['category']) }}</span>
                     <a href="{{ route('single.blog', ['id'=> $value['slug'] ]) }}" target="_blank"><h4>{{ $value['title'] }}</h4></a>
                     <div class="d-flex">
                        <div class="w-50">

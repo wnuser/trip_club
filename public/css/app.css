@@ -180,11 +180,10 @@ select:focus {
 
 .main-slider .carousel-caption h1 {
   max-width: 350px;
-  color: #14A697;
+  color: #fff;
   font-size: 42px;
   line-height: 50px;
   padding-left: 10px;
-  background: #fff;
   position: relative;
   margin-top: 20px;
   z-index: 1;

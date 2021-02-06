@@ -21,9 +21,13 @@
                <li class="nav-item dropdown">
                   <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown">inspirations <i class="fas fa-angle-down"></i></a> 
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>3]) }}" target="blank">Adventure</a>
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>7]) }}" target="blank">Historical</a>
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>9]) }}" target="blank">Pilgrimage</a>
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>12]) }}" target="blank">Tourist Hub</a>
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>13]) }}" target="blank">Trekking</a>
                      <a class="dropdown-item" href="{{ route('all.categories') }}">All Categories</a>
-                     <!-- <a class="dropdown-item" href="#">Another action</a>
-                     <a class="dropdown-item" href="#">Something else here</a> -->
+
                   </div>
                </li>
                <li class="nav-item d-mob-none">

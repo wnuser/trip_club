@@ -25,8 +25,8 @@
                 <td>{{ $count++ }}.</td>
                 <td>{{ $value['name'] }}</td>
                 <td> <img src="{{ asset('Images/categories/'.$value['image']) }}" alt="" height="100" width="150" >  </td>
-                <td> <button class="btn btn-primary"> <i class="fa fa-edit"></i> </button> 
-                     <button class="btn btn-danger"> <i class="fa fa-trash"></i> </button>  </td>
+                <td> <a class="btn btn-primary" href="{{ route('edit.blog', ['id'=> $value['id']]) }}"> <i class="fa fa-edit"></i> </a> 
+                     <a class="btn btn-danger" onclick="return confirm('Are You Sure ...!')" href="{{ route('delete.blog', ['id'=> $value['id']])}}"> <i class="fa fa-trash"></i> </a>  </td>
             </tr>
            @endforeach
           
