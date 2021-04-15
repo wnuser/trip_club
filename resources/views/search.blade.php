@@ -10,7 +10,7 @@
              <form action="{{ route('search') }}" method="POST">
               @csrf
              <div class="search-bx">
-                 <input type="search" name="search" placeholder="SEARCH" autofocus="autofocus">
+                 <input type="search" name="search" placeholder="Enter keywords here..." autofocus="autofocus">
                  <button type="submit" class="btn-search"><i class="fas fa-search"></i> </button>
               </div>
               </form>  
@@ -20,43 +20,52 @@
          <div class="col-lg-8 col-md-7 col-12">
              <div class="row">
                 <div class="col-12 mb-4">
+                @if($result)
                   @if($result->isEmpty())
                      <h4>No Blog Found.....!</h4>
                   @else
-                  <h4>Result for <b>“SEARCH”</b></h4>
+                  <h4>Result for :- <b>{{$searchKeywords}}</b></h4>
                   @endif
+               @endif   
                 </div>
              </div>
              <!-- inner row -->
 
               <!-- post row -->
-              @foreach($result as $value)
-              <div class="row cat-post-list">
-                 <div class="col-lg-5 col-md-12 col-12">
-                     <a href="{{ route('single.blog', ['id'=> $value['slug'] ]) }}" >
-                       <img src="{{ asset('Images/uploads/'.$value['image']) }}" alt="cat-img" class="img-fluid" />
-                     </a>
-                 </div>
-                 <div class="col-lg-7 col-md-12 col-12">
-                    <span class="cat-label">{{ getCategoryName($value['category']) }}  category</span>
-                    <a href="{{ route('single.blog', ['id'=> $value['slug'] ]) }}" target="_blank"><h4>{{ $value['title'] }}</h4></a>
-                    <div class="d-flex">
-                       <div class="w-50">
-                       @php      $createdBy          =   $value['created_at'];
-                                 $createdByArray     =   explode(" ", $createdBy); 
-                                 $newDate            =   date("F d , Y", strtotime($createdByArray[0]));
-                        @endphp
-                         <span>{{$newDate}}</span>
-                       </div>
-                       <div class="w-50 text-right">
-                          <span><i class="fas fa-eye"></i>{{ $value['clicks'] }}</span>
-                       </div>
-                    </div>
-                    <!-- it has character or words limit -->
-                    <p>Was certainty sing remaining along how dare dad apply discover only. Settled opinion how enjoy so shy joy greater one. No properly day fat surprise and interest...</p>
-                 </div>
+            @if($result)  
+              <div class="row">
+                  @foreach($result as $value)
+                     <div class="col-lg-6 col-md-6 col-12 mb-3">
+                        <div class="card shadow-sm">
+                           <div class="card-img-custom">
+                              <a href="{{ route('single.blog', ['id'=> $value['slug']]) }}">
+                              <img class="card-img" src="{{ asset('Images/uploads/'.$value['image']) }}" alt="{{ $value['alt_description'] }}">
+                              <span class="cat-label">{{getCategoryName($value['category'])}}</span>
+                              </a>
+                           </div>
+                           <div class="card-body post-box">
+                              <a href="{{ route('single.blog', ['id'=> $value['slug']]) }}" target="blank">
+                                 <h4 class="card-title">  {{ mb_strimwidth($value['title'], 0, 50 , ".....")  }} </h4>
+                                 <p class="card-text">{{ str_limit(strip_tags($value->Description,100 )) }}</p>
+                              </a>
+                           </div>
+                           <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+                              @php        $createdBy          =   $value['created_at'];
+                              $createdByArray     =   explode(" ", $createdBy); 
+                              $newDate            = date("F d , Y", strtotime($createdByArray[0]));
+                              @endphp
+                              <div class="views">{{$newDate}}
+                              </div>
+                              <div class="stats">
+                                 <i class="far fa-eye"></i> {{ $value['clicks'] }}
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  @endforeach
               </div>
-              @endforeach
+              
+            @endif  
 
              
               <!-- post row -->
@@ -75,7 +84,7 @@
             </div>
             <!-- inner row -->
             <div class="col-12 tite-uline">
-                <h5>trending now</h5>
+                <h5>trending blogs</h5>
             </div>
             <div class="col-12">
             <div class="owl-carousel side-carousel">
@@ -96,7 +105,7 @@
                         </div>
                         <div class="w-75">
                            <h6>{{ $trendingValue['title'] }}</h6>
-                           <small>Posted by {{ $trendingValue['user_name'] }}</small>
+                           <small>Written by {{ $trendingValue['user_name'] }}</small>
                         </div>
                      </div>
                      </a>     
@@ -109,23 +118,24 @@
             </div>
 
             <div class="col-12">
-               <div class="signup-box">
-                  <h3>GET TRIP CLUB INDIA IN YOUR INBOX</h3>
-                  <p>Get our best stuff sent straight to you!</p>
-                  <form action="{{ route('Subscribe.store') }}" method="POST">
-                     @csrf
-                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Enter your email" required="required">
-                     </div>
-                     <input type="checkbox" name="remember" id="check"> <label for="check">I have read and agree to the Privacy Policy</label>
-                      <div class="form-group mb-0">
-                         <button type="submit" class="btn-link">Subscribe Now</button>
-                      </div>
-                  </form>
-               </div>
+            <div class="signup-box">
+                     <h3>SUBSCRIBE US FOR LATEST LIFESTYLE BLOGS</h3>
+                     <p></p>
+                     <form action="{{ route('Subscribe.store') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                           <input type="email"  class="form-control" name="email" placeholder="Enter your email" required="required">
+                        </div>
+                        <div class="form-group mb-0">
+                           <center>
+                              <button type="submit" class="btn " style="background-color:#293745; color:white"><i class="fa fa-paper-plane"></i> Subscribe </button>
+                           </center>
+                        </div>
+                     </form>
+                  </div>
             </div>
 
-            <div class="col-12 text-center my-5">
+            <!-- <div class="col-12 text-center my-5">
                <div class="label-cat-fancy">
                    <span>CATEGORIES</span>
                </div>
@@ -134,7 +144,7 @@
                      <a href="{{route('category.blogs', ['id'=> $catValue['id']])}}">{{$catValue['name']}}</a>
                   @endforeach
                </div>
-            </div>
+            </div> -->
 
             <div class="col-12">
                <!-- advertisement box -->

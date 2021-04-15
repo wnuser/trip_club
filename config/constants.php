@@ -6,6 +6,7 @@ return [
     'FRONTCATEGORY' => [
         'TRENDING' => '1',
         'POPULAR'  => '2',
+        'DEFAULT'  => '0',
     ],
 
     'FRONTCATEGORYLABEL'  =>  [
@@ -14,14 +15,14 @@ return [
     ],
 
     'ADS' => [
-        '1' => 'Home Page 1',
-        '2' => 'Home Page 2',
-        '3' => 'Home Page 3',
-        '4' => 'Home Page 4',
-        '5' => 'Single Page 1',
-        '6' => 'Single Page 2',
-        '7' => 'Single Page 3',
-        '8' => 'Search Page 1',
+        '1' => 'Home Leaderboard',
+        '2' => 'Home Square',
+        '3' => 'Home Middle Rectangle',
+        '4' => 'Home Wide Skyscraper',
+        '5' => 'Blog Billboard',
+        '6' => 'Blog Rectangle',
+        '7' => 'Blog Wide Skyscraper',
+        '8' => 'Search Square',
     ],
 
     'ADSSIZE' => [

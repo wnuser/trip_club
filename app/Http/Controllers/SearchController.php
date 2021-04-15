@@ -41,8 +41,19 @@ class SearchController extends Controller
                 }
             }
         }
-        return view('search', compact('result', 'supperArray', 'categories'));
+        return view('search', compact('result', 'supperArray', 'categories', 'searchKeywords'));
 
+    }
+
+    public function searchView()
+    {
+        $result = false;
+        $supperArray  = [];
+        $searchKeywords  = false;
+
+        $categories      =   blogCategory::get();
+
+        return view('search', compact('result', 'supperArray', 'categories', 'searchKeywords'));
     }
 
     /**

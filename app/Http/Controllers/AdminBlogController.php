@@ -82,18 +82,27 @@ class AdminBlogController extends Controller
             $image->move('Images/uploads', $image_new_name);
         }
 
-        $Blog->title           =  $request->title;
-        $Blog->user_name       =  $request->user_name;
-        $Blog->category        =  $request->category;
-        $Blog->image           =  $image_new_name;
-        $Blog->Description     =  $request->Description;
-        $Blog->front_category  =  config('constants.FRONTCATEGORY.DEFAULT');
-        $Blog->meta_tag        =  $request->meta_tag;
-        $Blog->meta_description=  $request->meta_description;
-        $Blog->alt_description =  $request->alt_description;
-        $Blog->created_by      =  Auth::user()->id;
-        $Blog->slug            =  str_slug($request->title).time();
-        $Blog->save();
+        try {
+            //code...
+            $Blog->title           =  $request->title;
+            $Blog->user_name       =  $request->user_name;
+            $Blog->category        =  $request->category;
+            $Blog->image           =  $image_new_name;
+            $Blog->Description     =  $request->Description;
+            $Blog->front_category  =  config('constants.FRONTCATEGORY.DEFAULT');
+            $Blog->meta_tag        =  $request->meta_tag;
+            $Blog->meta_description=  $request->meta_description;
+            $Blog->alt_description =  $request->alt_description;
+            $Blog->created_by      =  config('role.ROLES.ADMIN.TYPE');
+            $Blog->slug            =  str_slug($request->title).time();
+            $Blog->save();
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo $th->getMessage();
+            // exit;
+        }
+
+        
 
         return back()->with('success', 'Blog created successfully');
     }

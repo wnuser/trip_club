@@ -32,12 +32,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('stop/Ad/{id}', 'AdsController@stopRunningAd')->name('stop.ad');
     Route::get('ads/history/{id}', 'AdsHistoryController@show')->name('ads.history');
     Route::post('ads/update', 'AdsController@update')->name('ad.update');
-    Route::post('search', 'SearchController@index')->name('search');
     Route::get('click/count/{id}', 'AdsController@clicksCounts')->name('click.count');
     Route::get('approve/commnet/{id}', 'CommentController@approveComment')->name('approve.comment');
     Route::get('/Dashboard', function() {
         return view('admin.index');
     });
+    Route::get('/edit/category/{id}', 'BlogCategoryController@edit')->name('edit.blog');
+    Route::post('/update/category', 'BlogCategoryController@update')->name('update.blog');
+    Route::get('/delete/category/{id}', 'BlogCategoryController@destroy')->name('delete.blog');
 
 
     Route::get('/slider/delete/{id}', 'FrontSliderController@destroy')->name('slider.delete');
@@ -56,9 +58,17 @@ Route::post('/post/comment', 'CommentController@store')->name('post.commnet');
 Route::post('/blog/upload', 'BlogController@blogUpload')->name('blog.image.upload');
 Route::post('/user/blog/post', 'BlogController@addUseBlog')->name('user.blog.post');
 
-
+Route::post('search', 'SearchController@index')->name('search');
+Route::get('search/filter', 'SearchController@searchView')->name('search.filter');
 Route::get('/', 'HomeController@index')->name('Home');
 Route::get('/blog/{id}', 'BlogController@show')->name('single.blog');
+
+Route::get('/about', 'AboutController@index')->name('about');
+Route::get('/contact', 'ContactController@index')->name('contact');
+Route::get('/privacy', 'PrivacyController@index')->name('privacy');
+
+Route::post('/contact/save', 'ContactController@store')->name('save.contact');
+
 
 
 
@@ -69,9 +79,9 @@ Route::get('/blog/{id}', 'BlogController@show')->name('single.blog');
 Route::get('/Listing', 'ListingController@index')->name('listing');
 
 
-Route::get('/search', function() {
-    return view('search');
-});
+// Route::get('/search', function() {
+//     return view('search');
+// });
 
 Route::get('/single', function() {
     return view('single');

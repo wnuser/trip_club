@@ -5,38 +5,48 @@
          <li class="nav-item mob-top d-lg-none">
             <a class="nav-link" data-toggle="modal" href="#pop-search"><i class="fas fa-search"></i></a>
          </li>
-         <a class="navbar-brand d-lg-none mob-centred-logo" href="index.html"><img src="{{ asset('Images/logo-trans.svg') }}" alt="logo"/> </a>
+         <a class="navbar-brand d-lg-none mob-centred-logo" href="index.html"><img src="{{ asset('Images/healthlogo.png') }}" alt="logo"/> </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
          <span class="fa fa-bars"></span>
          </button>
          <!--  Used flexbox utility classes to change how the child elements are justified  -->
          <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
-            <ul class="navbar-nav">
+           <a class="navbar-brand d-none d-lg-block " href="{{ route('Home') }}"><img src="{{ asset('Images/healthlogo.png') }}" alt="logo"/></a>
+            <ul class="navbar-nav mr-right" >
                <li class="nav-item">
                   <a class="nav-link active" href="{{route('Home')}}">Home <span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="#">about</a>
+                  <a class="nav-link" href="{{ route('category.blogs', ['id'=>3]) }}">HEALTH CARE</a>
                </li>
-               <li class="nav-item dropdown">
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ route('category.blogs', ['id'=>4]) }}">FASHION & LIFESTYLE</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ route('category.blogs', ['id'=>5]) }}">FITNESS</a>
+               </li>
+               <!-- <li class="nav-item dropdown">
                   <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown">inspirations <i class="fas fa-angle-down"></i></a> 
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>3]) }}" target="blank">Adventure</a>
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>7]) }}" target="blank">Historical</a>
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>9]) }}" target="blank">Pilgrimage</a>
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>12]) }}" target="blank">Tourist Hub</a>
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>13]) }}" target="blank">Trekking</a>
                      <a class="dropdown-item" href="{{ route('all.categories') }}">All Categories</a>
-                     <!-- <a class="dropdown-item" href="#">Another action</a>
-                     <a class="dropdown-item" href="#">Something else here</a> -->
+
                   </div>
-               </li>
+               </li> -->
                <li class="nav-item d-mob-none">
                   <a class="nav-link" data-toggle="modal" href="#pop-search"><i class="fas fa-search"></i></a>
                </li>
             </ul>
             <!--   Show this only lg screens and up   -->
-            <a class="navbar-brand d-none d-lg-block center-logo-desk" href="{{ route('Home') }}"><img src="{{ asset('Images/logo-trans.svg') }}" alt="logo"/></a>
-            <ul class="navbar-nav">
+            <!-- <ul class="navbar-nav">
                <li class="nav-item">
                   <a class="nav-link btn-nav" data-toggle="modal" href="#pop-trip">post a trip</a>
                </li>
-            </ul>
+            </ul> -->
          </div>
       </nav>
    </div>
@@ -53,12 +63,12 @@
             <div class="modal-body">
                <div class="container">
                   <div class="row justify-content-center align-items-center">
-                     <div class="col-lg-8 col-md-9 col-11">
-                        <h4 class="text-center mb-4">FIND YOUR WAY!</h4>
+                     <div class="col-lg-12 col-md-12 col-12">
+                        <!-- <h4 class="text-center mb-4">FIND PERFECT BLOG</h4> -->
                         <form action="{{ route('search') }}" method="POST">
                            <div class="search-bx">
                               @csrf
-                              <input type="search" name="search" placeholder="SEARCH" autofocus="autofocus">
+                              <input type="search" name="search" placeholder="Enter keywords here..." autofocus="autofocus">
                               <button type="submit" class="btn-search"><i class="fas fa-search"></i> </button>
                            </div>
                         </form>

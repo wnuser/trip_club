@@ -40,6 +40,7 @@ class FrontSliderController extends Controller
      */
     public function store(Request $request)
     {
+        // aprint($request->all()); 
         //
          $request->validate([
             'image'        => 'required',
