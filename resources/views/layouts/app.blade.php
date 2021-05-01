@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3YDV01ZB4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3YDV01ZB4');
+</script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ isset($blogData) ? $blogData['meta_description'] : 'Blogs for health care , fitness and life style' }}">
+    <meta name="description" content="{{ isset($blogData) ? $blogData['meta_description'] : 'Blogs for health care , fitness and life style. Providing solutions for health issues and advise for a better life' }}">
     <meta name="keywords" content="{{ isset($blogData) ? $blogData['meta_tag'] : '' }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Trip Club India</title>
+    <title>Health Mentors | We are the hub of mentors in all walks of life.</title>
     <link rel="icon" type="image/png" href="{{ asset('Images/healthlogo.png') }}"/>
 
     <!-- Fonts -->
@@ -19,7 +28,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">   
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 
 
 </head>

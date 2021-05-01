@@ -51,6 +51,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/user/blog/updated/{id}', 'AdminBlogController@adminDone')->name('users.blog.updated');
     Route::get('/blog/edit/{id}', 'AdminBlogController@edit')->name('blog.edit');
     Route::post('/blog/update', 'AdminBlogController@update')->name('blog.update');
+
+    Route::get('/slider/edit/{id}', 'FrontSliderController@edit')->name('slider.edit');
+    Route::post('/slider/update', 'FrontSliderController@update')->name('slider.update');
     
 });
 

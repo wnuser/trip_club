@@ -5,7 +5,7 @@
          <li class="nav-item mob-top d-lg-none">
             <a class="nav-link" data-toggle="modal" href="#pop-search"><i class="fas fa-search"></i></a>
          </li>
-         <a class="navbar-brand d-lg-none mob-centred-logo" href="index.html"><img src="{{ asset('Images/healthlogo.png') }}" alt="logo"/> </a>
+         <a class="navbar-brand d-lg-none mob-centred-logo" href="{{ route('Home') }}"><img src="{{ asset('Images/healthlogo.png') }}" alt="logo"/> </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
          <span class="fa fa-bars"></span>
          </button>

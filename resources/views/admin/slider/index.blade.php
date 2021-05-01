@@ -28,7 +28,7 @@
                 <td> {{ getCategoryName($value['category']) }} </td>
                 <td> <img src="{{ asset('Images/uploads/'.$value['image']) }}" alt="" height="100" width="150" >  </td>
 
-                <td> <button class="btn btn-primary"> <i class="fa fa-edit"></i> </button> 
+                <td> <a class="btn btn-primary" href="{{ route('slider.edit', ['id'=> $value->id]) }}" > <i class="fa fa-edit"></i> </a> 
                
                      <a class="btn btn-danger" href="{{ route('slider.delete', ['id'=> $value['id']]) }}" onclick="return confirm('Are You Sure....!')"> <i class="fa fa-trash"></i> </a>  </td>
             </tr>

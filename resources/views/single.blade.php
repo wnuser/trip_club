@@ -52,30 +52,32 @@
                </div>
                <div class="col-12">
                   <div class="comments-box">
-                  @foreach($blogData->comment as $commentValue)
-                     <div class="user-box">
-                     <div class="img-user">
-                        <img src="{{ asset('Images/userprofilepic.png') }}" class="img-fluid" alt="user" />
-                     </div>
-                     <div class="user-inf">
-                        <span>{{ $commentValue['name'] }}</span>
-                        <h6>{{ $commentValue['comment'] }}</h6>
+                  @if($blogData->comment)
+                     @foreach($blogData->comment as $commentValue)
+                        <div class="user-box">
+                        <div class="img-user">
+                           <img src="{{ asset('Images/userprofilepic.png') }}" class="img-fluid" alt="user" />
+                        </div>
+                        <div class="user-inf">
+                           <span>{{ $commentValue['name'] }}</span>
+                           <h6>{{ $commentValue['comment'] }}</h6>
 
-                        @php     $createdBy          =   $commentValue['created_at'];
-                                 $createdByArray     =   explode(" ", $createdBy); 
-                                 $newDate            =   date("F d , Y", strtotime($createdByArray[0]));
-                        @endphp
+                           @php     $createdBy          =   $commentValue['created_at'];
+                                    $createdByArray     =   explode(" ", $createdBy); 
+                                    $newDate            =   date("F d , Y", strtotime($createdByArray[0]));
+                           @endphp
 
-                        <p class="n-font"><span>{{$newDate}}</span> <span><a data-toggle="collapse" href="#reply-bx1"></a></span></p>
-                     </div>
-                     <div class="reply-box collapse" id="reply-bx1">
-                        <form action="">
-                           <textarea placeholder="Type here..." required=""></textarea>
-                           <button type="submit">Submit</button>
-                        </form>
-                     </div>
-                     </div>
-                     @endforeach
+                           <p class="n-font"><span>{{$newDate}}</span> <span><a data-toggle="collapse" href="#reply-bx1"></a></span></p>
+                        </div>
+                        <div class="reply-box collapse" id="reply-bx1">
+                           <form action="">
+                              <textarea placeholder="Type here..." required=""></textarea>
+                              <button type="submit">Submit</button>
+                           </form>
+                        </div>
+                        </div>
+                        @endforeach
+                  @endif
                      <form action="{{ route('post.commnet') }}" method="POST">
                       <div class="row">
                       @csrf

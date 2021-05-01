@@ -20,7 +20,7 @@
                </div>
                <div class="form-group">
                    <label for="">Enter Blog Title</label>
-                   <input type="text" class="form-control" name="title" placeholder="Enter Blog Title" value="title">
+                   <input type="text" class="form-control" name="title" placeholder="Enter Blog Title" value="{{ $blogData['title'] }}">
                </div>
                <div class="form-group">
                     <label for="">Choose blog Category</label>

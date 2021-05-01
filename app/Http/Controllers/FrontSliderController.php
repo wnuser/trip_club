@@ -89,9 +89,16 @@ class FrontSliderController extends Controller
      * @param  \App\frontSlider  $frontSlider
      * @return \Illuminate\Http\Response
      */
-    public function edit(frontSlider $frontSlider)
+    public function edit($id)
     {
         //
+
+        $sliderInfo   =  frontSlider::whereId($id)->first();
+        $categories    =   blogCategory::get();
+
+        
+
+        return view('admin.slider.edit', compact('sliderInfo', 'categories'));
     }
 
     /**
@@ -101,8 +108,26 @@ class FrontSliderController extends Controller
      * @param  \App\frontSlider  $frontSlider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, frontSlider $frontSlider)
+    public function update(Request $request)
     {
+        // aprint($request->all());
+
+        $id     =  $request->id;
+        $data   =   frontSlider::whereId($id)->first();
+        $data->title  = $request->title;
+        $data->category  = $request->category;
+        $data->hyper_link  = $request->hyper_link;
+
+        if($request->image) {
+            $image          = $request->image;
+            $image_new_name = time().$image->getClientOriginalName();
+            $image->move('Images/uploads', $image_new_name);
+            $data->image    =  $image_new_name;
+        }
+
+        $data->save();
+        return back()->with('success', 'Slider Image updated successfully');
+
         //
     }
 

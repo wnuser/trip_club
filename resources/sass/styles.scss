@@ -1,6 +1,7 @@
 /*======================  Model hub powered by model hub =====================*/
 @import "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap";
 @import "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Nunito+Sans:wght@300;400;600;700;800&display=swap";
+@import  "https://fonts.googleapis.com/css2?family=Montserrat&display=swap";
 /*submenu*/
 /*===========footer===========*/
 /*------- navbar main -------*/
@@ -556,6 +557,34 @@ header {
 		margin-bottom: 20px;
 	}
 }
+.tite-uline {
+	h1 {
+		text-transform: uppercase!important ;
+		border-bottom: 1px solid $theme-green!important;
+		padding-bottom: 5px!important;
+		font-size: 19px!important;
+		line-height: 25px!important;
+		margin-bottom: 20px!important;
+		color: #4a4a4a;
+		font-family: $font-merriweather;
+		font-weight: 700;
+	}
+}
+
+.tite-uline {
+	h4 {
+		text-transform: uppercase!important ;
+		border-bottom: 1px solid $theme-green!important;
+		padding-bottom: 5px!important;
+		font-size: 19px!important;
+		line-height: 25px!important;
+		margin-bottom: 20px!important;
+		color: #4a4a4a;
+		font-family: $font-merriweather;
+		font-weight: 700;
+	}
+}
+
 .post-box {
 	a {
 		text-decoration: none;

@@ -53,10 +53,11 @@
 
 				<div class="footer-icons">
 
-					<a href="#" class="fb"><i class="fab fa-facebook"></i></a>
+					<a href="https://www.facebook.com/healthmentors.in" target="blank" class="fb"><i class="fab fa-facebook"></i></a>
+					<a href="https://www.instagram.com/healthmentors11/" target="blank"><i class="fab fa-instagram"></i> </a>
+					<a href="https://www.linkedin.com/in/health-mentors-385158210/" target="blank"><i class="fab fa-linkedin"></i></a>
+
 					<a href="#"><i class="fab fa-twitter"></i></a>
-					<a href="#"><i class="fab fa-linkedin"></i></a>
-					<a href=""><i class="fab fa-instagram"></i> </a>
 					<a href="#"><i class="fab fa-pinterest"></i></a>
 
 				

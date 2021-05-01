@@ -1,12 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Merriweather:wght@300;
 
-400;700;900&display=swap);@import url(https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Nunito+Sans:wght@300;400;600;700;800&display=swap);@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);@import url(http://fonts.googleapis.com/css?family=Roboto:400,
+400;700;900&display=swap);@import url(https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Nunito+Sans:wght@300;400;600;700;800&display=swap);@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);@import url(http://fonts.googleapis.com/css?family=Roboto:400,
 500);/*======================  Model hub powered by model hub =====================*/
 body {
   margin: 0;
   padding: 0;
   background: #fff;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #4a4a4a;
 }
 
@@ -16,56 +16,56 @@ html {
 
 h1 {
   color: #4a4a4a;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
 
 h2 {
   color: #4a4a4a;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
 
 h3 {
   color: #4a4a4a;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
 
 h4 {
   color: #4a4a4a;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
 
 h5 {
   color: #4a4a4a;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
 
 .h1 {
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .h2 {
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .h3 {
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .h4 {
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .h5 {
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 p {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .btn:focus {
@@ -255,7 +255,7 @@ select:focus {
   color: #fff;
   padding: 10px 40px;
   text-transform: uppercase;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   position: relative;
   transition: 0.5s;
   z-index: 1;
@@ -310,7 +310,7 @@ select:focus {
   color: #fff;
   padding: 7px 40px;
   text-transform: uppercase;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   position: relative;
   transition: 0.5s;
   z-index: 1;
@@ -567,7 +567,7 @@ header .navbar .nav-link.btn-nav:hover {
   padding: 5px 15px;
   background: #293745;
   display: inline-block;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   font-size: 10px;
   color: #fff;
@@ -585,6 +585,30 @@ header .navbar .nav-link.btn-nav:hover {
   font-size: 19px;
   line-height: 25px;
   margin-bottom: 20px;
+}
+
+.tite-uline h1 {
+  text-transform: uppercase !important;
+  border-bottom: 1px solid #0083ef !important;
+  padding-bottom: 5px !important;
+  font-size: 19px !important;
+  line-height: 25px !important;
+  margin-bottom: 20px !important;
+  color: #4a4a4a;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+.tite-uline h4 {
+  text-transform: uppercase !important;
+  border-bottom: 1px solid #0083ef !important;
+  padding-bottom: 5px !important;
+  font-size: 19px !important;
+  line-height: 25px !important;
+  margin-bottom: 20px !important;
+  color: #4a4a4a;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
 }
 
 .post-box a {
@@ -789,7 +813,7 @@ header .navbar .nav-link.btn-nav:hover {
   font-size: 15px;
   line-height: 20px;
   font-weight: 700;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   transition: 0.4s;
 }
 
@@ -820,7 +844,7 @@ header .navbar .nav-link.btn-nav:hover {
 .signup-box .btn-link {
   background: transparent;
   color: #fff;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   border: none;
   text-decoration: underline;
 }
@@ -845,7 +869,7 @@ header .navbar .nav-link.btn-nav:hover {
   background: #0083ef;
   display: initial;
   color: #fff;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   position: relative;
 }
 
@@ -922,7 +946,7 @@ header .navbar .nav-link.btn-nav:hover {
 .single-post-ul li {
   font-size: 18px;
   line-height: 25px;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   position: relative;
   margin-bottom: 15px;
@@ -939,7 +963,7 @@ header .navbar .nav-link.btn-nav:hover {
 }
 
 .m-p-single p {
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .m-p-single h6 {
@@ -947,17 +971,17 @@ header .navbar .nav-link.btn-nav:hover {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 25px;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .m-p-single h5 {
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .m-p-single a {
   display: block;
   color: #000;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 19px;
   margin-bottom: 10px;
 }
@@ -977,7 +1001,7 @@ header .navbar .nav-link.btn-nav:hover {
   width: 100%;
   height: 95px;
   padding: 10px;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 17px;
 }
 
@@ -985,7 +1009,7 @@ header .navbar .nav-link.btn-nav:hover {
   width: 100%;
   padding: 5px 10px;
   font-size: 17px;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .comments-box button[type=submit] {
@@ -993,7 +1017,7 @@ header .navbar .nav-link.btn-nav:hover {
   background: #0083ef;
   border: none;
   color: #fff;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   transition: 0.4s;
   border: 1px solid transparent;
 }
@@ -1042,11 +1066,11 @@ header .navbar .nav-link.btn-nav:hover {
 
 .user-box .user-inf span {
   font-weight: 700;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .user-box .user-inf h6 {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 17px;
   line-height: 22px;
@@ -1102,7 +1126,7 @@ header .navbar .nav-link.btn-nav:hover {
   border: 1px solid transparent;
   background: #0083ef;
   color: #fff;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   transition: 0.4s;
 }
@@ -1204,7 +1228,7 @@ header .navbar .nav-link.btn-nav:hover {
   border-top: none;
   border-left: none;
   border-right: none;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .search-bx button {
@@ -1226,7 +1250,7 @@ header .navbar .nav-link.btn-nav:hover {
   background: rgba(255, 255, 255, 0.58);
   border: none;
   color: #000;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .form-bx-modal select {
@@ -1235,7 +1259,7 @@ header .navbar .nav-link.btn-nav:hover {
   background: rgba(255, 255, 255, 0.58);
   border: none;
   color: #000;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .form-bx-modal textarea {
@@ -1244,7 +1268,7 @@ header .navbar .nav-link.btn-nav:hover {
   background: rgba(255, 255, 255, 0.58);
   border: none;
   color: #000;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   height: 300px;
 }
 
@@ -1259,7 +1283,7 @@ header .navbar .nav-link.btn-nav:hover {
   background: #0083ef;
   border: 1px solid transparent;
   transition: 0.4s;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .form-bx-modal button[type=submit]:hover {
@@ -1283,7 +1307,7 @@ header .navbar .nav-link.btn-nav:hover {
   background: rgba(255, 255, 255, 0.58);
   border: none;
   color: #000;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   position: relative;
 }
 
@@ -1804,7 +1828,7 @@ header .navbar .nav-link.btn-nav:hover {
   font-size: 15px;
   line-height: 20px;
   font-weight: 700;
-  font-family: "Merriweather", serif;
+  font-family: "Montserrat", sans-serif;
   transition: 0.4s;
 }
 

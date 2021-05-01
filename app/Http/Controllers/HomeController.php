@@ -28,10 +28,10 @@ class HomeController extends Controller
     {
 
         $frontSlider     =   frontSlider::get();
+        $categories      =   blogCategory::get();
         $recentBlogs     =   Blog::orderBy('id', 'desc')->take(4)->get();
         $defaultBlogs    =   Blog::orderBy('id', 'desc')->skip(4)->take(2)->get();
         $popularBlogs    =   Blog::orderBy('id', 'desc')->whereFrontCategory(config('constants.FRONTCATEGORY.POPULAR'))->get();
-        $categories      =   blogCategory::get();
         $generalBlogs    =   Blog::orderBy('id', 'desc')->skip(6)->take(10)->get();
         $trendingBlogs   =   Blog::orderBy('id', 'desc')->whereFrontCategory(config('constants.FRONTCATEGORY.TRENDING'))->get();
         $trendingCount   =   $trendingBlogs->count();

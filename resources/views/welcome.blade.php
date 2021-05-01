@@ -7,7 +7,7 @@
          @foreach($frontSlider as $value)
          <a href="{{ $value['hyper_link'] }}" target="_blank">
             <div class="item">
-               <img src="{{ asset('Images/uploads/'.$value['image']) }}" alt="carousel-img" class="img-fluid" />  
+               <img src="{{ asset('Images/uploads/'.$value['image']) }}" alt="{{ $value->title }}" title="{{ $value->title }}" class="img-fluid" />  
                <div class="carousel-caption">
                   <span class="cat-label"> {{ getCategoryName($value['category']) }} </span>
                   <h1>{{ $value['title'] }}</h1>
@@ -38,7 +38,7 @@
                </div>
                <div class="row">
                   <div class="col-12 tite-uline">
-                     <h5>recent Blogs</h5>
+                     <h4>recent Blogs</h4>
                   </div>
                   @foreach($recentBlogs as $recentValue)
                   <div class="col-lg-6 col-md-6 col-12 mb-3">
@@ -78,7 +78,7 @@
                      <div class="card shadow-sm">
                         <div class="card-img-custom">
                            <a href="{{ route('single.blog', ['id'=> $defaultValue['slug']]) }}">
-                           <img class="card-img" src="{{ asset('Images/uploads/'.$defaultValue['image']) }}" alt="{{ $defaultValue['alt_description'] }}">
+                           <img class="card-img" src="{{ asset('Images/uploads/'.$defaultValue['image']) }}" title="{{ $defaultValue['alt_description'] }}" alt="{{ $defaultValue['alt_description'] }}">
                            <span class="cat-label">{{getCategoryName($defaultValue['category'])}}</span>
                            </a>
                         </div>
@@ -107,7 +107,7 @@
                <!-- post row -->
                <div class="row">
                   <div class="col-12 tite-uline mt-4">
-                     <h5>most impressive</h5>
+                     <h4>most impressive</h4>
                   </div>
 
                   @foreach($popularBlogs as $popularValue)
@@ -115,7 +115,7 @@
                      <div class="card shadow-sm">
                         <div class="card-img-custom">
                            <a href="{{ route('single.blog', ['id'=> $popularValue['slug']]) }}">
-                           <img class="card-img" src="{{ asset('Images/uploads/'.$popularValue['image']) }}" alt="{{ $popularValue['alt_description'] }}">
+                           <img class="card-img" src="{{ asset('Images/uploads/'.$popularValue['image']) }}" alt="{{ $popularValue['alt_description'] }}" title="{{ $popularValue['alt_description'] }}">
                            <span class="cat-label">{{getCategoryName($popularValue['category'])}}</span>
                            </a>
                         </div>
@@ -167,7 +167,7 @@
                         <div class="card shadow-sm">
                            <div class="card-img-custom">
                               <a href="{{ route('single.blog', ['id'=> $generalValue['slug']]) }}">
-                              <img class="card-img" src="{{ asset('Images/uploads/'.$generalValue['image']) }}" alt="{{ $generalValue['alt_description'] }}">
+                              <img class="card-img" src="{{ asset('Images/uploads/'.$generalValue['image']) }}" alt="{{ $generalValue['alt_description'] }}" title="{{ $generalValue['alt_description'] }}">
                               <span class="cat-label">{{getCategoryName($generalValue['category'])}}</span>
                               </a>
                            </div>
@@ -214,7 +214,7 @@
                </div>
                <!-- inner row -->
                <div class="col-12 tite-uline">
-                  <h5>trending blogs</h5>
+                  <h4>trending blogs</h4>
                </div>
                <div class="col-12">
                   <div class="owl-carousel side-carousel">
@@ -224,7 +224,7 @@
                         <a href="{{ route('single.blog', ['id'=> $trendingValue['slug'] ]) }}" target="blank" class="d-block">
                            <div class="d-flex">
                               <div class="img-trend w-25">
-                                 <img src="{{ asset('Images/uploads/'.$trendingValue['image']) }}" alt="cat-img" class="img-fluid" />
+                                 <img src="{{ asset('Images/uploads/'.$trendingValue['image']) }}" alt="{{ $trendingValue['alt_description'] }}" class="img-fluid" />
                                  <div class="hover-bx">
                                     <p>
                                        <span></span>
