@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/Dashboard';
+    protected $redirectTo = '/profile';
 
     /**
      * Create a new controller instance.
@@ -35,5 +35,22 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+
+     /**
+     * fucntion for redirect user on the basis of their roles 
+    */
+    protected function redirectTo()
+    {
+        if (auth()->user()->user_type == config('role.ROLES.ADMIN.TYPE')) {
+            return route('dashboard');
+        } elseif (auth()->user()->user_type == config('role.ROLES.MENTOR.TYPE')) {
+            return route('profile');
+        } elseif (auth()->user()->user_type == config('role.ROLES.MENTEE.TYPE')) {
+            return route('profile');
+        } else{
+            return route('profile');
+        }
     }
 }

@@ -28,7 +28,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">   
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+   
+   @yield('custom_css')
 
 </head>
 <body>
@@ -55,6 +56,7 @@
         });
     </script>
   
+  @yield('custom_js')
 
 </body>
 </html>

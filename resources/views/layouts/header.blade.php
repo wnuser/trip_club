@@ -25,10 +25,46 @@
                <li class="nav-item">
                   <a class="nav-link" href="{{ route('category.blogs', ['id'=>5]) }}">FITNESS</a>
                </li>
-               <!-- <li class="nav-item dropdown">
-                  <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown">inspirations <i class="fas fa-angle-down"></i></a> 
+
+               <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown">MENTORS <i class="fas fa-angle-down"></i></a> 
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>3]) }}" target="blank">Adventure</a>
+                    @php $mentors  = config('role.MENTORSTITLE'); @endphp
+                    @foreach($mentors as $key => $value)
+                     <a class="dropdown-item" href="{{ route('mentors', ['id'=>$key]) }}" >{{$value}}</a>
+                    @endforeach
+                  </div>
+               </li>
+
+               @if(Auth::check())
+               <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown"> {{ Auth::user()->name }} <i class="fas fa-angle-down"></i></a> 
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    
+                     <a class="dropdown-item" href="{{ route('profile') }}" >Profile</a>
+                     <a class="dropdown-item" href="{{ route('profile') }}">Write Article</a>
+                     <a class="dropdown-item" href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                           {{ __('Logout') }}
+                           </a>
+                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                           </form>
+                  </div>
+               </li>
+               @else
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ route('register') }}">LOGIN/SIGNUP</a>
+                  </li>
+               @endif
+               
+              
+          
+               <!-- <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown">LOGIN/SIGNUP <i class="fas fa-angle-down"></i></a> 
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>3]) }}" target="blank">AS MENTOR</a>
                      <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>7]) }}" target="blank">Historical</a>
                      <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>9]) }}" target="blank">Pilgrimage</a>
                      <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>12]) }}" target="blank">Tourist Hub</a>

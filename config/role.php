@@ -25,8 +25,15 @@ return [
 
         'MENTORTYPE' => [
             'GYMTRAINER'       => 1,
-            'YOGATRAINER'      => 2,
+            'YOGATEACHER'      => 2,
             'DOCTOR'           => 3,
             'RELATIONSHIPCOACH' => 4
         ],
+
+        'MENTORSTITLE' => [
+            '1' => 'GYM TRAINER',
+            '2' => 'YOGA TEACHER',
+            '3' => 'DOCTOR',
+            '4'  => 'RELATIONSHIP COACH'
+        ]
 ];

@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','user_type'
+        'name', 'email', 'password','user_type', 'mobile', 'country', 'state', 'city', 'domain', 'experience'
     ];
 
     /**
@@ -36,4 +36,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * country
+     */
+    public function countryRelation() {
+        return $this->hasOne(country::class, 'country_id', 'country');
+    }
+
+    /**
+     * state 
+     */
+    public function stateRelation() {
+        return $this->hasOne(state::class, 'state_id', 'state');
+    }
+
+    /**
+     * city 
+     */
+    public function cityRelation() {
+        return $this->hasOne(city::class, 'city_id', 'city');
+    }
 }

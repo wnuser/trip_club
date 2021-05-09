@@ -35,7 +35,9 @@ return [
         '7'  => '390 X 780 PX',
         '8'  => '300 X 300 PX',
         
-    ]
+    ],
+
+    'avatarPath'  => 'Images/user_image/',
 
     ];
 

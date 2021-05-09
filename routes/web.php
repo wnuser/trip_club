@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('approve/commnet/{id}', 'CommentController@approveComment')->name('approve.comment');
     Route::get('/Dashboard', function() {
         return view('admin.index');
-    });
+    })->name('dashboard');
     Route::get('/edit/category/{id}', 'BlogCategoryController@edit')->name('edit.blog');
     Route::post('/update/category', 'BlogCategoryController@update')->name('update.blog');
     Route::get('/delete/category/{id}', 'BlogCategoryController@destroy')->name('delete.blog');
@@ -72,8 +72,21 @@ Route::get('/privacy', 'PrivacyController@index')->name('privacy');
 
 Route::post('/contact/save', 'ContactController@store')->name('save.contact');
 
+/**
+ * ajax Routes
+ */
+
+ Route::post('/get/state', 'ajaxController@getState')->name('get.state');
+ Route::post('/get/city', 'ajaxController@getCity')->name('get.city');
 
 
+/**
+ * mentors route
+ */
+Route::get('/mentors/{id}', 'MentorController@index')->name('mentors');
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::post('avatarUpdate/', 'ProfileController@uploadImage')->name('uploadImage');
+Route::post('/update/profile', 'ProfileController@update')->name('update.profile');
 
 
 /**
