@@ -88,7 +88,7 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::post('avatarUpdate/', 'ProfileController@uploadImage')->name('uploadImage');
 Route::post('/update/profile', 'ProfileController@update')->name('update.profile');
 
-
+Route::get('/feed', 'PostController@index')->name('feed');
 /**
  * User Side Routes
  */
