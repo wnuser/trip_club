@@ -8,6 +8,7 @@ body {
   background: #fff;
   font-family: "Montserrat", sans-serif;
   color: #4a4a4a;
+  background-color: #f3f2ef;
 }
 
 html {
@@ -1830,6 +1831,234 @@ header .navbar .nav-link.btn-nav:hover {
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
   transition: 0.4s;
+}
+
+.card-mentors {
+  position: relative;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  margin: 15px 0px;
+  text-align: center;
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+.card-mentors:hover {
+  box-shadow: 1px 2px 3px grey;
+}
+
+.card-mentors .upper-box .cover-bg {
+  height: 80px;
+  width: 100%;
+  border-bottom: 1px solid #f3f2ef;
+}
+
+.card-mentors .upper-box .cover-bg img {
+  height: 80px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-mentors .profile-box {
+  position: absolute;
+  left: 50%;
+  top: 25px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  transform: translate(-50%, 0%);
+  overflow: hidden;
+  z-index: 11;
+}
+
+.card-mentors .profile-box a {
+  display: block;
+}
+
+.card-mentors .profile-box a img {
+  height: 110px;
+  width: 110px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-mentors .chat-icon {
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  font-size: 16px;
+  color: #21c6f4;
+  height: 36px;
+  width: 36px;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  line-height: 39px;
+}
+
+.card-mentors .chat-icon a {
+  display: block;
+  color: #21c6f4;
+}
+
+.card-mentors .body-content {
+  padding: 70px 20px 20px;
+}
+
+.card-mentors .body-content h4 {
+  font-size: 20px;
+  line-height: 23px;
+  margin-bottom: 2px;
+}
+
+.card-mentors .body-content h6 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+a.btn-small {
+  display: block;
+  padding: 9px 20px;
+  border: 1px solid #21c6f4;
+  border-radius: 40px;
+  font-size: 14px;
+  line-height: 16px;
+  margin-top: 10px;
+  color: #21c6f4;
+  transition: 0.4s;
+}
+
+a.btn-small:hover {
+  color: #fff;
+  background: linear-gradient(45deg, #21c6f4, #8526ec);
+}
+
+.about-card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.about-card .cover-bg img {
+  height: 170px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.about-card .profile-box {
+  position: absolute;
+  left: 40px;
+  top: 100px;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 991px) {
+  .about-card .profile-box {
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+}
+
+.about-card .profile-box a {
+  display: block;
+}
+
+.about-card .profile-box img {
+  height: 148px;
+  width: 148px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #fff;
+}
+
+.about-card .about-body {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+@media screen and (max-width: 991px) {
+  .about-card .about-body {
+    padding-top: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.about-card .about-body .button-strip {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 991px) {
+  .about-card .about-body .button-strip {
+    justify-content: center;
+  }
+}
+
+.about-card .about-body .button-strip a {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.about-card .about-body .about-info-box {
+  padding-top: 45px;
+}
+
+@media screen and (max-width: 991px) {
+  .about-card .about-body .about-info-box {
+    padding-top: 20px;
+  }
+}
+
+.about-card .about-body .about-info-box a {
+  color: #21c6f4;
+}
+
+.about-info-sec {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+@media screen and (max-width: 991px) {
+  .about-info-sec {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+span.dot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: black;
+  vertical-align: middle;
+  margin: 0px 4px;
+}
+
+.modal-about-mentor {
+  z-index: 9999;
+}
+
+.modal-about-mentor .modal-content {
+  border-radius: 10px;
+}
+
+.modal-about-mentor .modal-content .close {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 11;
+  background: #fff;
+  border-radius: 50%;
+  font-size: 31px;
 }
 
 /* Conatct start */
