@@ -25,6 +25,9 @@
                <li class="nav-item">
                   <a class="nav-link" href="{{ route('category.blogs', ['id'=>5]) }}">FITNESS</a>
                </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ route('feed') }}">FEED</a>
+               </li>
 
                <li class="nav-item dropdown">
                   <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown">MENTORS <i class="fas fa-angle-down"></i></a> 
