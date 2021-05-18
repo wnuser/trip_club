@@ -192,7 +192,7 @@ select:focus {
 
 .nav-item {
   font-size: 17px;
-  padding: 0px 10px;
+  padding: 0px 0px;
 }
 
 .fixed-top-custom {
@@ -515,21 +515,58 @@ header {
   border-bottom: 1px solid #eaeaea;
 }
 
+header .navbar {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 header .navbar li:hover > .dropdown-menu {
   display: block !important;
 }
 
+header .navbar li.search a.nav-link {
+  padding-top: 17px;
+  font-size: 15px;
+  width: 40px;
+  height: 40px;
+  background: #0083ef;
+  padding: 0 !important;
+  min-width: auto;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #fff;
+}
+
 header .navbar .nav-link {
-  text-transform: uppercase;
-  font-size: 14px;
+  font-size: 12px;
+  text-transform: capitalize;
   font-weight: 700;
   color: #293745;
+  text-align: center;
+  opacity: 0.8;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  border-bottom: 2px solid transparent;
+  min-width: 85px;
   transition: 0.4s;
 }
 
 header .navbar .nav-link:hover {
   color: #0083ef;
   transition: 0.4s;
+  opacity: 1;
+}
+
+header .navbar .nav-link.active {
+  border-bottom: 2px solid gray;
+}
+
+header .navbar .nav-link span {
+  display: block;
+  font-size: 19px;
+  height: 26px;
 }
 
 header .navbar .dropdown-menu {
@@ -1398,7 +1435,7 @@ header .navbar .nav-link.btn-nav:hover {
 
 @media screen and (min-width: 992px) {
   header {
-    padding: 20px 0px;
+    padding: 0px 0px;
   }
 }
 
@@ -1932,6 +1969,10 @@ a.btn-small {
 a.btn-small:hover {
   color: #fff;
   background: linear-gradient(45deg, #21c6f4, #8526ec);
+}
+
+a.btn-small.btn-icon {
+  padding: 9px 10px;
 }
 
 .about-card {

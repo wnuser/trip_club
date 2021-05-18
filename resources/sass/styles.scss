@@ -185,7 +185,7 @@ select {
 }
 .nav-item {
 	font-size: 17px;
-	padding: 0px 10px;
+	padding: 0px 0px;
 }
 .fixed-top-custom {
 	position: fixed;
@@ -487,23 +487,59 @@ footer {
 header {
 	border-bottom: 1px solid $theme-light-gray;;
 	.navbar {
+		padding-top: 0;
+		padding-bottom: 0;
 		li {
 			&:hover {
 				>.dropdown-menu {
 					display: block !important;
 				}
 			}
+			&.search{
+				a{
+					&.nav-link{
+						padding-top: 17px;
+						font-size: 15px;
+						width: 40px;
+						height: 40px;
+						background: $theme-green;
+						padding: 0 !important;
+						min-width: auto;
+						text-align: center;
+						margin-top: 10px;
+						line-height: 40px;
+						border-radius: 50%;
+						color: $white;
+					}
+				}
+			}
 		}
 		.nav-link {
-			text-transform: uppercase;
-			font-size: 14px;
+			font-size: 12px;
+			text-transform: capitalize;
 			font-weight: 700;
-			color: $theme-black;;
+			color: $theme-black;
+			text-align: center;
+			opacity: .8;
+			padding-left: 15px !important;
+			padding-right: 15px !important;
+			border-bottom: 2px solid transparent;
+			min-width: 85px;
 			transition: .4s;
 			&:hover {
 				color: $theme-green;
 				transition: .4s;
+				opacity: 1;
 			}
+			&.active{
+				border-bottom: 2px solid gray;
+			}
+			span{
+				display: block;
+				font-size: 19px;
+				height: 26px;
+			}
+			
 		}
 		.dropdown-menu {
 			border: none !important;
@@ -1285,7 +1321,7 @@ header {
 }
 @media screen and (min-width:992px) {
 	header {
-		padding: 20px 0px;
+		padding: 0px 0px;
 	}
 }
 @media screen and (max-width: 992px) {
@@ -1772,6 +1808,9 @@ a{
 		&:hover{
 		color: $white;
 		background: linear-gradient(45deg, $btn-green-gradeint, $btn-purple-gradient);
+		}
+		&.btn-icon{
+			padding: 9px 10px;
 		}
 	}
 }

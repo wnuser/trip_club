@@ -14,23 +14,23 @@
            <a class="navbar-brand d-none d-lg-block " href="{{ route('Home') }}"><img src="{{ asset('Images/healthlogo.png') }}" alt="logo"/></a>
             <ul class="navbar-nav mr-right" >
                <li class="nav-item">
-                  <a class="nav-link active" href="{{route('Home')}}">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link active" href="{{route('Home')}}"><span><i class="fas fa-home"></i></span>  Home <span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('category.blogs', ['id'=>3]) }}">HEALTH CARE</a>
+                  <a class="nav-link" href="{{ route('category.blogs', ['id'=>3]) }}"> <span><i class="fas fa-briefcase-medical"></i></span> health care</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('category.blogs', ['id'=>4]) }}">FASHION & LIFESTYLE</a>
+                  <a class="nav-link" href="{{ route('category.blogs', ['id'=>4]) }}"><span><i class="fas fa-user-secret"></i></span>  fashion & lifestyle</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('category.blogs', ['id'=>5]) }}">FITNESS</a>
+                  <a class="nav-link" href="{{ route('category.blogs', ['id'=>5]) }}"> <span><i class="fas fa-heartbeat"></i></span> fitness</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('feed') }}">FEED</a>
+                  <a class="nav-link" href="{{ route('feed') }}"><span><i class="fas fa-newspaper"></i></span>  feed</a>
                </li>
 
                <li class="nav-item dropdown">
-                  <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown">MENTORS <i class="fas fa-angle-down"></i></a> 
+                  <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown"> <span><i class="fas fa-chalkboard-teacher"></i></span> mentors <i class="fas fa-angle-down"></i></a> 
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     @php $mentors  = config('role.MENTORSTITLE'); @endphp
                     @foreach($mentors as $key => $value)
@@ -58,7 +58,7 @@
                </li>
                @else
                   <li class="nav-item">
-                     <a class="nav-link" href="{{ route('register') }}">LOGIN/SIGNUP</a>
+                     <a class="nav-link" href="{{ route('register') }}"> <span><i class="fas fa-sign-in-alt"></i></span> login/signup</a>
                   </li>
                @endif
                
@@ -76,7 +76,7 @@
 
                   </div>
                </li> -->
-               <li class="nav-item d-mob-none">
+               <li class="nav-item d-mob-none search">
                   <a class="nav-link" data-toggle="modal" href="#pop-search"><i class="fas fa-search"></i></a>
                </li>
             </ul>
