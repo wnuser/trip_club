@@ -2,12 +2,12 @@
 
 @section('content')
 
-<section class="post-sec">
+<section class="profile-sec">
    <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12 col-12">
-               <div class="card">
-               <div class="about-card">
+               <div class="card card-hm">
+               <div class="about-card profile-about">
             <div class="cover-bg">
                   <img src="{{ asset('Images/cover-mentors.jpg') }}" alt="cover-bg" class="img-fluid">
             </div>
@@ -29,11 +29,12 @@
             </div>
          </div>
          </div>
-         <hr>
-         <div class="about-info-sec">
-           <h5>About</h5>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est dolores iste neque, quas, sit at sapiente ullam tenetur reprehenderit ea adipisci, a voluptas consequuntur. Accusamus consequuntur a voluptas eligendi non?</p>
-          </div>
+               </div>
+               <div class="card card-hm">
+               <div class="about-info-sec">
+                  <h5>About</h5>
+                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est dolores iste neque, quas, sit at sapiente ullam tenetur reprehenderit ea adipisci, a voluptas consequuntur. Accusamus consequuntur a voluptas eligendi non?</p>
+                  </div>
                </div>
             </div>
             <div class="col-lg-4 col-md-12 col-12">
@@ -53,7 +54,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       <div class="modal-body p-0">
-         <div class="about-card">
+         <div class="about-card profile-popup">
             <div class="cover-bg">
                   <img src="{{ asset('Images/cover-mentors.jpg') }}" alt="cover-bg" class="img-fluid">
             </div>
@@ -65,7 +66,62 @@
          </div>
          <div class="about-body">
             <div class="about-info-box">
-               form here
+               <form action="#">
+                  <div class="row">
+                     <div class="col-lg-6">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" placeholder="Name"/>
+                     </div>
+                     <div class="col-lg-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" placeholder="Email"/>
+                     </div>
+                     <div class="col-lg-6">
+                        <label for="name">Mobile</label>
+                        <input type="number" class="form-control" placeholder="Mobile"/>
+                     </div>
+                     <div class="col-lg-6">
+                        <label for="name">Country</label>
+                        <select name="country" id="">
+                           <option value="india">India</option>
+                           <option value="india">US</option>
+                           <option value="india">UK</option>
+                        </select>
+                     </div>
+                     <div class="col-lg-6">
+                        <label for="name">State</label>
+                        <select name="country" id="">
+                           <option value="india">Uttarakhand</option>
+                           <option value="india">California</option>
+                           <option value="india">Midlands</option>
+                        </select>
+                     </div>
+                     <div class="col-lg-6">
+                        <label for="name">City</label>
+                        <select name="country" id="">
+                           <option value="india">Deheradun</option>
+                           <option value="india">San jose</option>
+                           <option value="india">Birmingham</option>
+                        </select>
+                     </div>
+                     <div class="col-12">
+                        <label for="name">Education</label>
+                         <textarea name="education"></textarea>
+                     </div>
+                     <div class="col-12">
+                        <label for="name">About</label>
+                         <textarea name="About"></textarea>
+                     </div>
+                     <div class="col-12">
+                        <label for="name">Experience</label>
+                         <textarea name="Experience"></textarea>
+                     </div>
+                     <div class="col-12">
+                        <label for="name">Office address</label>
+                         <textarea name="Office address"></textarea>
+                     </div>
+                  </div>
+               </form>
             </div>
          </div>
         
@@ -73,8 +129,6 @@
          <div class="modal-footer">
              <a href="#" class="btn btn-small">Save</a>
          </div>
-         <hr>
-
     </div>
   </div>
 </div>

@@ -66565,7 +66565,7 @@ $(document).ready(function () {
   $(window).scroll(function () {
     var scroll = $(window).scrollTop();
 
-    if (scroll > 50) {
+    if (scroll > 0) {
       $("header").addClass("fixed-header");
     } else {
       $("header").removeClass("fixed-header");
@@ -66669,8 +66669,8 @@ $(".side-carousel").owlCarousel({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /opt/lampp/htdocs/health-mentor/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/health-mentor/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\DESKTOP\projects\mentors\healthmentors\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\DESKTOP\projects\mentors\healthmentors\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

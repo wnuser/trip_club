@@ -41,7 +41,7 @@
 
                @if(Auth::check())
                <li class="nav-item dropdown">
-                  <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown"> {{ Auth::user()->name }} <i class="fas fa-angle-down"></i></a> 
+                  <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown"> <span><i class="fas fa-user"></i></span> {{ Auth::user()->name }} <i class="fas fa-angle-down"></i></a> 
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     
                      <a class="dropdown-item" href="{{ route('profile') }}" >Profile</a>

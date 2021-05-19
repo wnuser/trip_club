@@ -1429,7 +1429,7 @@ header .navbar .nav-link.btn-nav:hover {
   top: 0;
   width: 100%;
   background: #fff;
-  z-index: 1111;
+  z-index: 111;
   transition: 0.4s;
 }
 
@@ -1994,6 +1994,7 @@ a.btn-small.btn-icon {
   height: 150px;
   width: 150px;
   border-radius: 50%;
+  z-index: 1;
 }
 
 @media screen and (max-width: 991px) {
@@ -2100,6 +2101,102 @@ span.dot {
   background: #fff;
   border-radius: 50%;
   font-size: 31px;
+}
+
+.profile-sec {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.card-hm {
+  border-radius: 10px;
+  border: 1px solid #dcdcdc !important;
+}
+
+.card-hm .about-info-sec {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.card-hm .about-info-sec p:last-child {
+  margin-bottom: 0;
+}
+
+.profile-about {
+  padding-bottom: 15px;
+}
+
+.profile-popup .profile-box .btn-icon {
+  position: absolute;
+  top: 30px;
+  right: 3px;
+  transform: translate(0, -50%);
+  margin: 0;
+  background: #fff;
+  color: #0083ef;
+  opacity: 0.8;
+}
+
+.profile-popup .profile-box .btn-icon:hover {
+  opacity: 1;
+}
+
+.profile-popup .about-info-box form label {
+  font-size: 13px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.profile-popup .about-info-box form input {
+  border: 1px solid #dcdcdc;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.profile-popup .about-info-box form input:focus {
+  border-color: #000;
+}
+
+.profile-popup .about-info-box form select {
+  width: 100%;
+  padding: 8px 8px;
+  border: 1px solid #dcdcdc;
+  color: #495057;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.profile-popup .about-info-box form select:focus {
+  border-color: #000;
+}
+
+.profile-popup .about-info-box form textarea {
+  width: 100%;
+  padding: 8px 8px;
+  border-radius: 4px;
+  border: 1px solid #dcdcdc;
+}
+
+.profile-popup .about-info-box form textarea:focus {
+  border-color: #000;
+}
+
+.about-card.profile-popup .about-body {
+  max-height: 360px;
+  overflow-y: scroll;
+}
+
+.about-card.profile-popup .about-body .about-info-box {
+  padding-top: 95px;
+}
+
+@media screen and (max-width: 991px) {
+  .about-card.profile-popup .about-body .about-info-box {
+    padding-top: 5px;
+  }
 }
 
 /* Conatct start */
