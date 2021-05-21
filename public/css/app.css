@@ -9,6 +9,7 @@ body {
   font-family: "Montserrat", sans-serif;
   color: #4a4a4a;
   background-color: #f3f2ef;
+  padding-top: 62px;
 }
 
 html {
@@ -2197,6 +2198,58 @@ span.dot {
   .about-card.profile-popup .about-body .about-info-box {
     padding-top: 5px;
   }
+}
+
+.post-sec {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.post-card .d-flex {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-card .d-flex a {
+  width: calc(100% - 120px);
+  border: 1px solid gray;
+  border-radius: 80px;
+  padding: 10px 20px;
+  max-height: 46px;
+  background: #eaeaea;
+  display: block;
+}
+
+.post-card .d-flex .photo-upload {
+  width: 50px;
+  height: 50px;
+}
+
+.post-card .d-flex .photo-upload input[type=file] {
+  display: none;
+}
+
+.post-card .d-flex .photo-upload label {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.profile-img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
 }
 
 /* Conatct start */

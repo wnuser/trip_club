@@ -1,4 +1,4 @@
-<header class="bg-white">
+<header class="bg-white fixed-header">
    <div class="container">
       <nav class="navbar navbar-expand-lg bg-white">
          <!--  Show this only on mobile to medium screens  -->

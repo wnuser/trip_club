@@ -12,16 +12,16 @@ $(document).ready(function(){
         ]
     });
 
-    $(window).scroll(function(){
-      var scroll = $(window).scrollTop();
-      if (scroll > 0) {
-         $("header").addClass("fixed-header");
-      }
+    // $(window).scroll(function(){
+    //   var scroll = $(window).scrollTop();
+    //   if (scroll > 0) {
+    //      $("header").addClass("fixed-header");
+    //   }
   
-      else{
-        $("header").removeClass("fixed-header");
-      }
-    })
+    //   else{
+    //     $("header").removeClass("fixed-header");
+    //   }
+    // })
   
     
     $('.sidebar-click').click(function(e){

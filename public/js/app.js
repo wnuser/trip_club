@@ -66561,16 +66561,16 @@ $(document).ready(function () {
   initialDataTable = $('#datatableInitiazer').DataTable({
     // dom: 'Bfrtip',
     buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
-  });
-  $(window).scroll(function () {
-    var scroll = $(window).scrollTop();
+  }); // $(window).scroll(function(){
+  //   var scroll = $(window).scrollTop();
+  //   if (scroll > 0) {
+  //      $("header").addClass("fixed-header");
+  //   }
+  //   else{
+  //     $("header").removeClass("fixed-header");
+  //   }
+  // })
 
-    if (scroll > 0) {
-      $("header").addClass("fixed-header");
-    } else {
-      $("header").removeClass("fixed-header");
-    }
-  });
   $('.sidebar-click').click(function (e) {
     $('.sidebar-admin').toggleClass('close-side');
     $('.main-wrap-admin').toggleClass('wrap-full');
