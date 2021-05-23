@@ -2213,12 +2213,18 @@ span.dot {
 
 .post-card .d-flex a {
   width: calc(100% - 120px);
-  border: 1px solid gray;
+  border: 1px solid #eaeaea;
   border-radius: 80px;
   padding: 10px 20px;
   max-height: 46px;
   background: #eaeaea;
   display: block;
+  color: #000;
+}
+
+.post-card .d-flex a:hover {
+  color: #000;
+  text-decoration: none;
 }
 
 .post-card .d-flex .photo-upload {
@@ -2250,6 +2256,99 @@ span.dot {
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
+}
+
+.photo-upload label {
+  position: relative;
+  padding-top: 2px;
+  background: transparent;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.photo-upload label:hover {
+  background: #f3f2ef;
+}
+
+.photo-upload label i {
+  color: #0083ef;
+}
+
+.photo-upload label span {
+  font-size: 13px;
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-weight: 600;
+}
+
+.card-anchors a {
+  font-size: 14px;
+  color: #000;
+  line-height: 15px;
+  margin-bottom: 10px;
+  background: transparent;
+  padding: 5px 15px;
+}
+
+.card-anchors a span {
+  color: gray;
+  display: block;
+}
+
+.card-anchors a:hover {
+  background: #f3f2ef;
+  text-decoration: none;
+}
+
+.card-anchors a:last-child {
+  margin-bottom: 0;
+}
+
+.filter-sd select {
+  width: 100%;
+  border: none;
+}
+
+.feed-card .name-post {
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.feed-card .name-post h6 {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.feed-card .name-post span {
+  font-size: 13px;
+  color: gray;
+}
+
+.feed-card .post-content .img-block {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.feed-card .post-content .img-block img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.post-sec .card {
+  border-radius: 10px;
+  border: 1px solid #eaeaea;
+}
+
+@media screen and (min-width: 992px) {
+  .sticky-dektop {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+  }
 }
 
 /* Conatct start */

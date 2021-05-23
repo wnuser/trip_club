@@ -2026,12 +2026,17 @@ span{
 		align-items: center;
 		a{
 			width: calc(100% - 120px);
-			border: 1px solid gray;
+			border: 1px solid $theme-light-gray;
 			border-radius: 80px;
 			padding: 10px 20px;
 			max-height: 46px;
 			background: $theme-light-gray;
 			display: block;
+			color: $black;
+			&:hover{
+				color: $black;
+				text-decoration: none;
+			}
 		}
 		.photo-upload{
 			width: 50px;
@@ -2059,5 +2064,94 @@ span{
 		border-radius: 50%;
 		object-fit: cover;
 		display: block;
+	}
+}
+.photo-upload{
+	label{
+		position: relative;
+		padding-top: 2px;
+		background: transparent;
+		padding-bottom: 15px;
+		border-radius: 5px;
+		cursor: pointer;
+		&:hover{
+			background: $lighter-gray-body;
+		}
+		i{
+			color: $theme-green;
+		}
+		span{
+			font-size: 13px;
+			position: absolute;
+			top: 24px;
+			left: 50%;
+			transform: translate(-50%, 0);
+			font-weight: 600;
+		}
+	}
+}
+
+.card-anchors{
+	a{
+		font-size: 14px;
+		color: $black;
+		line-height: 15px;
+		margin-bottom: 10px;
+		background: transparent;
+		padding: 5px 15px;
+		span{
+			color: gray;
+            display: block;
+		}
+		&:hover{
+			background: $lighter-gray-body;
+			text-decoration: none;
+		}
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+}
+.filter-sd{
+	select{
+		width: 100%;
+        border: none;
+	}
+}
+.feed-card{
+	.name-post{
+		padding-left: 10px;
+		margin-bottom: 20px;
+		h6{
+			margin-bottom: 0;
+			font-weight: 600;
+		}
+		span{
+			font-size: 13px;
+			color: gray;
+		}
+	}
+	.post-content{
+		.img-block{
+			margin-left: -1rem;
+			margin-right: -1rem;
+			img{
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+}
+.post-sec{
+	.card{
+		border-radius: 10px;
+	    border: 1px solid $theme-light-gray;
+	}
+}
+// stikcy card
+@media screen and (min-width:992px){
+	.sticky-dektop{
+		position: sticky;
+		top: 80px;
 	}
 }
