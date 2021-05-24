@@ -27,7 +27,7 @@
                      <div class="profile-img">
                      <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
                     </div>
-                    <a href="#">
+                    <a href="#create-post" data-toggle="modal">
                       Write a post
                     </a>
                     <div class="photo-upload">
@@ -113,6 +113,40 @@
             </div>
         </div>
   </div>
+
+  <!-- === create post modal === -->
+    <!-- Modal -->
+<div class="modal fade modal-create-post" id="create-post" tabindex="-1" role="dialog" aria-labelledby="about-mentorlLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form action="">
+        <div class="modal-header py-3">
+          <h5 class="mb-0">Create Post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+         <div class="modal-body feed-card">
+            <div class="d-flex">
+                  <div class="profile-img">
+                     <a href="#">
+                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                     </a>
+                  </div>
+                     <div class="name-post">
+                        <h6>John Doe</h6>
+                        <span>Gym trainer dehradun</span>
+                     </div>
+            </div>
+               <textarea name="write-post" id="" placeholder="Write something here.." autofocus="autofocus"></textarea>   
+         </div>
+         <div class="modal-footer text-right pt-1 pb-2">
+             <a href="#" class="btn btn-small">Save</a>
+         </div>
+         </form>
+    </div>
+  </div>
+</div>
 </section>
 
 @endsection('content')

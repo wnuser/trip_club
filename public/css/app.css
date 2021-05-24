@@ -1430,7 +1430,7 @@ header .navbar .nav-link.btn-nav:hover {
   top: 0;
   width: 100%;
   background: #fff;
-  z-index: 111;
+  z-index: 1111;
   transition: 0.4s;
 }
 
@@ -2243,6 +2243,10 @@ span.dot {
   text-align: center;
 }
 
+.post-sec .card {
+  margin-bottom: 1rem !important;
+}
+
 .profile-img {
   width: 50px;
   height: 50px;
@@ -2341,6 +2345,27 @@ span.dot {
 .post-sec .card {
   border-radius: 10px;
   border: 1px solid #eaeaea;
+}
+
+.modal-create-post {
+  z-index: 9999;
+}
+
+.modal-create-post textarea {
+  width: 100%;
+  min-height: 100px;
+  border-color: transparent;
+}
+
+.modal-create-post .close {
+  height: 40px;
+  width: 40px;
+  background: #efefef;
+  line-height: 6px;
+  font-size: 32px;
+  padding: 0;
+  text-align: center;
+  border-radius: 50%;
 }
 
 @media screen and (min-width: 992px) {
