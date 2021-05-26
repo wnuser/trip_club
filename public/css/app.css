@@ -2212,7 +2212,7 @@ span.dot {
 }
 
 .post-card .d-flex a {
-  width: calc(100% - 120px);
+  width: calc(100% - 65px);
   border: 1px solid #eaeaea;
   border-radius: 80px;
   padding: 10px 20px;
@@ -2227,20 +2227,75 @@ span.dot {
   text-decoration: none;
 }
 
-.post-card .d-flex .photo-upload {
+.photo-upload {
   width: 50px;
   height: 50px;
+  margin-right: auto;
 }
 
-.post-card .d-flex .photo-upload input[type=file] {
+.photo-upload input[type=file] {
   display: none;
 }
 
-.post-card .d-flex .photo-upload label {
+.photo-upload label {
   display: block;
   font-size: 20px;
   margin-bottom: 0;
   text-align: center;
+}
+
+.action-box {
+  padding-top: 15px;
+  border-top: 1px solid #f3f2ef;
+}
+
+.action-box a {
+  border-radius: 5px;
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.action-box a:hover {
+  background-color: #f3f2ef;
+}
+
+.action-count {
+  justify-content: space-between;
+  display: flex;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.action-count span.count {
+  font-size: 12px;
+  padding-right: 10px;
+}
+
+.hover-box-wrap {
+  position: relative;
+}
+
+.hover-box-wrap .hover-info {
+  box-shadow: 1px 2px 3px grey;
+  border-radius: 5px;
+  position: absolute;
+  bottom: calc(84% + 10px);
+  background: #fff;
+  padding: 20px;
+  min-width: 300px;
+  display: none;
+  z-index: 9999;
+}
+
+.hover-box-wrap .hover-info .name-info {
+  display: flex;
+}
+
+@media screen and (min-width: 769px) {
+  .hover-box-wrap:hover .hover-info {
+    display: block;
+  }
 }
 
 .post-sec .card {
@@ -2366,6 +2421,30 @@ span.dot {
   padding: 0;
   text-align: center;
   border-radius: 50%;
+}
+
+.sidebar-list {
+  align-items: center;
+}
+
+.sidebar-list .profile-img {
+  width: 45px;
+  height: 45px;
+}
+
+.sidebar-list .name-post {
+  padding-left: 7px;
+}
+
+.sidebar-list .name-post h6 {
+  font-size: 14px;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.sidebar-list .name-post span {
+  font-size: 12px;
+  line-height: 1;
 }
 
 @media screen and (min-width: 992px) {

@@ -2025,7 +2025,7 @@ span{
 		justify-content: space-between;
 		align-items: center;
 		a{
-			width: calc(100% - 120px);
+			width: calc(100% - 65px);
 			border: 1px solid $theme-light-gray;
 			border-radius: 80px;
 			padding: 10px 20px;
@@ -2038,17 +2038,67 @@ span{
 				text-decoration: none;
 			}
 		}
-		.photo-upload{
-			width: 50px;
-			height: 50px;
-			input[type="file"]{
-				display: none;
-			}
-			label{
+	}
+}
+.photo-upload{
+	width: 50px;
+	height: 50px;
+	margin-right: auto;
+	input[type="file"]{
+		display: none;
+	}
+	label{
+		display: block;
+		font-size: 20px;
+		margin-bottom: 0;
+		text-align: center;
+	}
+}
+.action-box{
+	padding-top: 15px;
+	border-top: 1px solid $lighter-gray-body;
+	a{
+		border-radius: 5px;
+		padding: 10px;
+		text-decoration: none;
+		color: #000;
+		&:hover{
+			background-color: $lighter-gray-body;
+		}
+	}
+}
+.action-count{
+	justify-content: space-between;
+    display: flex;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	span{
+		&.count{
+		   font-size: 12px;
+		   padding-right: 10px;
+		}
+	}
+}
+.hover-box-wrap{
+	position: relative;
+	.hover-info{
+		box-shadow: 1px 2px 3px grey;
+		border-radius: 5px;
+		position: absolute;
+		bottom: calc(84% + 10px);
+		background: $white;
+		padding: 20px;
+		min-width: 300px;
+		display: none;
+		z-index: 9999;
+		.name-info{
+			display: flex;
+		}
+	}
+	&:hover{
+		.hover-info{
+			@media screen and (min-width:769px){
 				display: block;
-				font-size: 20px;
-				margin-bottom: 0;
-				text-align: center;
 			}
 		}
 	}
@@ -2172,7 +2222,25 @@ span{
 		border-radius: 50%;
 	}
 }
-
+.sidebar-list{
+	align-items: center;
+	.profile-img{
+		width: 45px;
+		height: 45px;
+	}
+	.name-post{
+		padding-left: 7px;
+		h6{
+			font-size: 14px;
+			line-height: 1;
+			margin-bottom: 5px;
+		}
+		span{
+			font-size: 12px;
+			line-height: 1;
+		}
+	}
+}
 // stikcy card
 @media screen and (min-width:992px){
 	.sticky-dektop{
