@@ -93,6 +93,7 @@ Route::get('/feed', 'PostController@index')->name('feed');
  * User Side Routes
  */
 Route::get('/Listing', 'ListingController@index')->name('listing');
+Route::get('/forum', 'QuestionsController@index')->name('forum');
 
 
 // Route::get('/search', function() {

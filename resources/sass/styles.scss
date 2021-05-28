@@ -1998,6 +1998,41 @@ span{
    }
 }
 
+
+.register-card {
+	input{
+		border: 1.5px solid $border-color-card;
+		margin-bottom: 16px;
+		border-radius: 4px;
+		font-size: 15px;
+		&:focus{
+			border-color: $black;
+		}
+	}
+	select {
+		border: 1.5px solid $border-color-card;
+		margin-bottom: 16px;
+		border-radius: 4px;
+		font-size: 15px;
+		&:focus{
+			border-color: $black;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .about-card{
   &.profile-popup{
 	  .about-body{

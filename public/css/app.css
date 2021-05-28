@@ -2185,6 +2185,28 @@ span.dot {
   border-color: #000;
 }
 
+.register-card input {
+  border: 1.5px solid #dcdcdc;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.register-card input:focus {
+  border-color: #000;
+}
+
+.register-card select {
+  border: 1.5px solid #dcdcdc;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.register-card select:focus {
+  border-color: #000;
+}
+
 .about-card.profile-popup .about-body {
   max-height: 360px;
   overflow-y: scroll;

@@ -63,17 +63,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // aprint($data);
+        if(isset($data['isMentor'])) {
+            $mentorType   = $data['mentor_type'];
+            $userType     = config('role.ROLES.MENTOR.TYPE');
+            
+        } else {
+            $mentorType   = false;
+            $userType     = config('role.ROLES.MENTEE.TYPE');
+        }
+
         return User::create([
             'name'       => $data['name'],
             'email'      => $data['email'],
-            'user_type'  => $data['user_type'],
+            'user_type'  => $userType,
+            'mentor_type'=> $mentorType,
             'password'   => Hash::make($data['password']),
-            'mobile'     => $data['mobile'],
-            'country'    => $data['country'],
-            'state'    => $data['state'],
-            'city'    => $data['city'],
-            'domain'    => $data['domain'],
         ]);
     }
 }

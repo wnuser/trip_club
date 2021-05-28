@@ -16,15 +16,14 @@
                <li class="nav-item">
                   <a class="nav-link active" href="{{route('Home')}}"><span><i class="fas fa-home"></i></span>  Home <span class="sr-only">(current)</span></a>
                </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="{{ route('category.blogs', ['id'=>3]) }}"> <span><i class="fas fa-briefcase-medical"></i></span> health care</a>
+               <!-- <li class="nav-item">
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="{{ route('category.blogs', ['id'=>4]) }}"><span><i class="fas fa-user-secret"></i></span>  fashion & lifestyle</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="{{ route('category.blogs', ['id'=>5]) }}"> <span><i class="fas fa-heartbeat"></i></span> fitness</a>
-               </li>
+               </li> -->
                <li class="nav-item">
                   <a class="nav-link" href="{{ route('feed') }}"><span><i class="fas fa-newspaper"></i></span>  feed</a>
                </li>
@@ -36,6 +35,28 @@
                     @foreach($mentors as $key => $value)
                      <a class="dropdown-item" href="{{ route('mentors', ['id'=>$key]) }}" >{{$value}}</a>
                     @endforeach
+                  </div>
+               </li>
+              
+
+              
+
+               
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ route('forum') }}"><span><i class="fas fa-edit"></i></span> View Answers</a>
+               </li>
+
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ route('forum') }}"><span><i class="fas fa-question"></i></span> Ask Questions</a>
+               </li>
+
+               <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown"> <span><i class="fas fa-blog"></i></span> Blogs <i class="fas fa-angle-down"></i></a> 
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>3]) }}"> <span><i class="fas fa-briefcase-medical"></i></span> health care</a>
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>4]) }}"><span><i class="fas fa-user-secret"></i></span>  fashion & lifestyle</a>
+                     <a class="dropdown-item" href="{{ route('category.blogs', ['id'=>5]) }}"> <span><i class="fas fa-walking bold"></i></span> fitness</a>
+
                   </div>
                </li>
 
@@ -58,7 +79,7 @@
                </li>
                @else
                   <li class="nav-item">
-                     <a class="nav-link" href="{{ route('register') }}"> <span><i class="fas fa-sign-in-alt"></i></span> login/signup</a>
+                     <a class="nav-link" href="{{ route('login') }}"> <span><i class="fas fa-sign-in-alt"></i></span> login/signup</a>
                   </li>
                @endif
                
@@ -76,9 +97,9 @@
 
                   </div>
                </li> -->
-               <li class="nav-item d-mob-none search">
+               <!-- <li class="nav-item d-mob-none search">
                   <a class="nav-link" data-toggle="modal" href="#pop-search"><i class="fas fa-search"></i></a>
-               </li>
+               </li> -->
             </ul>
             <!--   Show this only lg screens and up   -->
             <!-- <ul class="navbar-nav">

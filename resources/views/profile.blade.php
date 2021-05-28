@@ -47,7 +47,7 @@
 
   <!-- edit info modal -->
   <!-- Modal -->
-<div class="modal fade modal-about-mentor" id="about-mentor" tabindex="-1" role="dialog" aria-labelledby="about-mentorlLabel" aria-hidden="true">
+   <div class="modal fade modal-about-mentor" id="about-mentor" tabindex="-1" role="dialog" aria-labelledby="about-mentorlLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -70,15 +70,15 @@
                   <div class="row">
                      <div class="col-lg-6">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" placeholder="Name"/>
+                        <input type="text" class="form-control" name="name" value="{{ $userInfo['name'] }}" placeholder="Name"/>
                      </div>
                      <div class="col-lg-6">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" placeholder="Email"/>
+                        <input type="email" class="form-control" name="email" readonly value="{{ $userInfo['email'] }}" placeholder="Email"/>
                      </div>
                      <div class="col-lg-6">
                         <label for="name">Mobile</label>
-                        <input type="number" class="form-control" placeholder="Mobile"/>
+                        <input type="number" class="form-control" name="mobile" value="{{ $userInfo['mobile'] }}" placeholder="Mobile"/>
                      </div>
                      <div class="col-lg-6">
                         <label for="name">Country</label>
@@ -90,7 +90,7 @@
                      </div>
                      <div class="col-lg-6">
                         <label for="name">State</label>
-                        <select name="country" id="">
+                        <select name="state" id="">
                            <option value="india">Uttarakhand</option>
                            <option value="india">California</option>
                            <option value="india">Midlands</option>
@@ -98,26 +98,28 @@
                      </div>
                      <div class="col-lg-6">
                         <label for="name">City</label>
-                        <select name="country" id="">
+                        <select name="city" id="">
                            <option value="india">Deheradun</option>
                            <option value="india">San jose</option>
                            <option value="india">Birmingham</option>
                         </select>
                      </div>
                      <div class="col-12">
-                        <label for="name">Education</label>
+                        <label for="name">How many years of experience you have</label>
+                        {{ experience() }}
+                     </div>
+
+                     <div class="col-12">
+                        <label for="name">Education (Mention about your educational backgroud including all certifications.) </label>
                          <textarea name="education"></textarea>
                      </div>
                      <div class="col-12">
-                        <label for="name">About</label>
+                        <label for="name">About (Mention about yourself, what kind of personality you are? your achievements, your expertise.) </label>
                          <textarea name="About"></textarea>
                      </div>
+                     
                      <div class="col-12">
-                        <label for="name">Experience</label>
-                         <textarea name="Experience"></textarea>
-                     </div>
-                     <div class="col-12">
-                        <label for="name">Office address</label>
+                        <label for="name">Office address (Your working place address from where you are operating.) </label>
                          <textarea name="Office address"></textarea>
                      </div>
                   </div>
@@ -131,7 +133,7 @@
          </div>
     </div>
   </div>
-</div>
+   </div>
 </section>
 
 @endsection('content')

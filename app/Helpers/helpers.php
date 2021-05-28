@@ -140,3 +140,30 @@ function getCategories($selected  = null)
   '</select>';
   }
 
+function mentorsType()
+{
+    $mentors   = config('role.MENTORSTITLE');
+
+    echo "<select class='form-control d-none' name='mentor_type' id='mentor-type-input' > ";
+    echo "<option value='' >Choose One</option>";
+    foreach ($mentors as $key => $value) {
+        # code...
+        echo "<option value='".$key."'>".$value."</option>";
+    }
+    echo "</select>";
+
+}
+
+function experience($id= false)
+{
+    $experience  = config('constants.experience');
+
+    echo "<select class='form-control' name='experience'>";
+    echo "<option value=''>Choose Year</option>";
+
+    foreach ($experience as $key => $value) {
+        # code...
+        echo "<option value='".$key."'>".$value."</option>";
+    }
+    echo "</select>";
+}

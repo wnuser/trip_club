@@ -14,12 +14,12 @@ body {
 
 .card-signin {
   border: 0;
-  border-radius: .40rem;
+  border-radius: 1rem;
   /* box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1); */
 }
 
 .card-signin .card-title {
-  /* margin-bottom: .50rem; */
+  margin-bottom: 2rem;
   font-weight: 300;
   font-size: 1.5rem;
 }
@@ -34,12 +34,11 @@ body {
 
 .form-signin .btn {
   font-size: 80%;
-  border-radius: .60rem;
+  border-radius: 5rem;
   letter-spacing: .1rem;
   font-weight: bold;
-  padding: .50rem;
+  padding: 1rem;
   transition: all 0.2s;
-  height : 50px;
 }
 
 .form-label-group {
@@ -49,7 +48,7 @@ body {
 
 .form-label-group input {
   height: auto;
-  border-radius: .60rem ;
+  border-radius: 2rem;
 }
 
 .form-label-group>input,
@@ -150,14 +149,22 @@ body {
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">Sign In</h5>
-            <p class="text-center">Welcome Back!</p>
+            <h5 class="card-title text-center">Sign Up</h5>
             @include('layouts.error')
 
             <form class="form-signin" method="POST" action="{{ route('login') }}">
             @csrf
 
-              
+            <div class="form-label-group">
+                <input type="text" id="inputEmail" name="name" class="form-control" placeholder="name" required autofocus>
+                <label for="inputEmail">Name</label>
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+
 
               <div class="form-label-group">
                 <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
@@ -173,21 +180,31 @@ body {
                 <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
                 <label for="inputPassword">Password</label>
                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password *" required>
+                <label for="inputPassword">Password</label>
+                @error('password_confirmation')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
 
               <div class="custom-control custom-checkbox mb-3">
                 <input type="checkbox" class="custom-control-input" id="customCheck1" type="checkbox" name="remember"  {{ old('remember') ? 'checked' : '' }}>
                 <label class="custom-control-label" for="customCheck1">Remember password</label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign Up</button>
               <hr class="my-4">
               <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button> -->
-              <p>Not having account <a href="{{ route('register') }}">Register Now</a></p>
+              <p>Already having account <a href="{{ route('login') }}">Sing In</a></p>
             </form>
           </div>
         </div>
