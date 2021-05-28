@@ -57,8 +57,9 @@
                                  <span>Gym trainer dehradun</span>
                               </div>
                            </div>
-                           <div class="chat-btn">
-                               <a href="#" class="btn btn-small">Chat</a>
+                           <div class="chat-btn d-flex">
+                               <a href="#" class="btn btn-small mr-2">Chat</a>
+                               <a href="#" class="btn btn-small">View Profile</a>
                            </div>
                         </div>
                    </div>
@@ -101,8 +102,9 @@
                                  <span>Gym trainer dehradun</span>
                               </div>
                            </div>
-                           <div class="chat-btn">
-                               <a href="#" class="btn btn-small">Chat</a>
+                           <div class="chat-btn d-flex">
+                               <a href="#" class="btn btn-small mr-2">Chat</a>
+                               <a href="#" class="btn btn-small">View Profile</a>
                            </div>
                         </div>
                    </div>

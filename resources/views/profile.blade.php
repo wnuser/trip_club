@@ -53,6 +53,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <form action="#">
       <div class="modal-body p-0">
          <div class="about-card profile-popup">
             <div class="cover-bg">
@@ -62,11 +63,11 @@
             <a class="profile-popup" href="#">
                  <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
             </a>
-            <a href="#" class="btn btn-small btn-icon"><i class="fas fa-camera"></i></a>
+             <label for="change-profile" class="btn-icon"><i class="fas fa-camera"></i></label>
+             <input type="file" class="hidden" id="change-profile"/>
          </div>
          <div class="about-body">
             <div class="about-info-box">
-               <form action="#">
                   <div class="row">
                      <div class="col-lg-6">
                         <label for="name">Name</label>
@@ -123,7 +124,7 @@
                          <textarea name="Office address"></textarea>
                      </div>
                   </div>
-               </form>
+              
             </div>
          </div>
         
@@ -131,6 +132,7 @@
          <div class="modal-footer">
              <a href="#" class="btn btn-small">Save</a>
          </div>
+         </form>
     </div>
   </div>
    </div>
