@@ -81,25 +81,21 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <form action="#">
       <div class="modal-body p-0">
          <div class="about-card profile-popup">
             <div class="cover-bg">
                   <img src="{{ asset('Images/cover-mentors.jpg') }}" alt="cover-bg" class="img-fluid">
             </div>
          <div class="profile-box">
-            <form action="">
-               <a class="profile-popup" href="#">
-                     @php  $src    =  ($userInfo->profile_pic) ? ($userInfo->profile_pic) : 'userIcon.png';  @endphp
-                  <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
-               </a>
-            </form>
-            <a href="#" class="btn btn-small btn-icon"><i class="fas fa-camera"></i></a>
+            <a class="profile-popup" href="#">
+                 <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+            </a>
+             <label for="change-profile" class="btn-icon"><i class="fas fa-camera"></i></label>
+             <input type="file" class="hidden" id="change-profile"/>
          </div>
          <div class="about-body">
             <div class="about-info-box">
-               <form method="POST" action="{{ route('update.profile') }}">
-               @csrf
-               <input type="hidden" name="id" id="" value="{{ Auth::user()->id }}">
                   <div class="row">
                      <div class="col-lg-6">
                         <label for="name">Name</label>
@@ -155,7 +151,7 @@
                            <button class="btn btn-primary" type="submit" >Save</button>
                      </div>
                   </div>
-               </form>
+              
             </div>
          </div>
         
@@ -163,6 +159,7 @@
          <div class="modal-footer">
              <a href="#" class="btn btn-small">Save</a>
          </div>
+         </form>
     </div>
   </div>
    </div>

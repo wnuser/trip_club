@@ -2136,31 +2136,42 @@ span.dot {
   background: #fff;
   color: #0083ef;
   opacity: 0.8;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 28px;
+  border-radius: 50%;
+  border: 1px solid #0083ef;
+  cursor: pointer;
 }
 
 .profile-popup .profile-box .btn-icon:hover {
   opacity: 1;
 }
 
-.profile-popup .about-info-box form label {
+.profile-popup .profile-box input.hidden {
+  display: none;
+}
+
+.profile-popup .about-info-box label {
   font-size: 13px;
   font-weight: 700;
   display: block;
   margin-bottom: 5px;
 }
 
-.profile-popup .about-info-box form input {
+.profile-popup .about-info-box input {
   border: 1px solid #dcdcdc;
   margin-bottom: 16px;
   border-radius: 4px;
   font-size: 13px;
 }
 
-.profile-popup .about-info-box form input:focus {
+.profile-popup .about-info-box input:focus {
   border-color: #000;
 }
 
-.profile-popup .about-info-box form select {
+.profile-popup .about-info-box select {
   width: 100%;
   padding: 8px 8px;
   border: 1px solid #dcdcdc;
@@ -2170,18 +2181,18 @@ span.dot {
   font-size: 13px;
 }
 
-.profile-popup .about-info-box form select:focus {
+.profile-popup .about-info-box select:focus {
   border-color: #000;
 }
 
-.profile-popup .about-info-box form textarea {
+.profile-popup .about-info-box textarea {
   width: 100%;
   padding: 8px 8px;
   border-radius: 4px;
   border: 1px solid #dcdcdc;
 }
 
-.profile-popup .about-info-box form textarea:focus {
+.profile-popup .about-info-box textarea:focus {
   border-color: #000;
 }
 
@@ -2391,6 +2402,11 @@ span.dot {
 .filter-sd select {
   width: 100%;
   border: none;
+  background: transparent;
+}
+
+.chat-btn {
+  border-top: 1px solid #f3f2ef;
 }
 
 .feed-card .name-post {

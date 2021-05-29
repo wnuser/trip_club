@@ -1949,15 +1949,26 @@ span{
 		margin: 0;
 		background: $white;
 		color: $theme-green;
-		opacity: .8;
+		opacity: 0.8;
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		line-height: 28px;
+		border-radius: 50%;
+		border: 1px solid $theme-green;
+		cursor: pointer;
 		&:hover{
 			opacity: 1;
+		}
+	}
+	input{
+		&.hidden{
+			display: none;
 		}
 	}
   }
 
   .about-info-box{
-	  form{
 		  label{
 			font-size: 13px;
 			font-weight: 700;
@@ -1994,7 +2005,6 @@ span{
 				border-color: $black;
 			}
 		   }
-	  }
    }
 }
 
@@ -2204,8 +2214,12 @@ span{
 .filter-sd{
 	select{
 		width: 100%;
-        border: none;
+		border: none;
+		background: transparent;
 	}
+}
+.chat-btn{
+   border-top: 1px solid $lighter-gray-body;
 }
 .feed-card{
 	.name-post{
