@@ -1754,6 +1754,7 @@ header {
 		transform: translate(-50%, 0%);
 		overflow: hidden;
 		z-index: 11;
+		background: $white;
 		a{
 			display: block;
 			img{
@@ -1792,11 +1793,13 @@ header {
 			margin-bottom: 10px;
 		}
 	}
+	a:hover{
+		text-decoration: none;
+	}
 }
 
 // small button
-a{
-	&.btn-small{
+	.btn-small{
 		display: block;
 		padding: 9px 20px;
 		border: 1px solid $btn-green-gradeint;
@@ -1814,7 +1817,6 @@ a{
 			padding: 9px 10px;
 		}
 	}
-}
 
 // about profile section
 .about-card{
@@ -1835,6 +1837,7 @@ a{
 		width: 150px;
 		border-radius: 50%;
 		z-index: 1;
+		background: $white;
 		@media screen and (max-width:991px){
 			left: 50%;
 			transform: translate(-50%, 0%);
@@ -2008,6 +2011,49 @@ span{
    }
 }
 
+.qna-sidebar {
+  a{
+	display: block;
+    padding: 10px;
+	padding-right: 70px;
+	color: $black;
+	text-decoration: none;
+	position: relative;
+	border-bottom: 1px solid $lighter-gray-body;
+	&:hover{
+		background-color: $lighter-gray-body;
+	}
+	&:last-child{
+		border-bottom: none;
+	}
+	strong{
+		display: block;
+		font-size: 15px;
+		line-height: 1;
+	}
+	span{
+		&.tag{
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			transform: translate(0%, -50%);
+			font-size: 10px;
+			line-height: 12px;
+			font-weight: 600;
+			color: $white;
+			padding: 3px 3px;
+			border-radius: 4px;
+			background-color: gray;
+		}
+		&.new{
+			background-color: red;
+		}
+		&.completed{
+			background-color: $theme-green
+		}
+	}
+  }
+}
 
 .register-card {
 	input{
@@ -2029,19 +2075,6 @@ span{
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .about-card{
   &.profile-popup{
@@ -2295,5 +2328,68 @@ span{
 	.sticky-dektop{
 		position: sticky;
 		top: 80px;
+	}
+}
+
+
+// =========== questions page style ===========
+.question-sec{
+	padding-top: 80px;
+	padding-bottom: 80px;
+	.card{
+		border-radius: 10px;
+		border: 1px solid $theme-light-gray;
+	}
+}
+.question-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	.question{
+		padding-left: 10px;
+        width: calc(100% - 50px);
+	}
+}
+.answers-wrapper{
+	border: 1px solid $theme-green;
+    border-radius: 5px;
+    padding: 25px 10px 10px;
+    position: relative;
+	margin-top: 20px;
+	.totol-ans{
+		position: absolute;
+		left: 20px;
+		top: -13px;
+		background: $white;
+		padding: 0px 10px;
+		font-weight: 600;
+		color: $theme-green;
+	}
+}
+.inner-box{
+	.d-flex{
+		padding-bottom: 10px;
+	}
+	.name-wrap{
+		padding-left: 10px;
+		h6{
+			font-weight: 600;
+			margin-bottom: 0;
+		}
+		span{
+			font-size: 13px;
+		}
+	}
+}
+
+.related-que{
+	a{
+		color: #000;
+		padding: 5px 15px;
+		font-size: 16px;
+		line-height: 1.3;
+		&:hover{
+			background-color: $lighter-gray-body;
+			text-decoration: none;
+		}
 	}
 }

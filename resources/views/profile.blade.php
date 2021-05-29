@@ -55,19 +55,19 @@
                   <p> {{ $userInfo->office_address }} </p>
                   </div>
                </div>
-
-
             </div>
-
-
-
-
             <div class="col-lg-4 col-md-12 col-12">
-              <div class="card">
-                 <ul>
-                     <li> 21 New Questions </li>
-                     <li> 22 Answers Given  </li>
-                 </ul>
+              <div class="card py-3 qna-sidebar sticky-desktop">
+               <a href="#">
+                  <strong>21 New Questions</strong>
+                  <small>Pending to answers</small>
+                  <span class="tag new">New</span>
+               </a>
+               <a href="#">
+                  <strong>22 Answers Given</strong>
+                  <small>Completed to answers</small>
+                  <span class="tag completed">Completed</span>
+               </a>
               </div>
             </div>
         </div>
@@ -146,10 +146,6 @@
                         <label for="name">Office address (Your working place address from where you are operating.) </label>
                          <textarea name="office_address"> {{ $userInfo->office_address  }} </textarea>
                      </div>
-
-                     <div class="col-12">
-                           <button class="btn btn-primary" type="submit" >Save</button>
-                     </div>
                   </div>
               
             </div>
@@ -157,7 +153,7 @@
         
          </div>
          <div class="modal-footer">
-             <a href="#" class="btn btn-small">Save</a>
+             <button type="submit" class="btn btn-small mt-0">Save</button>
          </div>
          </form>
     </div>
