@@ -60,7 +60,7 @@ function getCategories($selected  = null)
   function updateDomain($id)
   {
       $domain = config('role.MENTORSTITLE');
-      echo '<select name="domain" id="" class="form-control">';
+      echo '<select name="mentor_type" id="" class="form-control">';
       foreach ($domain as $key => $value) {
           # code...
           if($key  == $id) {

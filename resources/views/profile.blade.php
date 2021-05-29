@@ -7,39 +7,67 @@
         <div class="row">
             <div class="col-lg-8 col-md-12 col-12">
                <div class="card card-hm">
-               <div class="about-card profile-about">
-            <div class="cover-bg">
-                  <img src="{{ asset('Images/cover-mentors.jpg') }}" alt="cover-bg" class="img-fluid">
-            </div>
-         <div class="profile-box">
-            <a class="profile-popup" href="#">
-                 <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-            </a>
-         </div>
+                  <div class="about-card profile-about">
+                     <div class="cover-bg">
+                           <img src="{{ asset('Images/cover-mentors.jpg') }}" alt="cover-bg" class="img-fluid">
+                     </div>
+                     <div class="profile-box">
+                        <a class="profile-popup" href="#">
+                              @php  $src    =  ($userInfo->profile_pic) ? ($userInfo->profile_pic) : 'userIcon.png';  @endphp
+                           <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
+                        </a>
+                     </div>
          <div class="about-body">
             <div class="button-strip">
-                <a href="#" class="btn btn-small">Connect</a>
-                <a href="#" class="btn btn-small">Message</a>
+                <!-- <a href="#" class="btn btn-small">Connect</a>
+                <a href="#" class="btn btn-small">Message</a> -->
                 <a href="#about-mentor" data-toggle="modal" class="btn btn-small btn-icon"><i class="fas fa-pen"></i></a>
             </div>
             <div class="about-info-box">
-               <h4 class="mb-0">Josh butler peter</h4>
-               <p><span>Gym trainer at Royal Gym</span> </p>
-               <h6>Deharadun, Uttarakhand, india <span class="dot"></span> <span>6 years of experience</span> <span class="dot"></span> <a href="#" class="">Contact Info</a></h6>
+               <h4 class="mb-0">{{ $userInfo->name }}</h4>
+               <p><span>{{ config('role.MENTORSTITLE.'.$userInfo->mentor_type) }}</span> </p>
+               @php  $years  = ($userInfo->experience == 1) ? 'year' : 'years';   @endphp
+               <h6> {{ $userInfo->cityRelation->city_name }} , {{ $userInfo->stateRelation->state_name }} , {{ $userInfo->countryRelation->country_name }} <span class="dot"></span> <span>{{ config('constants.experience.'.$userInfo->experience) }} {{ $years }} of experience</span> <span class="dot"></span> 
+               <a href="#" class="">Contact Info</a></h6>
             </div>
          </div>
+
+         
          </div>
                </div>
                <div class="card card-hm">
                <div class="about-info-sec">
-                  <h5>About</h5>
-                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est dolores iste neque, quas, sit at sapiente ullam tenetur reprehenderit ea adipisci, a voluptas consequuntur. Accusamus consequuntur a voluptas eligendi non?</p>
+                  <h5> <i class="fas fa-school"></i> Education</h5>
+                  <p>{{ $userInfo->education }}</p>
                   </div>
                </div>
+
+               <div class="card card-hm">
+               <div class="about-info-sec">
+                  <h5> <i class="fas fa-info-circle"></i> About</h5>
+                  <p> {{ $userInfo->about }} </p>
+                  </div>
+               </div>
+
+               <div class="card card-hm">
+               <div class="about-info-sec">
+                  <h5> <i class="fas fa-map-marked"></i> Office Address</h5>
+                  <p> {{ $userInfo->office_address }} </p>
+                  </div>
+               </div>
+
+
             </div>
+
+
+
+
             <div class="col-lg-4 col-md-12 col-12">
               <div class="card">
-                 right sidebar
+                 <ul>
+                     <li> 21 New Questions </li>
+                     <li> 22 Answers Given  </li>
+                 </ul>
               </div>
             </div>
         </div>
@@ -59,14 +87,19 @@
                   <img src="{{ asset('Images/cover-mentors.jpg') }}" alt="cover-bg" class="img-fluid">
             </div>
          <div class="profile-box">
-            <a class="profile-popup" href="#">
-                 <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-            </a>
+            <form action="">
+               <a class="profile-popup" href="#">
+                     @php  $src    =  ($userInfo->profile_pic) ? ($userInfo->profile_pic) : 'userIcon.png';  @endphp
+                  <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
+               </a>
+            </form>
             <a href="#" class="btn btn-small btn-icon"><i class="fas fa-camera"></i></a>
          </div>
          <div class="about-body">
             <div class="about-info-box">
-               <form action="#">
+               <form method="POST" action="{{ route('update.profile') }}">
+               @csrf
+               <input type="hidden" name="id" id="" value="{{ Auth::user()->id }}">
                   <div class="row">
                      <div class="col-lg-6">
                         <label for="name">Name</label>
@@ -82,45 +115,44 @@
                      </div>
                      <div class="col-lg-6">
                         <label for="name">Country</label>
-                        <select name="country" id="">
-                           <option value="india">India</option>
-                           <option value="india">US</option>
-                           <option value="india">UK</option>
-                        </select>
+                        {{ updateCountry($userInfo->country) }}
+
                      </div>
                      <div class="col-lg-6">
                         <label for="name">State</label>
-                        <select name="state" id="">
-                           <option value="india">Uttarakhand</option>
-                           <option value="india">California</option>
-                           <option value="india">Midlands</option>
-                        </select>
+                        {{ updateState($userInfo->state) }}
+
                      </div>
                      <div class="col-lg-6">
                         <label for="name">City</label>
-                        <select name="city" id="">
-                           <option value="india">Deheradun</option>
-                           <option value="india">San jose</option>
-                           <option value="india">Birmingham</option>
-                        </select>
+                        {{  updateCity($userInfo->city) }}
+
                      </div>
-                     <div class="col-12">
-                        <label for="name">How many years of experience you have</label>
-                        {{ experience() }}
+                     <div class="col-lg-6">
+                          <label for="domain">Your Domain</label>
+                          {{  updateDomain($userInfo->mentor_type) }}
+                     </div>
+                     <div class="col-6">
+                        <label for="name">How many years of experience you have?</label>
+                        {{ experience($userInfo->experience) }}
                      </div>
 
                      <div class="col-12">
                         <label for="name">Education (Mention about your educational backgroud including all certifications.) </label>
-                         <textarea name="education"></textarea>
+                         <textarea name="education">{{ $userInfo->education }} </textarea>
                      </div>
                      <div class="col-12">
                         <label for="name">About (Mention about yourself, what kind of personality you are? your achievements, your expertise.) </label>
-                         <textarea name="About"></textarea>
+                         <textarea name="about"> {{ $userInfo->about }} </textarea>
                      </div>
-                     
+
                      <div class="col-12">
                         <label for="name">Office address (Your working place address from where you are operating.) </label>
-                         <textarea name="Office address"></textarea>
+                         <textarea name="office_address"> {{ $userInfo->office_address  }} </textarea>
+                     </div>
+
+                     <div class="col-12">
+                           <button class="btn btn-primary" type="submit" >Save</button>
                      </div>
                   </div>
                </form>
@@ -137,3 +169,69 @@
 </section>
 
 @endsection('content')
+
+
+@section('custom_js')
+
+<script>
+
+$('#file-upload').on('change', function(){
+  $('#uploadProfile').submit();
+});
+
+
+$('#state').on('change', function(){
+   var stateId   = $('#state').val();
+//    alert(stateId);
+
+   $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+
+   $.ajax({
+       method: "POST",
+       url: "/get/city",
+       data : {stateId:stateId},
+       success:function(data){
+          $('#city').empty();
+          $('#city').append(data);
+       },
+       error:function(){
+
+       }
+   })
+});
+
+
+
+
+$('#country').on('change', function(){
+   var countryId   = $('#country').val();
+
+   $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+
+   $.ajax({
+       method: "POST",
+       url: '/get/state',
+       data : {countryId: countryId},
+       success:function(data){
+            console.log(data);
+            $('#state').empty();
+            $('#state').append(data);
+            
+       },
+       error:function(){
+
+       }
+
+   })
+});
+
+</script>
+@endsection

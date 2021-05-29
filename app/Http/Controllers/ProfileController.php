@@ -18,7 +18,7 @@ class ProfileController extends Controller
     public function index()
     {
         
-        $userInfo   =   \App\User::whereId(Auth::user()->id)->first();
+        $userInfo   =   \App\User::with(['countryRelation','stateRelation', 'cityRelation'])->whereId(Auth::user()->id)->first();
         return view('profile', compact('userInfo'));
 
     }
@@ -105,6 +105,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         //
+        // aprint($request->all());
         $id   = $request->id;
         $user  = \App\User::whereId($id)->first();
         $data  = $request->all();

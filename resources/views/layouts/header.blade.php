@@ -47,7 +47,7 @@
                </li>
 
                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('forum') }}"><span><i class="fas fa-question"></i></span> Ask Questions</a>
+                  <a class="nav-link" href="#exampleModal" data-toggle="modal"  ><span><i class="fas fa-question"></i></span> Ask Questions</a>
                </li>
 
                <li class="nav-item dropdown">
@@ -111,6 +111,53 @@
       </nav>
    </div>
    <!-- ======== search popup ======== -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ask Your Question </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+           <div class="">
+                    <button class="btn btn-primary">Public </button> <br>
+                    <p>Your question will be publish on public feed.</p>
+                    <button class="btn btn-primary">Privatlty</button>
+                    <p>you can ask specially from a mentor and  question will be shown in your dahsboard only</p>
+           </div>
+           <div class="form-group">
+                <label for="">From whome you are asking </label>
+                <select name="" id="" class="form-control">
+                    <option value="">Gym trainer</option>
+                    <option value="">Yoga Teacher</option>
+                 </select>
+           </div>
+
+           <div>
+                select a mentor
+           </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
    <!-- Modal -->
    <div class="modal fade full-model h100-dialog" id="pop-search" tabindex="-1" role="dialog" aria-labelledby="pop-search" aria-hidden="true">
       <div class="modal-dialog" role="document">

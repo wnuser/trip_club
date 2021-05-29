@@ -14,11 +14,8 @@ class MentorController extends Controller
     public function index($id)
     {
         //
-
-        $mentors    = \App\User::with(['countryRelation', 'stateRelation', 'cityRelation'])->whereDomain($id)->whereUserType(config('role.ROLES.MENTOR.TYPE'))->get();
-        // aprint($mentors->countryRelation->toArray());
+        $mentors    = \App\User::with(['countryRelation', 'stateRelation', 'cityRelation'])->whereMentorType($id)->whereUserType(config('role.ROLES.MENTOR.TYPE'))->get();
         return view('mentors', compact('mentors'));
-        
     }
 
     /**
