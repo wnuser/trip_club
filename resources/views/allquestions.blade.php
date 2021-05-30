@@ -126,9 +126,9 @@
                <div class="card sticky-dektop py-3 related-que">
                    <h5 class="px-3">Related Questions</h5>
                    <hr>
-                   <a href=""#>Someting someting someting someting someting </a>
-                   <a href=""#>officia voluptatum nostrum repudiandae odit iste illum laborum consequuntur molestiae doloribus </a>
-                   <a href=""#>officia voluptatum nostrum odit iste illum laborum consequuntur molestiae doloribus</a>
+                   <a href=""#><strong>Q.</strong>  Someting someting someting someting someting </a>
+                   <a href=""#><strong>Q.</strong> officia voluptatum nostrum repudiandae odit iste illum laborum consequuntur molestiae doloribus </a>
+                   <a href=""#><strong>Q.</strong> officia voluptatum nostrum odit iste illum laborum consequuntur molestiae doloribus</a>
 
                </div>
             </div>

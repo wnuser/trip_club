@@ -121,39 +121,48 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-           <div class="">
-                    <button class="btn btn-primary">Public </button> <br>
-                    <p>Your question will be publish on public feed.</p>
-                    <button class="btn btn-primary">Privatlty</button>
-                    <p>you can ask specially from a mentor and  question will be shown in your dahsboard only</p>
-           </div>
-           <div class="form-group">
-                <label for="">From whome you are asking </label>
+      <form action="#">
+      <div class="modal-body ask-q-modal">
+         <div class="custom-radios">
+            <div class="inner-col">
+               <input type="radio" id="color-1" name="color" value="color-1" checked>
+               <label for="color-1" class="pc">
+                  <span>
+                  <small></small>
+                  </span>
+               </label>
+               <p>Your question will be publish on public feed.</p>
+            </div>
+         
+            <div class="inner-col">
+               <input type="radio" id="color-2" name="color" value="color-2">
+               <label for="color-2" class="pv">
+                  <span>
+                  <small></small>
+                  </span>
+               </label> 
+               <p>you can ask specially from a mentor and  question will be shown in your dahsboard only</p>
+            </div>
+         
+         </div>
+           <div class="form-group mt-2">
+                <label for="" class="bold">From whom you are asking </label>
                 <select name="" id="" class="form-control">
                     <option value="">Gym trainer</option>
                     <option value="">Yoga Teacher</option>
                  </select>
            </div>
-
-           <div>
-                select a mentor
-           </div>
-
+         <div class="text-right">
+         <button type="submit" class="btn btn-small ml-auto">Proceed</button>
+         </div>
+         <div class="form-group mt-2">
+            <textarea name="quetion" id="" placeholder="Type your quetion here"></textarea>
+         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      </form>
     </div>
   </div>
 </div>
-
-
-
-
-
-
 
 
 

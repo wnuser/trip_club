@@ -26,10 +26,10 @@
                      <div class="body-content">
                         <h4>{{ $value->name }}</h4>
                         <p><span> {{ config('role.MENTORSTITLE.'.$value->mentor_type) }} </span> <span> from {{ $value->cityRelation->city_name }} </span> </p>
+                        <a href="#"> <button class="btn btn-small extra ml-auto mr-auto">View Profile</button> </a>
                         @php  $years  = ($value->experience == 1) ? 'year' : 'years';  @endphp
                         <h6><span><i class="fas fa-atom"></i></span> {{ $value->experience }} {{ $years }} of experience</h6>
                         <a href="#about-mentor{{$value->id}}"  data-toggle="modal"  class="btn btn-small">Ask Question</a>
-                        <a href="#"> <button class="btn btn-block btn-small">View Profile</button> </a>
                      </div>
                   </div>
                </div>
