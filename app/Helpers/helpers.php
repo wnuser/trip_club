@@ -167,3 +167,16 @@ function experience($id= false)
     }
     echo "</select>";
 }
+
+/**
+ * mentors Type options
+ */
+function mentorsOption()
+{
+    $mentors   = config('role.MENTORSTITLE');
+    foreach ($mentors as $key => $value) {
+        # code...
+        echo "<option value='".$key."'>".$value."</option>";
+    }
+
+}

@@ -31,9 +31,9 @@ return [
         ],
 
         'MENTORSTITLE' => [
-            '1' => 'GYM TRAINER',
-            '2' => 'YOGA TEACHER',
-            '3' => 'DOCTOR',
-            '4'  => 'RELATIONSHIP COACH'
+            '1' => 'Gym Trainer',
+            '2' => 'Yoga Teacher',
+            '3' => 'Doctor',
+            '4'  => 'Relationship Coach'
         ]
 ];

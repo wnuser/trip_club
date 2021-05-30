@@ -27,8 +27,14 @@
                <h4 class="mb-0">{{ $userInfo->name }}</h4>
                <p><span>{{ config('role.MENTORSTITLE.'.$userInfo->mentor_type) }}</span> </p>
                @php  $years  = ($userInfo->experience == 1) ? 'year' : 'years';   @endphp
-               <h6> {{ $userInfo->cityRelation->city_name }} , {{ $userInfo->stateRelation->state_name }} , {{ $userInfo->countryRelation->country_name }} <span class="dot"></span> <span>{{ config('constants.experience.'.$userInfo->experience) }} {{ $years }} of experience</span> <span class="dot"></span> 
-               <a href="#" class="">Contact Info</a></h6>
+
+               <h6> {{ ($userInfo->cityRelation)?  $userInfo->cityRelation->city_name.',' : false }}  {{ ($userInfo->stateRelation) ?  $userInfo->stateRelation->state_name.',' : false }}  {{ ($userInfo->countryRelation)  ? $userInfo->countryRelation->country_name.',' : false }} 
+               
+               @if($userInfo->experience)
+                <span class="dot"></span> 
+               <span>{{  config('constants.experience.'.$userInfo->experience) }} {{ $years }} of experience</span> <span class="dot"></span> 
+               @endif
+               <!-- <a href="#" class="">Contact Info</a></h6> -->
             </div>
          </div>
 
@@ -55,19 +61,17 @@
                   <p> {{ $userInfo->office_address }} </p>
                   </div>
                </div>
-
-
             </div>
-
-
-
-
             <div class="col-lg-4 col-md-12 col-12">
               <div class="card">
                  <ul>
                      <li> 21 New Questions </li>
                      <li> 22 Answers Given  </li>
+                     <li></li>
                  </ul>
+                 <button class="btn btn-primary">Check Answers</button>
+                  <br>
+                 <button class="btn btn-primary">Ask Question</button>
               </div>
             </div>
         </div>
@@ -81,7 +85,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <form action="#">
+        
       <div class="modal-body p-0">
          <div class="about-card profile-popup">
             <div class="cover-bg">
@@ -94,6 +98,9 @@
              <label for="change-profile" class="btn-icon"><i class="fas fa-camera"></i></label>
              <input type="file" class="hidden" id="change-profile"/>
          </div>
+         <form action="{{ route('update.profile') }}" method="POST">
+         @csrf
+         <input type="hidden" name="id" value="{{ Auth::user()->id }}">
          <div class="about-body">
             <div class="about-info-box">
                   <div class="row">
@@ -122,8 +129,8 @@
                      <div class="col-lg-6">
                         <label for="name">City</label>
                         {{  updateCity($userInfo->city) }}
-
                      </div>
+                  @if(Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE'))
                      <div class="col-lg-6">
                           <label for="domain">Your Domain</label>
                           {{  updateDomain($userInfo->mentor_type) }}
@@ -147,9 +154,10 @@
                          <textarea name="office_address"> {{ $userInfo->office_address  }} </textarea>
                      </div>
 
-                     <div class="col-12">
-                           <button class="btn btn-primary" type="submit" >Save</button>
-                     </div>
+                     <!-- <div class="col-12">
+                           <button class="btn btn-primary"  >Save</button>
+                     </div> -->
+                  @endif  
                   </div>
               
             </div>
@@ -157,7 +165,7 @@
         
          </div>
          <div class="modal-footer">
-             <a href="#" class="btn btn-small">Save</a>
+             <button type="submit" class="btn btn-small">Save</button>
          </div>
          </form>
     </div>

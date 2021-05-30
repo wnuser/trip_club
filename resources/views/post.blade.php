@@ -22,17 +22,20 @@
                  </div>
             </div>
             <div class="col-lg-6 col-md-12 col-12">
+
+            @if(Auth::check() && Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE'))
                <div class="card post-card p-3">
                    <div class="d-flex">
                      <div class="profile-img">
-                     <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                     @php  $src    =  (Auth::user()->profile_pic) ? (Auth::user()->profile_pic) : 'userIcon.png';  @endphp
+                     <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
                     </div>
                     <a href="#create-post" data-toggle="modal">
                       Write a post
                     </a>
-                    
                    </div>
                </div>
+            @endif   
 
                 <div class="card feed-card p-3">
                    <div class="d-flex hover-box-wrap">
@@ -58,7 +61,7 @@
                               </div>
                            </div>
                            <div class="chat-btn d-flex">
-                               <a href="#" class="btn btn-small mr-2">Chat</a>
+                               <a href="#" class="btn btn-small mr-2">Ask question</a>
                                <a href="#" class="btn btn-small">View Profile</a>
                            </div>
                         </div>
@@ -128,8 +131,11 @@
                     <div class="filter-sd px-3">
                        <h5>Sort</h5>
                        <select name="filter" id="">
-                       <option value="1">Recent</option>
-                          <option value="2">Top</option>
+                          <option value="">Filter By Mentors</option>
+                          {{ mentorsOption() }}
+<!--                           
+                          <option value="1">Recent</option>
+                          <option value="2">Top</option> -->
                        </select>
                     </div>
                     <hr>
@@ -188,7 +194,7 @@
   <!-- === create post modal === -->
     <!-- Modal -->
 <div class="modal fade modal-create-post" id="create-post" tabindex="-1" role="dialog" aria-labelledby="about-mentorlLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <form action="">
         <div class="modal-header py-3">
@@ -205,16 +211,19 @@
                      </a>
                   </div>
                      <div class="name-post">
-                        <h6>John Doe</h6>
-                        <span>Gym trainer dehradun</span>
+                        <h6> {{ Auth::user()->name }} </h6>
+                        <span> {{ config('role.MENTORSTITLE.'.Auth::user()->mentor_type) }}  </span>
                      </div>
             </div>
-               <textarea name="write-post" id="" placeholder="Write something here.." autofocus="autofocus"></textarea>   
+               <textarea name="title" id="title" placeholder="Write something here.." autofocus="autofocus"></textarea>  
+               <div id="post-image">
+               
+               </div> 
          </div>
          <div class="modal-footer text-right pt-1 pb-2">
               <div class="photo-upload">
                   <label for="upload-img"><i class="fas fa-image"></i> <span>Photo</span> </label>
-                  <input type="file" class="form-control" id="upload-img"/>
+                  <input type="file" class="form-control" name="image" id="upload-img"/>
                </div>
              <a href="#" class="btn btn-small">Save</a>
          </div>
@@ -225,3 +234,28 @@
 </section>
 
 @endsection('content')
+
+@section('custom_js')
+<script>
+     $('#upload-img').on('change', function(e){
+
+      //   $('#post-image').removeChild('post-image');
+
+       for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+
+        var file = e.originalEvent.srcElement.files[i];
+        
+        var img = document.createElement("img");
+        var reader = new FileReader();
+        reader.onloadend = function() {
+             img.src = reader.result;
+             img.setAttribute("class", 'img-fluid');
+            //  img.addClass('img-fluid');
+        }
+        reader.readAsDataURL(file);
+        $('#post-image').append(img);
+      //   $("#title").after(img);
+    }
+     });
+</script>
+@endsection
