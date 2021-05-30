@@ -63,15 +63,17 @@
                </div>
             </div>
             <div class="col-lg-4 col-md-12 col-12">
-              <div class="card">
-                 <ul>
-                     <li> 21 New Questions </li>
-                     <li> 22 Answers Given  </li>
-                     <li></li>
-                 </ul>
-                 <button class="btn btn-primary">Check Answers</button>
-                  <br>
-                 <button class="btn btn-primary">Ask Question</button>
+              <div class="card py-3 qna-sidebar sticky-desktop">
+               <a href="#">
+                  <strong>21 New Questions</strong>
+                  <small>Pending to answers</small>
+                  <span class="tag new">New</span>
+               </a>
+               <a href="#">
+                  <strong>22 Answers Given</strong>
+                  <small>Completed to answers</small>
+                  <span class="tag completed">Completed</span>
+               </a>
               </div>
             </div>
         </div>
@@ -165,7 +167,7 @@
         
          </div>
          <div class="modal-footer">
-             <button type="submit" class="btn btn-small">Save</button>
+             <button type="submit" class="btn btn-small mt-0">Save</button>
          </div>
          </form>
     </div>

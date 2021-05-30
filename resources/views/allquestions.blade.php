@@ -2,20 +2,135 @@
 
 @section('content')
 
-<section>
-    <div class="container m-5">
+<section class="question-sec">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-8" >
-                <p> <strong> Q1.what is the something something something something? </strong></p>
-                <hr>
-                <p>  <strong>Answer 1:</strong>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid beatae harum, adipisci accusamus esse libero ipsa necessitatibus perferendis nemo saepe repellendus accusantium dolore, quam porro ab quasi inventore temporibus et.</p>
-                 <hr>
-                 <p>  <strong>Answer 2:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt nemo ipsam perferendis voluptas consectetur incidunt unde magnam suscipit ipsa esse ut, doloribus dignissimos reprehenderit. Dolorem tempore odio voluptatem cupiditate obcaecati. </p>
+            <div class="col-lg-8 col-md-8">
+                <div class="card p-3">
+                    <div class="question-wrapper">
+                        <div class="profile-img">
+                            <a href="#">
+                                <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="question">
+                        <h5>what is the something something something something? </h5>
+                        </div>
+                    </div>
+                     <div class="answers-wrapper">
+                        <span class="totol-ans">22 Answers</span>
+                         <div class="inner-box">
+                            <div class="d-flex">
+                                <div class="profile-img">
+                                    <a href="#">
+                                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="name-wrap">
+                                    <h6>John Doe</h6>
+                                    <span>Gym trainer dehradun</span>
+                                </div>
+                            </div>
+                            <div class="answers-box">
+                                <p><strong>1.</strong>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil esse distinctio dignissimos officia voluptatum nostrum doloremque repudiandae odit iste illum laborum consequuntur molestiae doloribus aliquam, aperiam, excepturi molestias laboriosam incidunt!</p>
+                                <div class="action-box">
+                                    <a href="#"><span><i class="far fa-heart"></i></span> Like</a> <span>| 34</span>
+                                </div>
+                            </div>
+                         </div>
+                         <!-- /inner box -->
+                            <hr>
+                         <div class="inner-box">
+                            <div class="d-flex">
+                                <div class="profile-img">
+                                    <a href="#">
+                                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="name-wrap">
+                                    <h6>John Doe Junior</h6>
+                                    <span>Gym trainer dehradun</span>
+                                </div>
+                            </div>
+                            <div class="answers-box">
+                                <p><strong>2.</strong> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil esse distinctio dignissimos officia voluptatum nostrum doloremque repudiandae odit iste illum laborum consequuntur molestiae doloribus aliquam, aperiam, excepturi molestias laboriosam incidunt!</p>
+                                <div class="action-box">
+                                    <a href="#"><span><i class="far fa-heart"></i></span> Like</a> <span>| 134</span>
+                                </div>
+                            </div>
+                         </div>
+                         <!-- /inner box -->
+                     </div>
+                </div>
+                <!-- /card question -->
+                <div class="card p-3">
+                    <div class="question-wrapper">
+                        <div class="profile-img">
+                            <a href="#">
+                                <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="question">
+                        <h5>what is the something something something something? </h5>
+                        </div>
+                    </div>
+                     <div class="answers-wrapper">
+                        <span class="totol-ans">22 Answers</span>
+                         <div class="inner-box">
+                            <div class="d-flex">
+                                <div class="profile-img">
+                                    <a href="#">
+                                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="name-wrap">
+                                    <h6>John Doe</h6>
+                                    <span>Gym trainer dehradun</span>
+                                </div>
+                            </div>
+                            <div class="answers-box">
+                                <p><strong>1.</strong>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil esse distinctio dignissimos officia voluptatum nostrum doloremque repudiandae odit iste illum laborum consequuntur molestiae doloribus aliquam, aperiam, excepturi molestias laboriosam incidunt!</p>
+                                <div class="action-box">
+                                    <a href="#"><span><i class="far fa-heart"></i></span> Like</a> <span>| 14</span>
+                                </div>
+                            </div>
+                         </div>
+                         <!-- /inner box -->
+                            <hr>
+                         <div class="inner-box">
+                            <div class="d-flex">
+                                <div class="profile-img">
+                                    <a href="#">
+                                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="name-wrap">
+                                    <h6>John Doe Junior</h6>
+                                    <span>Gym trainer dehradun</span>
+                                </div>
+                            </div>
+                            <div class="answers-box">
+                                <p><strong>2.</strong> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil esse distinctio dignissimos officia voluptatum nostrum doloremque repudiandae odit iste illum laborum consequuntur molestiae doloribus aliquam, aperiam, excepturi molestias laboriosam incidunt!</p>
+                                <div class="action-box">
+                                    <a href="#"><span><i class="far fa-heart"></i></span> Like</a> <span>| 34</span>
+                                </div>
+                            </div>
+                         </div>
+                         <!-- /inner box -->
+                     </div>
+                </div>
+                <!-- /card question -->
+
             </div>
             <div class="col-lg-4 col-md-4">
-               <strong>Related Questionn</strong> <br>
-               <a href=""> <strong>Q.someting someting someting someting someting someting</strong> </a>
+               <div class="card sticky-dektop py-3 related-que">
+                   <h5 class="px-3">Related Questions</h5>
+                   <hr>
+                   <a href=""#>Someting someting someting someting someting </a>
+                   <a href=""#>officia voluptatum nostrum repudiandae odit iste illum laborum consequuntur molestiae doloribus </a>
+                   <a href=""#>officia voluptatum nostrum odit iste illum laborum consequuntur molestiae doloribus</a>
+
+               </div>
             </div>
         </div>
     </div>
