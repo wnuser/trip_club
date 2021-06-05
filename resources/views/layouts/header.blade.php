@@ -153,7 +153,7 @@
          <!-- form for public questions  --->
          <div id="text-input">
             <div class="form-group mt-2" >
-               <label for="">Write Your Question.</label>
+               <label for="" class="bold">Write Your Question.</label>
                <textarea name="quetion" id="" placeholder="Type your quetion here"></textarea>
             </div>
             <div class="form-group mb-2">

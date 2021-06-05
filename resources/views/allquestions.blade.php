@@ -6,6 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8">
+                @include('layouts.error')
 
                 @foreach($publicQuestions as $key => $value)
                 <div class="card p-3">
@@ -16,13 +17,25 @@
                                 <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
                             </a>
                         </div>
+                        <div class="name-wrap">
+                            <h6>{{ $value->seekers->name }}</h6>
+                        </div>
                         <div class="question">
-                        <h5> {{ $value->question }} </h5>
+                        @php $isAnswered   = false; @endphp
+                        @foreach($value->answers as $kk => $vv)
+                            @if($vv->answerMentor->id  == Auth::user()->id)
+                               @php $isAnswered = true;  @endphp
+                            @endif
+                        @endforeach
+
+                        <h5>Q. {{ $value->question }} </h5>
+                        @if(Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE') && !$isAnswered)
+                              <button class="btn btn-primary float-right" data-toggle="modal" data-target="#answerModal{{$value->id}}"> <i class="fa fa-edit"></i> Write Answer</button>
+                        @endif
                         </div>
                     </div>
                      <div class="answers-wrapper">
                         <span class="totol-ans">{{ $value->answers->count() }} Answers</span>
-
                         @php  $count = 1; @endphp 
                         @foreach($value->answers as $k => $v)
                          <div class="inner-box">
@@ -39,9 +52,9 @@
                                 </div>
                             </div>
                             <div class="answers-box">
-                                <p><strong>{{ $count++ }} .</strong> {!! $v->answer !!} </p>
+                                <p> {!! $v->answer !!} </p>
                                 <div class="action-box">
-                                    <a href="#"><span><i class="far fa-heart"></i></span> Like</a> <span>| {{ $v->likes }} </span>
+                                    <a href="javascript::void()" onclick="addLike({{ $v->id }})" ><span><i class="far fa-heart"></i></span> Like</a> <span>| {{ $v->likes }} </span>
                                 </div>
                             </div>
                          </div>
@@ -52,10 +65,54 @@
                          <!-- /inner box -->
                      </div>
                 </div>
+
+                <!-- The Modal -->
+                <div class="modal fade modal-about-mentor"  id="answerModal{{ $value->id }}">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Write Your Answer</h4>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="{{ route('save.answer') }}"   method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="" class="bold"> <strong> Q. {{ $value->question }} </strong> </label>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="answer" id="" cols="30" rows="10"></textarea>
+                                <input type="hidden" value="{{ Auth::user()->id }}" name="mentor_id">
+                                <input type="hidden" value="{{ $value->id }}" name="question_id">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-small float-right">Submit</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                    </div>
+                </div>
+                </div>
+
+
                 @endforeach
 
                 <!-- /card question -->
-                <div class="card p-3">
+                <!-- <div class="card p-3">
                     <div class="question-wrapper">
                         <div class="profile-img">
                             <a href="#">
@@ -87,7 +144,6 @@
                                 </div>
                             </div>
                          </div>
-                         <!-- /inner box -->
                             <hr>
                          <div class="inner-box">
                             <div class="d-flex">
@@ -108,9 +164,8 @@
                                 </div>
                             </div>
                          </div>
-                         <!-- /inner box -->
                      </div>
-                </div>
+                </div> -->
                 <!-- /card question -->
 
             </div>
@@ -127,5 +182,37 @@
         </div>
     </div>
 </section>
+
+@endsection
+
+@section('custom_js')
+
+<script>tinymce.init({ selector:'textarea' });
+function addLike(answerId)
+    {
+      //  e.preventDefault();
+
+      $.ajaxSetup({
+        headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+       });
+
+       $.ajax({
+           method : "POST",
+           url : '/add/like',
+           data : { answerId : answerId  },
+           success:function(data){
+               console.log(data, 'test like');
+               
+           },
+           error:function(){
+
+           }
+       })
+    }
+
+</script>
+
 
 @endsection

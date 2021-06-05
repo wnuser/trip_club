@@ -33,6 +33,37 @@ class AnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     public function addlikes(Request $request)
+     {
+        //  aprint($request->all());
+         $answerId  = $request->answerId;
+         $userId    = Auth::user()->id;
+
+         $existLike   = \App\Models\likes::whereUserId($userId)->first();
+         if($existLike) {
+
+         } else {
+             $data['answer_id']  = $answerId;
+             $data['user_id']    = $userId;
+             $data['likes']      = 1;
+
+             $like = new \App\Models\likes;
+             $like->fill($data)->save();
+
+         }
+
+         $totalLikes   = \App\Models\likes::whereAnswerId($answerId)->whereUserId($userId)->count();
+         return $totalLikes;
+
+     }
+
+
+
+
+
+
+
     public function store(Request $request)
     {
         //

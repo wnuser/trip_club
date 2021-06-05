@@ -15,7 +15,7 @@ class QuestionsController extends Controller
     public function index()
     {
         //
-        $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereIsPrivate(0)->get();
+        $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereIsPrivate(0)->orderBy('id', 'DESC')->get();
         // aprint($publicQuestions->toArray());
         return view('allquestions', compact('publicQuestions'));
     }
