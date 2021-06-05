@@ -2848,6 +2848,12 @@ span.dot {
   }
 }
 
+@media screen and (min-width: 993px) {
+  .sidebar-click {
+    display: none;
+  }
+}
+
 /* Conatct start */
 
 .header-title {
