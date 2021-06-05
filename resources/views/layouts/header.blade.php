@@ -24,9 +24,9 @@
                <li class="nav-item">
                   <a class="nav-link" href="{{ route('category.blogs', ['id'=>5]) }}"> <span><i class="fas fa-heartbeat"></i></span> fitness</a>
                </li> -->
-               <li class="nav-item">
+               <!-- <li class="nav-item">
                   <a class="nav-link" href="{{ route('feed') }}"><span><i class="fas fa-newspaper"></i></span>  feed</a>
-               </li>
+               </li> -->
 
                <li class="nav-item dropdown">
                   <a class="nav-link" href="#" id="dropdownMenuButton" data-toggle="dropdown"> <span><i class="fas fa-chalkboard-teacher"></i></span> mentors <i class="fas fa-angle-down"></i></a> 
@@ -38,10 +38,6 @@
                   </div>
                </li>
               
-
-              
-
-               
                <li class="nav-item">
                   <a class="nav-link" href="{{ route('forum') }}"><span><i class="fas fa-edit"></i></span> View Answers</a>
                </li>

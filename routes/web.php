@@ -93,6 +93,7 @@ Route::get('/answered/questions', 'ProfileController@answeredQuestions')->name('
 Route::post('/save/answer', 'AnswerController@store')->name('save.answer');
 Route::post('ask', 'QuestionsController@askedQuestion')->name('ask.question');
 Route::get('/your/questions', 'ProfileController@askedQuestions')->name('your.questions');
+Route::post('/save/post', 'PostController@store')->name('save.post');
 
 Route::get('/feed', 'PostController@index')->name('feed');
 /**

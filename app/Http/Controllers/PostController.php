@@ -14,9 +14,10 @@ class PostController extends Controller
     public function index()
     {
         //
-        return view('post');
+        $posts    =  \App\Models\post::with(['user.cityRelation'])->orderBy('id', 'DESC')->get();
+        // aprint($posts->toArray());
+        return view('post', compact('posts'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -36,6 +37,22 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        // aprint($request->all());
+        if ($request->image) {
+            $image          = $request->image;
+            $image_new_name = time().$image->getClientOriginalName();
+            $image->move('Images/uploads', $image_new_name);
+        }
+
+        $data           = $request->all();
+        $data['image']  = $image_new_name;
+
+        $post   = new \App\Models\post;
+        $post->fill($data)->save();
+        return back();
+        
+
+
     }
 
     /**
