@@ -66572,8 +66572,8 @@ $(document).ready(function () {
   // })
 
   $('.sidebar-click').click(function (e) {
-    $('.sidebar-admin').toggleClass('close-side');
-    $('.main-wrap-admin').toggleClass('wrap-full');
+    $('.navbar-collapse').toggleClass('open-sidebar');
+    $('body').toggleClass('overlay');
   }); //  $('#records-table').DataTable();
 }); // testimonial js
 
@@ -66669,8 +66669,8 @@ $(".side-carousel").owlCarousel({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/jitendra/Desktop/health-mentor/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/jitendra/Desktop/health-mentor/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\DESKTOP\projects\mentors\healthmentors\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\DESKTOP\projects\mentors\healthmentors\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -6,11 +6,11 @@
             <a class="nav-link" data-toggle="modal" href="#pop-search"><i class="fas fa-search"></i></a>
          </li>
          <a class="navbar-brand d-lg-none mob-centred-logo" href="{{ route('Home') }}"><img src="{{ asset('Images/healthlogo.png') }}" alt="logo"/> </a>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+         <button class="sidebar-click" type="button" aria-expanded="false" aria-label="Toggle navigation">
          <span class="fa fa-bars"></span>
          </button>
          <!--  Used flexbox utility classes to change how the child elements are justified  -->
-         <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
+         <div class="navbar-collapse justify-content-between" id="navbarToggle">
            <a class="navbar-brand d-none d-lg-block " href="{{ route('Home') }}"><img src="{{ asset('Images/healthlogo.png') }}" alt="logo"/></a>
             <ul class="navbar-nav mr-right" >
                <li class="nav-item">

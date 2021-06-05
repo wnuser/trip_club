@@ -2392,19 +2392,35 @@ span{
 }
 
 .related-que{
+	hr{
+		margin-bottom: 0;
+	}
 	a{
 		color: #000;
-		padding: 5px 15px;
+		padding: 18px 15px;
 		font-size: 16px;
 		// font-weight: 600;
-		line-height: 1.3;
+		line-height: 1.4;
 		border-bottom: 1px solid $lighter-gray-body;
+		strong{
+			background: $theme-green;
+			color: $white;
+			padding: 2px 10px;
+			display: inline-block;
+			border-radius: 4px;
+			font-size: 12px;
+			line-height: 14px;
+		}
+		span{
+			display: block;
+		}
 		&:last-child{
 			border-bottom: none;
 		}
 		&:hover{
 			color: $theme-green;
 			text-decoration: none;
+			background-color: #fbfbfb;
 		}
 	}
 }
@@ -2537,5 +2553,74 @@ span{
 	}
 	.bold{
 		font-weight: 600;
+	}
+}
+
+@media screen and (max-width:992px){
+	nav {
+		.navbar-collapse{
+			position: fixed;
+			left: 0;
+			background: #fff;
+			height: 100%;
+			top: 0;
+			width: 250px;
+			display: block;
+			left: -250px;
+			transition: .5s;
+			box-shadow: 1px 2px 3px grey;
+			overflow-y: scroll;
+			&.open-sidebar{
+				left: 0;
+				display: block;
+				transition: .5s;
+			}
+
+		}
+	}
+	body{
+		&.overlay{
+			position: relative;
+			overflow: hidden;
+			&:after{
+				content: '';
+				left: 0;
+				top: 0;
+				position: absolute;
+				height: 100%;
+				width: 100%;
+				background: rgba(0,0,0,.5);
+				z-index: 1;
+			}
+		}
+	}
+	.sidebar-click{
+		background: transparent;
+		padding: 3px 10px;
+		border: none;
+		font-size: 25px;
+		right: 0px;
+		position: absolute;
+		color: $theme-green;
+		&:focus{
+			box-shadow: none;
+			outline: none;
+		}
+	}
+	header {
+		.navbar {
+			padding-top: 5px;
+			padding-bottom: 5px;
+			.dropdown-menu{
+				box-shadow: none;
+				border-radius: 0px !important;
+			}
+			.nav-link{
+				border-bottom: 1px solid $lighter-gray-body;
+				&.active{
+					border-bottom: 1px solid $lighter-gray-body;
+				}
+			}
+		}
 	}
 }
