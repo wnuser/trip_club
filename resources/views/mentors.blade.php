@@ -6,6 +6,7 @@
 <!-- mentors grid -->
    <div class="row">
       <div class="col-12">
+         @include('layouts.error')
          <div class="card p-3">
            <div class="row">
             @foreach($mentors as $key => $value)
@@ -26,10 +27,10 @@
                      <div class="body-content">
                         <h4>{{ $value->name }}</h4>
                         <p><span> {{ config('role.MENTORSTITLE.'.$value->mentor_type) }} </span> <span> from {{ $value->cityRelation->city_name }} </span> </p>
-                        <a href="#"> <button class="btn btn-small extra ml-auto mr-auto">View Profile</button> </a>
+                        <a href="#about-mentor{{$value->id}}" data-toggle="modal" > <button class="btn btn-small extra ml-auto mr-auto">View Profile</button> </a>
                         @php  $years  = ($value->experience == 1) ? 'year' : 'years';  @endphp
                         <h6><span><i class="fas fa-atom"></i></span> {{ $value->experience }} {{ $years }} of experience</h6>
-                        <a href="#about-mentor{{$value->id}}"  data-toggle="modal"  class="btn btn-small">Ask Question</a>
+                        <a href="#askQuestionModel{{$value->id}}"  data-toggle="modal"  class="btn btn-small">Ask Question</a>
                      </div>
                   </div>
                </div>
@@ -66,7 +67,7 @@
          <div class="about-body">
             <div class="button-strip">
                 <!-- <a href="#" class="btn btn-small">Connect</a> -->
-                <a href="#" class="btn btn-small">Ask Question</a>
+                <a href="#askQuestionModel{{$value->id}}"  data-toggle="modal" class="btn btn-small">Ask Question</a>
                 <!-- <a href="#" class="btn btn-small">More</a> -->
             </div>
             <div class="about-info-box">
@@ -96,11 +97,55 @@
          <p> {{ $v->office_address }} </p>
       </div>
 
+      </div>
     </div>
   </div>
 </div>
 
+
+
+<div class="modal fade modal-about-mentor" id="askQuestionModel{{$v->id}}" tabindex="-1" role="dialog" aria-labelledby="about-mentorlLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ask Your Question </h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <form action="{{ route('save.question') }}" method="POST">
+      @csrf
+      <div class="modal-body ask-q-modal">
+         <p> You are asking from  {{ $v->name }} ({{ config('role.MENTORSTITLE.'.$v->mentor_type) }}) </p>
+         <!-- <p>  </p> -->
+         <div class="form-group mt-2">
+            <textarea name="question" required id="" placeholder="Type your quetion here"></textarea>
+         </div>
+         @if(Auth::check())
+            <input type="hidden" value="{{ Auth::user()->id }}" name="seeker_id">
+         @endif
+         <input type="hidden" name="mentor_id" value="{{ $v->id }}">
+         <div class="text-right">
+         <button type="submit" class="btn btn-small ml-auto">Submit</button>
+         </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
 @endforeach
+
+
+
+
+
+
 
 </section>
 

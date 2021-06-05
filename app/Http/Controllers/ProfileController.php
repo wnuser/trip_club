@@ -18,9 +18,48 @@ class ProfileController extends Controller
     public function index()
     {
         
-        $userInfo   =   \App\User::with(['countryRelation','stateRelation', 'cityRelation'])->whereId(Auth::user()->id)->first();
-        return view('profile', compact('userInfo'));
+        $userInfo           = \App\User::with(['countryRelation','seekerQuestions','stateRelation', 'cityRelation', 'mentorQuestions', 'userQuestions'])->whereId(Auth::user()->id)->first();
+        $newQuestions       = \App\Models\questions::whereMentorId(Auth::user()->id)->whereIsAnswered(0)->count();
+        $completedQuestions = \App\Models\questions::whereMentorId(Auth::user()->id)->whereIsAnswered(1)->count();
 
+        return view('profile', compact('userInfo', 'newQuestions', 'completedQuestions'));
+
+    }
+
+
+    /**
+     * new questions for mentors 
+     */
+    public function newQuestions()
+    {
+        $mentorId    = Auth::user()->id;
+        $newQuestions  = \App\Models\questions::with(['seekers'])->whereMentorId($mentorId)->whereIsAnswered(0)->get();
+        return view('new_questions', compact('newQuestions'));
+    }
+
+    /**
+     * answered questions from mentors 
+     */
+    public function answeredQuestions()
+    {
+        $mentorId   = Auth::user()->id;
+        $answeredQuestions  = \App\Models\questions::with(['seekers', 'mentor', 'answers'])->whereMentorId($mentorId)->whereIsAnswered(1)->get();
+        // aprint($answeredQuestions->toArray());
+        return view('completed_questions', compact('answeredQuestions'));
+    }
+
+    /**
+     * getting user asked questions
+     * 
+     */
+    public function askedQuestions() 
+    {
+        $userId  = Auth::user()->id;
+        $askedQuestions  = \App\Models\questions::with(['seekers', 'mentor', 'answers.answerMentor'])->whereSeekerId($userId)->get();
+        // echo $userId;
+        // aprint($askedQuestions->toArray());
+        return view('asked_questions', compact('askedQuestions'));
+        
     }
 
      /**

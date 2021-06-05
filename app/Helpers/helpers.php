@@ -174,6 +174,7 @@ function experience($id= false)
 function mentorsOption()
 {
     $mentors   = config('role.MENTORSTITLE');
+        echo "<option value=''>Select Mentor Type </option>";
     foreach ($mentors as $key => $value) {
         # code...
         echo "<option value='".$key."'>".$value."</option>";

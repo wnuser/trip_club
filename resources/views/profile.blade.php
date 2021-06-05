@@ -55,27 +55,45 @@
                   </div>
                </div>
 
-               <div class="card card-hm">
+         @if(Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE'))
+            <div class="card card-hm">
                <div class="about-info-sec">
                   <h5> <i class="fas fa-map-marked"></i> Office Address</h5>
                   <p> {{ $userInfo->office_address }} </p>
                   </div>
                </div>
-            </div>
+           
+         @endif   
+
+         </div>
+         @if(Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE'))
             <div class="col-lg-4 col-md-12 col-12">
               <div class="card py-3 qna-sidebar sticky-desktop">
-               <a href="#">
-                  <strong>21 New Questions</strong>
+               <a href="{{ route('mentor.new.questions') }}">
+                  <strong>{{ $newQuestions }} New Questions</strong>
                   <small>Pending to answers</small>
                   <span class="tag new">New</span>
                </a>
-               <a href="#">
-                  <strong>22 Answers Given</strong>
+               <a href="{{ route('mentor.answered.questions') }}">
+                  <strong>{{ $completedQuestions }} Answers Given</strong>
                   <small>Completed to answers</small>
                   <span class="tag completed">Completed</span>
                </a>
               </div>
             </div>
+         @endif   
+
+         @if(Auth::user()->user_type == config('role.ROLES.MENTEE.TYPE'))
+            <div class="col-lg-4 col-md-12 col-12">
+              <div class="card py-3 qna-sidebar sticky-desktop">
+               <a href="{{ route('your.questions') }}">
+                  <strong>{{ $userInfo->seekerQuestions->count() }} Your Questions</strong>
+                  <small>Check answers</small>
+                  <!-- <span class="tag new">New</span> -->
+               </a>
+              </div>
+            </div>
+         @endif
         </div>
   </div>
 
@@ -141,24 +159,21 @@
                         <label for="name">How many years of experience you have?</label>
                         {{ experience($userInfo->experience) }}
                      </div>
+                  @endif   
 
                      <div class="col-12">
-                        <label for="name">Education (Mention about your educational backgroud including all certifications.) </label>
+                        <label for="name">Education {{ (Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE')) ? '(Mention about your educational backgroud including all certifications.)' : ''  }}   </label>
                          <textarea name="education">{{ $userInfo->education }} </textarea>
                      </div>
                      <div class="col-12">
-                        <label for="name">About (Mention about yourself, what kind of personality you are? your achievements, your expertise.) </label>
+                        <label for="name">About {{ ((Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE'))) ? '(Mention about yourself, what kind of personality you are? your achievements, your expertise.)' : '' }}  </label>
                          <textarea name="about"> {{ $userInfo->about }} </textarea>
                      </div>
-
+                  @if(Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE'))
                      <div class="col-12">
                         <label for="name">Office address (Your working place address from where you are operating.) </label>
                          <textarea name="office_address"> {{ $userInfo->office_address  }} </textarea>
                      </div>
-
-                     <!-- <div class="col-12">
-                           <button class="btn btn-primary"  >Save</button>
-                     </div> -->
                   @endif  
                   </div>
               

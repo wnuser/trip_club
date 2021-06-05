@@ -47,7 +47,11 @@
                </li>
 
                <li class="nav-item">
+               @if(Auth::check())
                   <a class="nav-link" href="#exampleModal" data-toggle="modal"  ><span><i class="fas fa-question"></i></span> Ask Questions</a>
+               @else
+               <a class="nav-link" href="{{ route('login') }}" ><span><i class="fas fa-question"></i></span> Ask Questions</a>
+               @endif   
                </li>
 
                <li class="nav-item dropdown">
@@ -121,9 +125,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="#">
+     
+      <form action="{{ route('ask.question') }}" method="POST">
+      @csrf
       <div class="modal-body ask-q-modal">
-         <div class="custom-radios">
+
+
+      <div class="custom-radios">
             <div class="inner-col">
                <input type="radio" id="color-1" name="color" value="color-1" checked>
                <label for="color-1" class="pc">
@@ -145,21 +153,45 @@
             </div>
          
          </div>
-           <div class="form-group mt-2">
+
+         <!-- form for public questions  --->
+         <div id="text-input">
+            <div class="form-group mt-2" >
+               <label for="">Write Your Question.</label>
+               <textarea name="quetion" id="" placeholder="Type your quetion here"></textarea>
+            </div>
+            <div class="form-group mb-2">
+               <button type="submit" class="btn float-right btn-small mt-auto">Submit</button>
+            </div>
+         </div>
+         
+         <!-- complete for public questions  --->
+
+
+         <!-- form for private questions -->
+         
+           <div class="form-group mt-2 d-none" id="mentor_type">
                 <label for="" class="bold">From whom you are asking </label>
-                <select name="" id="" class="form-control">
-                    <option value="">Gym trainer</option>
-                    <option value="">Yoga Teacher</option>
+                <select name="mentor_type" id="mentor_type" class="form-control">
+                    {{ mentorsOption() }}
                  </select>
            </div>
-         <div class="text-right">
-         <button type="submit" class="btn btn-small ml-auto">Proceed</button>
+         <div class="text-center mt-4 d-none" id="proceed_btn">
+             <button type="submit" class="btn btn-small ml-auto">Proceed</button>
          </div>
-         <div class="form-group mt-2">
-            <textarea name="quetion" id="" placeholder="Type your quetion here"></textarea>
-         </div>
+         
+
       </div>
       </form>
+      <div class="modal-footer">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+      </div>
+      
+
+
+
     </div>
   </div>
 </div>
@@ -250,3 +282,4 @@
       </div>
    </div>
 </header>
+

@@ -50,6 +50,11 @@ return [
         '8' => '20+'
     ],
 
+    'QUESTIONSTATUS' => [
+        'ISPRIVATE' => 1,
+        'ISPUBLIC'  => 0
+    ]
+
     ];
 
 

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Auth;
 
-class QuestionsController extends Controller
+use Illuminate\Http\Request;
+
+class AnswerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,31 +15,6 @@ class QuestionsController extends Controller
     public function index()
     {
         //
-        $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereIsPrivate(0)->get();
-        // aprint($publicQuestions->toArray());
-        return view('allquestions', compact('publicQuestions'));
-    }
-
-    /**
-     * function for asked questions from public modal 
-     */
-    public function askedQuestion(Request $request)
-    {
-        // aprint($request->all());
-        if($request->mentor_type) : 
-            $mentor_type   = $request->mentor_type;
-            return redirect('/mentors/'.$mentor_type);
-        else:
-            $data['question']   = $request->quetion;
-            $data['seeker_id']  = Auth::user()->id;
-            $data['is_private'] = 0;
-
-            $question = new \App\Models\questions;
-            $question->fill($data)->save();
-
-            return back()->with('success', 'Your question added successfully');
-            
-        endif;
     }
 
     /**
@@ -61,21 +36,31 @@ class QuestionsController extends Controller
     public function store(Request $request)
     {
         //
-        // aprint($request->all());
         $request->validate([
-            'question' => 'required',
+            'answer' => 'required',
+            'question_id' => 'required'
         ]);
 
-        $data  = $request->all();
-        if(isset($data['seeker_id'])) {
-            $data['is_private']  =  config('constants.QUESTIONSTATUS.ISPRIVATE');
-        } else {
-            $data['is_private']  =  config('constants.QUESTIONSTATUS.ISPUBLIC');
+        // aprint($request->all());
 
+        
+        try {
+            //code...
+
+            $question   = \App\Models\questions::whereId($request->question_id)->first();
+            $question->is_answered = 1;
+            $question->save();
+
+            $data  = $request->all();
+            $answer   = new  \App\Models\answers;
+            $answer->fill($data)->save();
+
+        } catch (\Throwable $th) {
+            throw $th;
         }
-        $questions = new \App\Models\questions;
-        $questions->fill($data)->save();
-        return back()->with('success', 'Your question added successfully');
+
+        return back()->with('success', 'Answer added successfully');
+
     }
 
     /**

@@ -87,6 +87,12 @@ Route::get('/mentors/{id}', 'MentorController@index')->name('mentors');
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::post('avatarUpdate/', 'ProfileController@uploadImage')->name('uploadImage');
 Route::post('/update/profile', 'ProfileController@update')->name('update.profile');
+Route::post('/save/question', 'QuestionsController@store')->name('save.question');
+Route::get('/new/questions', 'ProfileController@newQuestions')->name('mentor.new.questions');
+Route::get('/answered/questions', 'ProfileController@answeredQuestions')->name('mentor.answered.questions');
+Route::post('/save/answer', 'AnswerController@store')->name('save.answer');
+Route::post('ask', 'QuestionsController@askedQuestion')->name('ask.question');
+Route::get('/your/questions', 'ProfileController@askedQuestions')->name('your.questions');
 
 Route::get('/feed', 'PostController@index')->name('feed');
 /**

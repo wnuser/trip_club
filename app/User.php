@@ -57,4 +57,16 @@ class User extends Authenticatable
     public function cityRelation() {
         return $this->hasOne(city::class, 'city_id', 'city');
     }
+
+    public function mentorQuestions() {
+        return $this->hasMany(Models\questions::class, 'mentor_id', 'id');
+    }
+
+    public function seekerQuestions() {
+        return $this->hasMany(Models\questions::class, 'seeker_id', 'id');
+    }
+
+    public function userQuestions() {
+        return $this->hasMany(Models\questions::class, 'seeker_id', 'id');
+    }
 }

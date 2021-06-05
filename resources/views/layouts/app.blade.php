@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">   
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/xfwmfhghtu2at20dliuhsu0cijd2vb32lyj688argre523qq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+
    
    @yield('custom_css')
 
@@ -54,6 +57,35 @@
             filebrowserUploadMethod: 'form'
             });
         });
+
+        $('#color-2').on('change', function(){
+            // alert(1);
+            if($('#color-2').is(':checked')) { 
+               
+               $('#text-input').addClass('d-none');
+               $('#mentor_type').removeClass('d-none');
+            
+            }
+        });
+
+        $('#color-1').on('change', function(){
+            if($('#color-1').is(':checked')) {
+                $('#text-input').removeClass('d-none');
+                $('#mentor_type').addClass('d-none');
+            }
+        })
+
+        $('#mentor_type').on('change', function(){
+            
+            var mentorType = $("#mentor_type option:selected").val();
+            if(mentorType) {
+                $('#proceed_btn').removeClass('d-none');
+            } else {
+                $('#proceed_btn').addClass('d-none');
+            }
+
+        })
+
     </script>
   
   @yield('custom_js')
