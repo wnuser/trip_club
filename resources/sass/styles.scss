@@ -2624,3 +2624,8 @@ span{
 		}
 	}
 }
+.sidebar-click{
+	@media screen and (min-width:993px){
+		display: none;
+	}
+}
