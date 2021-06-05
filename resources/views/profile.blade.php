@@ -107,17 +107,23 @@
         </button>
         
       <div class="modal-body p-0">
-         <div class="about-card profile-popup">
-            <div class="cover-bg">
-                  <img src="{{ asset('Images/cover-mentors.jpg') }}" alt="cover-bg" class="img-fluid">
+         <form  id="uploadProfile" action="{{ route('uploadImage') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="about-card profile-popup">
+               <div class="cover-bg">
+                     <img src="{{ asset('Images/cover-mentors.jpg') }}" alt="cover-bg" class="img-fluid">
+               </div>
+            <div class="profile-box">
+               <a class="profile-popup" href="#">
+               @php  $src    =  ($userInfo->profile_pic) ? ($userInfo->profile_pic) : 'userIcon.png';  @endphp
+                  <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
+               </a>
+               <label for="change-profile" class="btn-icon"><i class="fas fa-camera"></i></label>
+               <input type="file" class="hidden" name="uploadProfile" id="change-profile"/>
+               <input type="hidden" value="{{ $userInfo->id }}" name="user_id">
+
             </div>
-         <div class="profile-box">
-            <a class="profile-popup" href="#">
-                 <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-            </a>
-             <label for="change-profile" class="btn-icon"><i class="fas fa-camera"></i></label>
-             <input type="file" class="hidden" id="change-profile"/>
-         </div>
+         </form>
          <form action="{{ route('update.profile') }}" method="POST">
          @csrf
          <input type="hidden" name="id" value="{{ Auth::user()->id }}">
@@ -197,9 +203,11 @@
 
 <script>
 
-$('#file-upload').on('change', function(){
+$('#change-profile').on('change', function(){
   $('#uploadProfile').submit();
 });
+
+
 
 
 $('#state').on('change', function(){
