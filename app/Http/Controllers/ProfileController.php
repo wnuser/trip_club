@@ -35,7 +35,7 @@ class ProfileController extends Controller
     public function newQuestions()
     {
         $mentorId    = Auth::user()->id;
-        $newQuestions  = \App\Models\questions::with(['seekers'])->whereMentorId($mentorId)->whereIsAnswered(0)->get();
+        $newQuestions  = \App\Models\questions::with(['seekers'])->whereMentorId($mentorId)->whereIsAnswered(0)->orderBy('id', 'DESC')->get();
         return view('new_questions', compact('newQuestions'));
     }
 
@@ -45,7 +45,7 @@ class ProfileController extends Controller
     public function answeredQuestions()
     {
         $mentorId   = Auth::user()->id;
-        $answeredQuestions  = \App\Models\questions::with(['seekers', 'mentor', 'answers'])->whereMentorId($mentorId)->whereIsAnswered(1)->get();
+        $answeredQuestions  = \App\Models\questions::with(['seekers', 'mentor', 'answers'])->whereMentorId($mentorId)->whereIsAnswered(1)->orderBy('id', 'DESC')->get();
         // aprint($answeredQuestions->toArray());
         return view('completed_questions', compact('answeredQuestions'));
     }
@@ -57,7 +57,7 @@ class ProfileController extends Controller
     public function askedQuestions() 
     {
         $userId  = Auth::user()->id;
-        $askedQuestions  = \App\Models\questions::with(['seekers', 'mentor', 'answers.answerMentor'])->whereSeekerId($userId)->get();
+        $askedQuestions  = \App\Models\questions::with(['seekers', 'mentor', 'answers.answerMentor'])->whereSeekerId($userId)->orderBy('id', 'DESC')->get();
         // echo $userId;
         // aprint($askedQuestions->toArray());
         return view('asked_questions', compact('askedQuestions'));

@@ -15,7 +15,7 @@ class QuestionsController extends Controller
     public function index()
     {
         //
-        $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereIsPrivate(0)->orderBy('id', 'DESC')->get();
+        $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereIsPrivate(0)->orderBy('id', 'DESC')->paginate(10);
         // aprint($publicQuestions->toArray());
         return view('allquestions', compact('publicQuestions'));
     }
@@ -26,6 +26,17 @@ class QuestionsController extends Controller
     public function askedQuestion(Request $request)
     {
         // aprint($request->all());
+        $lastChar  =  substr($request->quetion, -1);
+        $result    =  strcmp($lastChar, '?');
+        if($result == 0)
+        {
+            $question =  substr($request->quetion, 0, -1);
+        } else {
+            $question  = $request->quetion;
+        }
+        $slug      =  str_slug($question);
+
+        
         if($request->mentor_type) : 
             $mentor_type   = $request->mentor_type;
             return redirect('/mentors/'.$mentor_type);
@@ -33,6 +44,8 @@ class QuestionsController extends Controller
             $data['question']   = $request->quetion;
             $data['seeker_id']  = Auth::user()->id;
             $data['is_private'] = 0;
+            $data['slug']       = $slug;
+            $data['topic_id']   = $request->topic_id;
 
             $question = new \App\Models\questions;
             $question->fill($data)->save();
@@ -66,9 +79,29 @@ class QuestionsController extends Controller
             'question' => 'required',
         ]);
 
+
+        $lastChar  =  substr($request->question, -1);
+        $result    =  strcmp($lastChar, '?');
+        if($result == 0)
+        {
+            $question =  substr($request->question, 0, -1);
+        } else {
+            $question  = $request->question;
+        }
+        $slug      =  str_slug($question);
+
+
+
+
+        // $question  = $request->question;
+        // echo $question;
+        // exit;
+
         $data  = $request->all();
+        $data['slug']  = $slug;
         if(isset($data['seeker_id'])) {
             $data['is_private']  =  config('constants.QUESTIONSTATUS.ISPRIVATE');
+    
         } else {
             $data['is_private']  =  config('constants.QUESTIONSTATUS.ISPUBLIC');
 

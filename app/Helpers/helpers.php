@@ -181,3 +181,18 @@ function mentorsOption()
     }
 
 }
+
+/**
+ * getting select for toips 
+ */
+function topics()
+{
+    $topics  = config('constants.QUESTION_CATEGORY');
+    echo  '<select class="form-control" name="topic_id" id="topic_id">';
+    echo '<option value="">Select a Topic</option>';
+    foreach ($topics as $key => $value) {
+        # code...
+        echo "<option value=".$key.">".$value."</option>";
+    }
+    echo "</select>";
+}

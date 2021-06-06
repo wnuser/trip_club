@@ -129,7 +129,7 @@
 
       <div class="custom-radios">
             <div class="inner-col">
-               <input type="radio" id="color-1" name="color" value="color-1" checked>
+               <input type="radio" id="color-1" name="topic_type" value="public" checked>
                <label for="color-1" class="pc">
                   <span>
                   <small></small>
@@ -139,7 +139,7 @@
             </div>
          
             <div class="inner-col">
-               <input type="radio" id="color-2" name="color" value="color-2">
+               <input type="radio" id="color-2" name="topic_type" value="private">
                <label for="color-2" class="pv">
                   <span>
                   <small></small>
@@ -152,6 +152,9 @@
 
          <!-- form for public questions  --->
          <div id="text-input">
+            <div class="form-group">
+                {{ topics() }}
+            </div>
             <div class="form-group mt-2" >
                <label for="" class="bold">Write Your Question.</label>
                <textarea name="quetion" id="" placeholder="Type your quetion here"></textarea>

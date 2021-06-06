@@ -8,6 +8,8 @@
             <div class="col-lg-8 col-md-8">
                 @include('layouts.error')
 
+                <div class="scrolling-pagination">
+
                 @foreach($publicQuestions as $key => $value)
                 <div class="card p-3">
                     <div class="question-wrapper">
@@ -116,65 +118,10 @@
                 </div>
                 </div>
 
-
                 @endforeach
+                </div>
 
-                <!-- /card question -->
-                <!-- <div class="card p-3">
-                    <div class="question-wrapper">
-                        <div class="profile-img">
-                            <a href="#">
-                                <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="question">
-                        <h5>what is the something something something something? </h5>
-                        </div>
-                    </div>
-                     <div class="answers-wrapper">
-                        <span class="totol-ans">22 Answers</span>
-                         <div class="inner-box">
-                            <div class="d-flex">
-                                <div class="profile-img">
-                                    <a href="#">
-                                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="name-wrap">
-                                    <h6>John Doe</h6>
-                                    <span>Gym trainer dehradun</span>
-                                </div>
-                            </div>
-                            <div class="answers-box">
-                                <p><strong>1.</strong>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil esse distinctio dignissimos officia voluptatum nostrum doloremque repudiandae odit iste illum laborum consequuntur molestiae doloribus aliquam, aperiam, excepturi molestias laboriosam incidunt!</p>
-                                <div class="action-box">
-                                    <a href="#"><span><i class="far fa-heart"></i></span> Like</a> <span>| 14</span>
-                                </div>
-                            </div>
-                         </div>
-                            <hr>
-                         <div class="inner-box">
-                            <div class="d-flex">
-                                <div class="profile-img">
-                                    <a href="#">
-                                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="name-wrap">
-                                    <h6>John Doe Junior</h6>
-                                    <span>Gym trainer dehradun</span>
-                                </div>
-                            </div>
-                            <div class="answers-box">
-                                <p><strong>2.</strong> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil esse distinctio dignissimos officia voluptatum nostrum doloremque repudiandae odit iste illum laborum consequuntur molestiae doloribus aliquam, aperiam, excepturi molestias laboriosam incidunt!</p>
-                                <div class="action-box">
-                                    <a href="#"><span><i class="far fa-heart"></i></span> Like</a> <span>| 34</span>
-                                </div>
-                            </div>
-                         </div>
-                     </div>
-                </div> -->
-                <!-- /card question -->
+                {{ $publicQuestions->links()     }}
 
             </div>
             <div class="col-lg-4 col-md-4">
@@ -195,7 +142,41 @@
 
 @section('custom_js')
 
-<script>tinymce.init({ selector:'textarea' });
+<script>
+// $('ul.pagination').hide();
+
+$(window).scroll(function() {
+    var pageNo = 1;
+  if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+    // $('#lipsum').append('<p style="background-color: red;">Sed tellus magna, pellentesque ut venenatis eu, molestie eget odio. Maecenas id finibus nisl. Aliquam et odio ante. Sed suscipit tortor mauris, a porttitor tortor accumsan eu. Etiam mauris magna, sodales sit amet cursus vel, hendrerit non arcu. Nunc non vestibulum arcu, eu fringilla orci. Integer egestas risus ultrices ipsum finibus pellentesque. Morbi lacinia felis dui. In eget lectus at elit commodo bibendum non sed ligula. Pellentesque dignissim, ante eget condimentum tincidunt, lacus urna consequat dui, a egestas lorem ligula ac odio. Duis arcu risus, bibendum sed condimentum et, efficitur vitae nulla. Nullam convallis quis sem id iaculis.</p>');
+     console.log('tetss', pageNo+1);
+     
+  }
+});
+
+
+
+
+
+    
+    // $(document).ready(function())
+    $(function() {
+        $('.scrolling-pagination').jscroll({
+            // console.log('yesy');
+            
+            autoTrigger: true,
+            padding: 0,
+            nextSelector: '.pagination li.active + li a',
+            contentSelector: 'div.scrolling-pagination',
+            callback: function() {
+                $('ul.pagination').remove();
+            }
+            // console.log('test');
+        });
+    });
+
+
+tinymce.init({ selector:'textarea' });
 function addLike(answerId)
     {
       //  e.preventDefault();

@@ -14,7 +14,7 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts    =  \App\Models\post::with(['user.cityRelation'])->orderBy('id', 'DESC')->get();
+        $posts    =  \App\Models\post::with(['user.cityRelation'])->orderBy('id', 'DESC')->paginate(2)->get();
         // aprint($posts->toArray());
         return view('post', compact('posts'));
     }
