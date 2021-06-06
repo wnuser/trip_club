@@ -265,7 +265,7 @@ select:focus {
   overflow: hidden;
   border-radius: 40px;
   box-shadow: 0 10px 10px #adadad;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .btn-custom:before {
@@ -857,11 +857,12 @@ header .navbar .nav-link.btn-nav:hover {
 }
 
 .signup-box {
-  padding: 20px;
-  border: 2px solid #293745;
+  padding: 30px 20px;
   color: #293745;
-  margin: 20px 0px;
+  margin: 0px 0px 20px;
   border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
 .signup-box h3 {
@@ -869,11 +870,14 @@ header .navbar .nav-link.btn-nav:hover {
   color: #293745;
   line-height: 25px;
   font-weight: 400;
+  text-align: center;
 }
 
 .signup-box input {
   width: 100%;
   padding: 5px 20px;
+  border-color: gray;
+  border-radius: 5px;
 }
 
 .signup-box::-webkit-input-placeholder {
@@ -2215,7 +2219,7 @@ span.dot {
 
 .qna-sidebar a {
   display: block;
-  padding: 10px;
+  padding: 14px 10px;
   padding-right: 70px;
   color: #000;
   text-decoration: none;
@@ -2224,7 +2228,7 @@ span.dot {
 }
 
 .qna-sidebar a:hover {
-  background-color: #f3f2ef;
+  background-color: #f9f9f9;
 }
 
 .qna-sidebar a:last-child {
@@ -2569,11 +2573,20 @@ span.dot {
 .question-wrapper {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .question-wrapper .question {
   padding-left: 10px;
-  width: calc(100% - 50px);
+  width: calc(100% - 0px);
+  padding-top: 5px;
+}
+
+.question-wrapper .name-wrap h6 {
+  font-weight: 600;
+  margin-bottom: 0;
+  text-transform: capitalize;
+  padding-left: 10px;
 }
 
 .answers-wrapper {
@@ -2642,7 +2655,7 @@ span.dot {
 }
 
 .related-que a:hover {
-  color: #0083ef;
+  color: #000;
   text-decoration: none;
   background-color: #fbfbfb;
 }
@@ -2852,6 +2865,47 @@ span.dot {
   .sidebar-click {
     display: none;
   }
+}
+
+.card-img-custom {
+  transition: 0.4s;
+  overflow: hidden;
+}
+
+.card-img-custom .card-img {
+  transition: 0.4s;
+  height: 210px;
+}
+
+.footer-distributed .footer-links a:hover {
+  text-decoration: underline;
+}
+
+.register-login-box {
+  max-width: 400px;
+  margin: auto;
+}
+
+.register-login-box form .form-group .input-group-text {
+  min-width: 45px;
+  background: linear-gradient(45deg, #21c6f4, #8526ec);
+  color: #fff;
+}
+
+.register-login-box form .form-group input {
+  padding: 9px 20px;
+  height: auto;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.register-login-box form .btn-custom {
+  border-radius: 5px;
+  box-shadow: 0 3px 3px #adadad;
+}
+
+.register-login-box form .btn-custom:hover {
+  margin-top: 0;
 }
 
 /* Conatct start */
@@ -3322,7 +3376,7 @@ h1 {
   width: 100%;
   text-align: left;
   font: bold 16px sans-serif;
-  padding: 55px 50px;
+  padding: 25px 50px 25px;
 }
 
 .footer-distributed .footer-left,
@@ -3354,7 +3408,6 @@ h1 {
 
 .footer-distributed .footer-links {
   color: #ffffff;
-  margin: 20px 0 12px;
   padding: 0;
 }
 
@@ -3381,14 +3434,13 @@ h1 {
 
 .footer-distributed .footer-center i {
   background-color: #293745;
-  color: #ffffff;
+  color: #fff;
   font-size: 25px;
   width: 38px;
   height: 38px;
   border-radius: 50%;
   text-align: center;
   line-height: 42px;
-  margin: 10px 15px;
   vertical-align: middle;
 }
 
@@ -3399,7 +3451,7 @@ h1 {
 
 .footer-distributed .footer-center p {
   display: inline-block;
-  color: #ffffff;
+  color: #fff;
   font-weight: 400;
   vertical-align: middle;
   margin: 0;
@@ -3413,8 +3465,12 @@ h1 {
 }
 
 .footer-distributed .footer-center p a {
-  color: lightseagreen;
+  color: #fff;
   text-decoration: none;
+}
+
+.footer-distributed .footer-center p a:hover {
+  text-decoration: underline;
 }
 
 .footer-distributed .footer-links a:before {
@@ -3453,10 +3509,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-.footer-distributed .footer-icons {
-  margin-top: 25px;
-}
-
 .footer-distributed .footer-icons a {
   display: inline-block;
   width: 35px;
@@ -3484,7 +3536,6 @@ h1 {
   .footer-distributed .footer-right {
     display: block;
     width: 100%;
-    margin-bottom: 40px;
     text-align: center;
   }
 

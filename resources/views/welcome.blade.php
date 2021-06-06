@@ -255,7 +255,7 @@
                         </div>
                         <div class="form-group mb-0">
                            <center>
-                              <button type="submit" class="btn " style="background-color:#293745; color:white"><i class="fa fa-paper-plane"></i> Subscribe </button>
+                              <button type="submit" class="btn " style="background-color:#293745; color:white"><i class="fas fa-paper-plane"></i> Subscribe </button>
                            </center>
                         </div>
                      </form>

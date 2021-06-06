@@ -46,10 +46,10 @@
 <div class="container">
 <hr>
 
-<div class="card register-card">
+<div class="card register-card register-login-box">
 
-<article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Register with us </h4>
+<article class="card-body mx-auto p-4" style="max-width: 400px;">
+	<h4 class="card-title text-center">Register with us </h4>
 	<p class="text-center">Welcome to healthmentors. Get started with your free account</p>
     @include('layouts.error')
 
@@ -122,7 +122,7 @@
 
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+        <button type="submit" class="btn btn-custom btn-block"> Create Account  </button>
     </div> <!-- form-group// -->  
 
     <p class="text-center">Have an account? <a href="{{ route('login') }}">Log In</a> </p>                                                                 
