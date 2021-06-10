@@ -157,7 +157,7 @@
             </div>
             <div class="form-group mt-2" >
                <label for="" class="bold">Write Your Question.</label>
-               <textarea name="quetion" id="" placeholder="Type your quetion here"></textarea>
+               <textarea name="quetion" id="public_question" required placeholder="Type your quetion here"></textarea>
             </div>
             <div class="form-group mb-2">
                <button type="submit" class="btn float-right btn-small mt-auto">Submit</button>

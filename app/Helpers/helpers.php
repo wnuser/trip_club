@@ -188,7 +188,7 @@ function mentorsOption()
 function topics()
 {
     $topics  = config('constants.QUESTION_CATEGORY');
-    echo  '<select class="form-control" name="topic_id" id="topic_id">';
+    echo  '<select class="form-control" name="topic_id" id="topic_id" required>';
     echo '<option value="">Select a Topic</option>';
     foreach ($topics as $key => $value) {
         # code...

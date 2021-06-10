@@ -31,7 +31,7 @@
                                 @endif
                             @endforeach
                         @endif
-                        <h5>Q. {{ $value->question }} </h5>
+                        <h5>Q. {!! $value->question !!} </h5>
                         @if(Auth::check())
                             @if(Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE') && !$isAnswered)
                                 <button class="btn btn-primary float-right" data-toggle="modal" data-target="#answerModal{{$value->id}}"> <i class="fa fa-edit"></i> Write Answer</button>

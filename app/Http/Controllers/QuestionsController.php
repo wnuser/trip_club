@@ -37,7 +37,7 @@ class QuestionsController extends Controller
         $slug      =  str_slug($question);
 
         
-        if($request->mentor_type) : 
+        if($request->topic_type == 'private') : 
             $mentor_type   = $request->mentor_type;
             return redirect('/mentors/'.$mentor_type);
         else:
@@ -109,6 +109,16 @@ class QuestionsController extends Controller
         $questions = new \App\Models\questions;
         $questions->fill($data)->save();
         return back()->with('success', 'Your question added successfully');
+    }
+
+
+    /**
+     * details of single question 
+     */
+    public function singleQuestion($id)
+    {
+        $questionDetails = \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereId($id)->first();
+        aprint($questionDetails);
     }
 
     /**

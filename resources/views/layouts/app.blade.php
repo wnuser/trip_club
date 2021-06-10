@@ -74,6 +74,14 @@
                $('#text-input').addClass('d-none');
                $('#mentor_type').removeClass('d-none');
                $('#topic_id').attr('required', false);
+               $('#public_question').prop('required', false);
+
+               var mentorType = $("#mentor_type option:selected").val();
+            if(mentorType) {
+                $('#proceed_btn').removeClass('d-none');
+            } else {
+                $('#proceed_btn').addClass('d-none');
+            }
 
             
             }
@@ -85,6 +93,8 @@
                 $('#mentor_type').addClass('d-none');
                 $('#proceed_btn').addClass('d-none');
                 $('#topic_id').attr('required', true);
+                $('#public_question').prop('required', true);
+
 
             }
         })

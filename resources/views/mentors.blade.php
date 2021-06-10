@@ -121,16 +121,6 @@
       <div class="modal-body ask-q-modal">
          <p> You are asking from  {{ $v->name }} ({{ config('role.MENTORSTITLE.'.$v->mentor_type) }}) </p>
          <!-- <p>  </p> -->
-         <div class="form-group">
-             <!-- <label for="">Select a Topic</label> -->
-             <select name="topic_id" id="" class="form-control" required >
-                  @php $topics  = config('constants.QUESTION_CATEGORY'); @endphp
-                  <option value="">Select a Topic</option>
-                  @foreach($topics as $kkk => $vvv)
-                     <option value="{{ $kkk }}"> {{ $vvv }} </option>
-                  @endforeach
-             </select>
-         </div>
          <div class="form-group mt-2">
             <textarea name="question" required id="" placeholder="Type your quetion here"></textarea>
          </div>
@@ -147,16 +137,7 @@
   </div>
 </div>
 
-
-
 @endforeach
-
-
-
-
-
-
-
 </section>
 
 @endsection
