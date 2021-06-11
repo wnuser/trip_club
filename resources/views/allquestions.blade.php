@@ -65,7 +65,7 @@
                                 <p> {!! $v->answer !!} </p>
                                 @if(Auth::check())
                                     <div class="action-box" >
-                                        <a href="javascript::void()" onclick="addLike({{ $v->id }})" ><span><i class="far fa-heart"></i></span> Like</a> <span id="likeBox{{$v->id}}">| {{ $v->likes }} </span>
+                                        <a href="javascript::void()" onclick="addLike({{ $v->id }})" class="liked" ><span><i class="far fa-heart"></i></span> Like</a> <span id="likeBox{{$v->id}}">| {{ $v->likes }} </span>
                                     </div>
                                 @endif
                             </div>
@@ -137,7 +137,7 @@
                    <a href=""#><span>Q.Officia voluptatum nostrum odit iste illum laborum consequuntur molestiae doloribus</span> </a>
 
                </div> -->
-               <div class="card py-3 qna-sidebar sticky-desktop">
+               <div class="card py-3 qna-sidebar sticky-desktop s-icons-sidebar">
                <h5 class="px-3">Filter By Topic</h5>
                 <hr>
                 <a href="{{ route('forum', ['id'=> 2]) }}">
