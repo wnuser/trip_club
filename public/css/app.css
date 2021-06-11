@@ -2908,6 +2908,28 @@ span.dot {
   margin-top: 0;
 }
 
+.action-box .liked {
+  background-color: #0083ef;
+  color: #fff;
+}
+
+.action-box .liked:hover {
+  background-color: #0083ef;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.s-icons-sidebar.qna-sidebar span.tag {
+  background-color: #0083ef;
+  padding: 8px 10px;
+  font-size: 15px;
+  min-width: 40px;
+  text-align: center;
+  border-radius: 7px;
+  height: 40px;
+  line-height: 26px;
+}
+
 /* Conatct start */
 
 .header-title {

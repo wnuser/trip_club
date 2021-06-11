@@ -2687,3 +2687,32 @@ span{
 		}
 	 }
 }
+
+.action-box{
+	.liked{
+		background-color: $theme-green;
+		color: $white;
+		&:hover{
+			background-color: $theme-green;
+			color: $white;
+			opacity: .9;
+		}
+	}
+}
+
+.s-icons-sidebar{
+	&.qna-sidebar{
+		span{
+			&.tag{
+				background-color: $theme-green;
+				padding: 8px 10px;
+				font-size: 15px;
+				min-width: 40px;
+				text-align: center;
+				border-radius: 7px;
+				height: 40px;
+				line-height: 26px;
+			}
+		}
+	}
+}
