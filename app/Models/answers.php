@@ -15,4 +15,8 @@ class answers extends Model
     public function answerMentor() {
         return $this->hasOne('\App\user', 'id', 'mentor_id');
     }
+
+    public function answerLikes() {
+        return $this->hasMany('\App\Models\likes', 'answer_id', 'id');
+    }
 }

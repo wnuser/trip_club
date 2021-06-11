@@ -26,14 +26,21 @@
                         <div class="question">
                         @if(Auth::check())
                             @php $isAnswered   = false; @endphp
+                            @php $isLiked      = false; @endphp
                             @foreach($value->answers as $kk => $vv)
                                 @if($vv->answerMentor->id  == Auth::user()->id)
-                                @php $isAnswered = true;  @endphp
+                                    @php $isAnswered = true;  @endphp
                                 @endif
+
+                                @foreach($vv->answerLikes as $likeKey => $likeValue)
+                                    @if($likeValue->user_id == Auth::user()->id)
+                                        @php  $isLiked = true; @endphp
+                                    @endif
+                                @endforeach
+
                             @endforeach
                         @endif
                         
-
                         <h5>Q. {!! $value->question !!} </h5>
                         @if(Auth::check())
                             @if(Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE') && !$isAnswered)
@@ -64,8 +71,8 @@
                             <div class="answers-box">
                                 <p> {!! $v->answer !!} </p>
                                 @if(Auth::check())
-                                    <div class="action-box" >
-                                        <a href="javascript::void()" onclick="addLike({{ $v->id }})" ><span><i class="far fa-heart"></i></span> Like</a> <span id="likeBox{{$v->id}}">| {{ $v->likes }} </span>
+                                    <div class="action-box ">
+                                        <a href="javascript::void()" class=" {{ ($isLiked) ? 'bg-success' : '' }} " onclick="addLike({{ $v->id }})" ><span><i class="far fa-heart"></i></span> Like</a> <span id="likeBox{{$v->id}}">| {{ $v->likes }} </span>
                                     </div>
                                 @endif
                             </div>
@@ -101,7 +108,7 @@
                                 <label for="" class="bold"> <strong> Q. {{ $value->question }} </strong> </label>
                             </div>
                             <div class="form-group">
-                                <textarea name="answer" id="" cols="30" rows="10"></textarea>
+                                <textarea name="answer" id="textarea" cols="30" rows="10"></textarea>
 
                                 <input type="hidden" value="{{ Auth::user()->id }}" name="mentor_id">
                                 <input type="hidden" value="{{ $value->id }}" name="question_id">
@@ -202,7 +209,9 @@ $(window).scroll(function() {
     });
 
 
-tinymce.init({ selector:'textarea' });
+tinymce.init({ selector:'#textarea' });
+
+
 function addLike(answerId)
     {
       //  e.preventDefault();
@@ -220,6 +229,7 @@ function addLike(answerId)
            success:function(data){
                console.log(data, 'test like');
                $('#likeBox'+answerId).text('| '+data);
+            //    $('#likeBox'+answerId).addClass('bg-success');
            },
            error:function(){
 

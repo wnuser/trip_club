@@ -16,9 +16,9 @@ class QuestionsController extends Controller
     {
         //
         if($topicId) :
-            $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereTopicId($topicId)->whereIsPrivate(0)->orderBy('id', 'DESC')->paginate(10);
+            $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor', 'answers.answerLikes'])->whereTopicId($topicId)->whereIsPrivate(0)->orderBy('id', 'DESC')->paginate(10);
         else:
-            $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereIsPrivate(0)->orderBy('id', 'DESC')->paginate(10);
+            $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor', 'answers.answerLikes'])->whereIsPrivate(0)->orderBy('id', 'DESC')->paginate(10);
         endif;
         // aprint($publicQuestions->toArray());
         return view('allquestions', compact('publicQuestions'));
