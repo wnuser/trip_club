@@ -12,10 +12,14 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($topicId = false)
     {
         //
-        $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereIsPrivate(0)->orderBy('id', 'DESC')->paginate(10);
+        if($topicId) :
+            $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereTopicId($topicId)->whereIsPrivate(0)->orderBy('id', 'DESC')->paginate(10);
+        else:
+            $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereIsPrivate(0)->orderBy('id', 'DESC')->paginate(10);
+        endif;
         // aprint($publicQuestions->toArray());
         return view('allquestions', compact('publicQuestions'));
     }
@@ -115,10 +119,14 @@ class QuestionsController extends Controller
     /**
      * details of single question 
      */
-    public function singleQuestion($id)
+    public function singleQuestion($slug)
     {
-        $questionDetails = \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereId($id)->first();
-        aprint($questionDetails);
+        $questionDetails   = \App\Models\questions::with(['seekers', 'answers.answerMentor'])->whereSlug($slug)->first();
+        $topicId           = $questionDetails->topic_id;
+        $relatedQuestions  = \App\Models\questions::whereTopicId($topicId)->whereIsPrivate(0)->orderBy('id', 'DESC')->take(25)->get();
+        // aprint($questionDetails);
+        return view('single_question', compact('questionDetails', 'relatedQuestions'));
+
     }
 
     /**

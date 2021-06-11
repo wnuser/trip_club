@@ -8,7 +8,7 @@ class likes extends Model
 {
     //
     protected $primaryKey   =   'id';
-    protected $table        =   'post';
+    protected $table        =   'likes';
 
     protected $guarded       =  ['id'];
 

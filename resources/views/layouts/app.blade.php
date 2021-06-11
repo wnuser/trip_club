@@ -7,9 +7,9 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-W3YDV01ZB4');
 </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ isset($blogData) ? $blogData['meta_description'] : 'Blogs for health care , fitness and life style. Providing solutions for health issues and advise for a better life' }}">
@@ -68,7 +68,6 @@
         });
 
         $('#color-2').on('change', function(){
-            // alert(1);
             if($('#color-2').is(':checked')) { 
                
                $('#text-input').addClass('d-none');
@@ -94,8 +93,6 @@
                 $('#proceed_btn').addClass('d-none');
                 $('#topic_id').attr('required', true);
                 $('#public_question').prop('required', true);
-
-
             }
         })
 

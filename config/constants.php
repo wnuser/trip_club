@@ -56,7 +56,7 @@ return [
     ],
 
     'QUESTION_CATEGORY' => [
-        '1' =>'Fitness' ,
+        '1' => 'Fitness' ,
         '2' => 'General Health Care',
         '3' => 'Yoga',
         '4' => 'Relationships'

@@ -10,126 +10,122 @@
 
                 <div class="scrolling-pagination">
 
-                @foreach($publicQuestions as $key => $value)
-                <div class="card p-3">
-                    <div class="question-wrapper">
-                        <div class="profile-img">
-                            <a href="#">
-                            @php  $src    =  ($value->seekers->profile_pic) ? ($value->seekers->profile_pic) : 'userIcon.png';  @endphp
-                                <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="name-wrap">
-                            <h6>{{ $value->seekers->name }}</h6>
-                        </div>
-                        <div class="question">
-                        @if(Auth::check())
-                            @php $isAnswered   = false; @endphp
-                            @foreach($value->answers as $kk => $vv)
-                                @if($vv->answerMentor->id  == Auth::user()->id)
-                                @php $isAnswered = true;  @endphp
-                                @endif
-                            @endforeach
-                        @endif
-                        <h5>Q. {{ $value->question }} </h5>
-                        @if(Auth::check())
-                            @if(Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE') && !$isAnswered)
-                                <button class="btn btn-primary float-right" data-toggle="modal" data-target="#answerModal{{$value->id}}"> <i class="fa fa-edit"></i> Write Answer</button>
+                    <div class="card p-3">
+                        <div class="question-wrapper">
+                            <div class="profile-img">
+                                <a href="#">
+                                @php  $src    =  ($questionDetails->seekers->profile_pic) ? ($questionDetails->seekers->profile_pic) : 'userIcon.png';  @endphp
+                                    <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
+                                </a>
+                            </div>
+                            <div class="name-wrap">
+                                <h6>{{ $questionDetails->seekers->name }}</h6>
+                            </div>
+                            <div class="question">
+                            @if(Auth::check())
+                                @php $isAnswered   = false; @endphp
+                                @foreach($questionDetails->answers as $kk => $vv)
+                                    @if($vv->answerMentor->id  == Auth::user()->id)
+                                    @php $isAnswered = true;  @endphp
+                                    @endif
+                                @endforeach
                             @endif
-                        @endif
+                            <h5>Q. {{ $questionDetails->question }} </h5>
+                            @if(Auth::check())
+                                @if(Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE') && !$isAnswered)
+                                    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#answerModal{{$questionDetails->id}}"> <i class="fa fa-edit"></i> Write Answer</button>
+                                @endif
+                            @endif
+                            </div>
+
                         </div>
-
-                    </div>
-                     <div class="answers-wrapper">
-                        <span class="totol-ans">{{ $value->answers->count() }} Answers</span>
-                        @php  $count = 1; @endphp 
-                        @foreach($value->answers as $k => $v)
-                         <div class="inner-box">
-                            <div class="d-flex">
-                                <div class="profile-img">
-                                    <a href="#">
-                                    @php  $src    =  ($v->answerMentor->profile_pic) ? ($v->answerMentor->profile_pic) : 'userIcon.png';  @endphp
-                                        <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
-                                    </a>
+                        <div class="answers-wrapper">
+                            <span class="totol-ans">{{ $questionDetails->answers->count() }} Answers</span>
+                            @php  $count = 1; @endphp 
+                            @foreach($questionDetails->answers as $k => $v)
+                            <div class="inner-box">
+                                <div class="d-flex">
+                                    <div class="profile-img">
+                                        <a href="#">
+                                        @php  $src    =  ($v->answerMentor->profile_pic) ? ($v->answerMentor->profile_pic) : 'userIcon.png';  @endphp
+                                            <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
+                                        </a>
+                                    </div>
+                                    <div class="name-wrap">
+                                        <h6>{{ $v->answerMentor->name }}</h6>
+                                        <span>{{ config('role.MENTORSTITLE.'.$v->answerMentor->mentor_type) }} dehradun</span>
+                                    </div>
                                 </div>
-                                <div class="name-wrap">
-                                    <h6>{{ $v->answerMentor->name }}</h6>
-                                    <span>{{ config('role.MENTORSTITLE.'.$v->answerMentor->mentor_type) }} dehradun</span>
+                                <div class="answers-box">
+                                    <p> {!! $v->answer !!} </p>
+                                    @if(Auth::check())
+                                        <div class="action-box">
+                                            <a href="javascript::void()" onclick="addLike({{ $v->id }})" ><span><i class="far fa-heart"></i></span> Like</a> <span>| {{ $v->likes }} </span>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="answers-box">
-                                <p> {!! $v->answer !!} </p>
-                                <div class="action-box">
-                                    <a href="javascript::void()" onclick="addLike({{ $v->id }})" ><span><i class="far fa-heart"></i></span> Like</a> <span>| {{ $v->likes }} </span>
-                                </div>
-                            </div>
-                         </div>
-                         <!-- /inner box -->
-                            <hr>
-                        @endforeach
-                         
-                         <!-- /inner box -->
-                     </div>
-                </div>
-
-                <!-- The Modal -->
-                <div class="modal fade modal-about-mentor"  id="answerModal{{ $value->id }}">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Write Your Answer</h4>
-
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                            <!-- /inner box -->
+                                <hr>
+                            @endforeach
+                            
+                            <!-- /inner box -->
+                        </div>
                     </div>
 
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                    @if(Auth::check())
-                        <form action="{{ route('save.answer') }}"   method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label for="" class="bold"> <strong> Q. {{ $value->question }} </strong> </label>
-                            </div>
-                            <div class="form-group">
-                                <textarea name="answer" id="" cols="30" rows="10"></textarea>
+                    <!-- The Answer model  -->
+                    <div class="modal fade modal-about-mentor"  id="answerModal{{ $questionDetails->id }}">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
 
-                                <input type="hidden" value="{{ Auth::user()->id }}" name="mentor_id">
-                                <input type="hidden" value="{{ $value->id }}" name="question_id">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Write Your Answer</h4>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-small float-right">Submit</button>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                            @if(Auth::check())
+                                <form action="{{ route('save.answer') }}"   method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="" class="bold"> <strong> Q. {{ $questionDetails->question }} </strong> </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="answer" id="" cols="30" rows="10"></textarea>
+
+                                        <input type="hidden" value="{{ Auth::user()->id }}" name="mentor_id">
+                                        <input type="hidden" value="{{ $questionDetails->id }}" name="question_id">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-small float-right">Submit</button>
+                                    </div>
+                                </form>
+                            @endif    
                             </div>
-                        </form>
-                    @endif    
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-
-                    </div>
                 </div>
-                </div>
-
-                @endforeach
-                </div>
-
-                {{ $publicQuestions->links()     }}
 
             </div>
             <div class="col-lg-4 col-md-4">
                <div class="card sticky-dektop py-3 related-que">
                    <h5 class="px-3">Related Questions</h5>
                    <hr>
-                   <a href=""#> <span>Q.Someting someting someting someting someting</span> </a>
-                   <a href=""#><span>Q.Officia voluptatum nostrum repudiandae odit iste illum laborum consequuntur molestiae doloribus</span> </a>
-                   <a href=""#><span>Q.Officia voluptatum nostrum odit iste illum laborum consequuntur molestiae doloribus</span> </a>
-
+                   @foreach($relatedQuestions as $key => $value)
+                        <a href="{{ route('single.question', ['slug'=>$value->slug]) }}"> <span>Q. {{ $value->question }} </span> </a>
+                   @endforeach
                </div>
             </div>
         </div>

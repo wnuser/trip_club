@@ -262,7 +262,8 @@
     function addLike(postId)
     {
       //  e.preventDefault();
-       alert(postId);
+
+      //  alert(postId);
     }
 
      $('#upload-img').on('change', function(e){
