@@ -16,6 +16,9 @@
                                 <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
                             </a>
                         </div>
+                        <div class="name-wrap">
+                            <h6>{{ $value->seekers->name }}</h6>
+                        </div>
                         <div class="question">
                         <h5>Q. {{ $value->question }} </h5>
                         </div>

@@ -18,6 +18,7 @@
                             @php  $src    =  ($value->seekers->profile_pic) ? ($value->seekers->profile_pic) : 'userIcon.png';  @endphp
                                 <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
                             </a>
+
                         </div>
 
                         <div class="name-wrap">
@@ -59,6 +60,7 @@
                             <div class="d-flex">
                                 <div class="profile-img">
                                     <a href="#">
+
                                     @php  $src    =  ($v->answerMentor->profile_pic) ? ($v->answerMentor->profile_pic) : 'userIcon.png';  @endphp
                                         <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
                                     </a>

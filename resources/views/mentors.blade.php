@@ -30,7 +30,11 @@
                         <a href="#about-mentor{{$value->id}}" data-toggle="modal" > <button class="btn btn-small extra ml-auto mr-auto">View Profile</button> </a>
                         @php  $years  = ($value->experience == 1) ? 'year' : 'years';  @endphp
                         <h6><span><i class="fas fa-atom"></i></span> {{ $value->experience }} {{ $years }} of experience</h6>
+                        @if(Auth::check() && $value->id == Auth::user()->id)
+                        <a href="#" disable  data-toggle="modal"  class="btn btn-small">Ask Question</a>
+                        @else 
                         <a href="#askQuestionModel{{$value->id}}"  data-toggle="modal"  class="btn btn-small">Ask Question</a>
+                        @endif
                      </div>
                   </div>
                </div>
@@ -121,16 +125,25 @@
       <div class="modal-body ask-q-modal">
          <p> You are asking from  {{ $v->name }} ({{ config('role.MENTORSTITLE.'.$v->mentor_type) }}) </p>
          <!-- <p>  </p> -->
-         <div class="form-group mt-2">
-            <textarea name="question" required id="" placeholder="Type your quetion here"></textarea>
-         </div>
+
          @if(Auth::check())
-            <input type="hidden" value="{{ Auth::user()->id }}" name="seeker_id">
+            <div class="form-group mt-2">
+               <textarea name="question" required id="" placeholder="Type your quetion here"></textarea>
+            </div>
+            @if(Auth::check())
+               <input type="hidden" value="{{ Auth::user()->id }}" name="seeker_id">
+            @endif
+            <input type="hidden" name="mentor_id" value="{{ $v->id }}">
+            <div class="text-right">
+            <button type="submit" class="btn btn-small ml-auto">Submit</button>
+            </div>
+         @else 
+
+         <p class="text-center">Please Login First <a href="{{ route('login') }}" class="btn btn-small" >Login</a> </p>   
+
          @endif
-         <input type="hidden" name="mentor_id" value="{{ $v->id }}">
-         <div class="text-right">
-         <button type="submit" class="btn btn-small ml-auto">Submit</button>
-         </div>
+
+
       </div>
       </form>
     </div>
