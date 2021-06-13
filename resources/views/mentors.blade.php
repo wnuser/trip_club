@@ -26,10 +26,16 @@
 
                      <div class="body-content">
                         <h4>{{ $value->name }}</h4>
-                        <p><span> {{ config('role.MENTORSTITLE.'.$value->mentor_type) }} </span> <span> from {{ $value->cityRelation->city_name }} </span> </p>
+                        <p><span> {{ config('role.MENTORSTITLE.'.$value->mentor_type) }} </span> <span> from {{ ($value->cityRelation) ? $value->cityRelation->city_name : '' }} </span> </p>
                         <a href="#about-mentor{{$value->id}}" data-toggle="modal" > <button class="btn btn-small extra ml-auto mr-auto">View Profile</button> </a>
-                        @php  $years  = ($value->experience == 1) ? 'year' : 'years';  @endphp
-                        <h6><span><i class="fas fa-atom"></i></span> {{ $value->experience }} {{ $years }} of experience</h6>
+                      
+                        @if($value->experience)
+                           @php  $years  = ($value->experience == 1) ? 'year' : 'years';  @endphp
+                           <h6><span><i class="fas fa-atom"></i></span> {{ $value->experience }} {{ $years }} of experience</h6>
+                        @else
+                           <h6><span><i class="fas fa-atom"></i></span> Experienced </h6>
+                        @endif
+                       
                         @if(Auth::check() && $value->id == Auth::user()->id)
                         <a href="#" disable  data-toggle="modal"  class="btn btn-small">Ask Question</a>
                         @else 
@@ -71,14 +77,28 @@
          <div class="about-body">
             <div class="button-strip">
                 <!-- <a href="#" class="btn btn-small">Connect</a> -->
-                <a href="#askQuestionModel{{$value->id}}"  data-toggle="modal" class="btn btn-small">Ask Question</a>
+                @if(Auth::check() && $value->id == Auth::user()->id)
+                  <a href="#" disable  data-toggle="modal" class="btn btn-small">Ask Question</a>
+                @else
+                  <a href="#askQuestionModel{{$value->id}}"  data-toggle="modal" class="btn btn-small">Ask Question</a>
+                @endif
                 <!-- <a href="#" class="btn btn-small">More</a> -->
             </div>
             <div class="about-info-box">
                <h4 class="mb-0">{{ $v->name }}</h4>
                <p><span> {{ config('role.MENTORSTITLE.'.$v->mentor_type) }} </span> </p>
                @php  $years  = ($v->experience == 1) ? 'year' : 'years';  @endphp
-               <h6> {{ $v->cityRelation->city_name }} , {{ $v->stateRelation->state_name }}, {{ $v->countryRelation->country_name }} <span class="dot"></span> <span>{{ config('constants.experience.'.$v->experience) }} {{ $years }} of experience</span> <span class="dot"></span> <a href="#" class="">Contact Info</a></h6>
+               <h6> 
+               {{ ($v->cityRelation) ? $v->cityRelation->city_name.',' : ''}} 
+               {{ ($v->stateRelation) ?  $v->stateRelation->state_name.',' : '' }}
+               {{ ($v->countryRelation) ?  $v->countryRelation->country_name : '' }} 
+               
+               <!-- <span class="dot"></span> -->
+                @if(($v->experience))
+                  <span>{{ config('constants.experience.'.$v->experience) }} {{ $years }} of experience</span> <span class="dot"></span> 
+               @endif
+               <!-- <a href="#" class="">Contact Info</a> -->
+               </h6>
             </div>
          </div>
          </div>

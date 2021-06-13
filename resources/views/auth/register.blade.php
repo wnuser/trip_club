@@ -110,7 +110,8 @@
     </div> <!-- form-group// -->    
      <div class="form-group ">
          <input type="checkbox" name="isMentor"  id="isMentor" class="">
-         <label for="">Are you a Health Mentor?</label>
+         <label for="">Are you a Health Mentor?</label> <br>
+         (Gym Trainer/ Doctor / Relationship Coach / Yoga Teacher)
     </div>  
         <div class="form-group input-group d-none" id="mentors-type">
     	<div class="input-group-prepend">

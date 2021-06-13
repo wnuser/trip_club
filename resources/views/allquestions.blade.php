@@ -67,7 +67,12 @@
                                 </div>
                                 <div class="name-wrap">
                                     <h6>{{ $v->answerMentor->name }}</h6>
-                                    <span>{{ config('role.MENTORSTITLE.'.$v->answerMentor->mentor_type) }} dehradun</span>
+                                    <span>{{ config('role.MENTORSTITLE.'.$v->answerMentor->mentor_type) }} 
+                                     @if($v->answerMentor->cityRelation)
+                                        from {{ $v->answerMentor->cityRelation->city_name }}
+                                     @endif
+
+                                    </span>
                                 </div>
                             </div>
                             <div class="answers-box">
@@ -113,7 +118,7 @@
                                 <label for="" class="bold"> <strong> Q. {{ $value->question }} </strong> </label>
                             </div>
                             <div class="form-group">
-                                <textarea name="answer" id="textarea" cols="30" rows="10"></textarea>
+                                <textarea name="answer" class="textarea" cols="30" rows="10"></textarea>
 
                                 <input type="hidden" value="{{ Auth::user()->id }}" name="mentor_id">
                                 <input type="hidden" value="{{ $value->id }}" name="question_id">
@@ -229,7 +234,7 @@ $(window).scroll(function() {
     });
 
 
-tinymce.init({ selector:'#textarea' });
+tinymce.init({ selector:'.textarea' });
 
 
 function addLike(answerId)
