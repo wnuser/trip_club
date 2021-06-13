@@ -75,7 +75,7 @@
                                         <a href="javascript::void()" class=" {{ ($isLiked) ? 'bg-success' : '' }} " onclick="addLike({{ $v->id }})" ><span><i class="far fa-heart"></i></span> Like</a> <span id="likeBox{{$v->id}}">| {{ $v->likes }} </span>
                                      -->
                                     <div class="action-box" >
-                                        <a href="javascript::void()" onclick="addLike({{ $v->id }})" class="liked" ><span><i class="far fa-heart"></i></span> Like</a> <span id="likeBox{{$v->id}}">| {{ $v->likes }} </span>
+                                        <a href="javascript::void()" onclick="addLike({{ $v->id }})" id="likeBox{{$v->id}}" class="{{ ($isLiked) ? 'liked' : '' }} " ><span><i class="far fa-heart"></i></span> Like</a> <span id="likeCountBox{{$v->id}}">| {{ $v->likes }} </span>
                                     </div>
                                 @endif
                             </div>
@@ -153,22 +153,37 @@
                 <a href="{{ route('forum', ['id'=> 2]) }}">
                     <strong>   Health Care</strong>
                     <small>General health care</small>
-                    <span class="tag new bg-success" ><i class="fas fa-user-md"></i></span>
+                    <span class="tag new bg-white " >
+                    <!-- <i class="fas fa-user-md"></i>        -->
+                    <img src="{{ asset('Images/icons/healthcare.png') }}" class="img-fluid" height="20" width="20" alt="">
+                    </span>
                 </a>
                 <a href="{{ route('forum', ['id'=> 1]) }}">
                     <strong> Fitness</strong>
                     <small>Maintain fitness at gym </small>
-                    <span class="tag completed"><i class="fas fa-walking"></i></span>
+                    <span class="tag new bg-white">
+                    <!-- <i class="fas fa-walking"></i> -->
+                    <img src="{{ asset('Images/icons/fitness.png') }}" class="img-fluid" height="20" width="20" alt="">
+
+                    </span>
                 </a>
                 <a href="{{ route('forum', ['id'=> 3]) }}">
                     <strong>Yoga</strong>
                     <small>Maintain yourself on mental level </small>
-                    <span class="tag completed"><i class="fas fa-walking"></i></span>
+                    <span class="tag new bg-white">
+                    <!-- <i class="fas fa-walking"></i> -->
+                    <img src="{{ asset('Images/icons/yoga.png') }}" class="img-fluid" height="20" width="20" alt="">
+
+                    </span>
                 </a>
                 <a href="{{ route('forum', ['id'=> 4]) }}">
                     <strong>Relationships</strong>
                     <small>Relationships are the best for human</small>
-                    <span class="tag completed"><i class="fas fa-heart"></i></span>
+                    <span class="tag new bg-white">
+                    <!-- <i class="fas fa-heart"></i> -->
+                    <img src="{{ asset('Images/icons/relationship.png') }}" class="img-fluid" height="20" width="20" alt="">
+
+                    </span>
                 </a>
               </div>
             </div>
@@ -230,9 +245,12 @@ function addLike(answerId)
            url : '/add/like',
            data : { answerId : answerId  },
            success:function(data){
-               console.log(data, 'test like');
-               $('#likeBox'+answerId).text('| '+data);
-            //    $('#likeBox'+answerId).addClass('bg-success');
+                $('#likeCountBox'+answerId).text('| '+data[0]);
+               if(data[1] == 1) {
+                $('#likeBox'+answerId).addClass('liked');
+               } else {
+                $('#likeBox'+answerId).removeClass('liked');
+               }
            },
            error:function(){
 

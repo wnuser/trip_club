@@ -13,6 +13,7 @@ class ajaxController extends Controller
        //  aprint($request->all());
         $answerId  = $request->answerId;
         $userId    = Auth::user()->id;
+        $isLiked   = 0;
 
         $existLike   = \App\Models\likes::whereUserId($userId)->whereAnswerId($answerId)->first();
         if($existLike) {
@@ -24,6 +25,7 @@ class ajaxController extends Controller
 
             $like = new \App\Models\likes;
             $like->fill($data)->save();
+            $isLiked = 1;
 
         }
 
@@ -31,7 +33,10 @@ class ajaxController extends Controller
         $updateAnswer  = \App\Models\answers::whereId($answerId)->first();
         $updateAnswer->likes  = $totalLikes;
         $updateAnswer->save();
-        return $totalLikes;
+        $response  = [
+            $totalLikes, $isLiked
+        ];
+        return $response;
     }
 
 
