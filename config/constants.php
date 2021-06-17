@@ -62,6 +62,10 @@ return [
         '4' => 'Relationships'
     ],
 
+    'image' => [
+        'src' => '\Images/user_image/',
+    ],
+
 
 
 

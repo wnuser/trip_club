@@ -96,6 +96,9 @@ Route::get('/your/questions', 'ProfileController@askedQuestions')->name('your.qu
 Route::post('/save/post', 'PostController@store')->name('save.post');
 Route::post('/add/like', 'ajaxController@addlikes')->name('add.like');
 
+Route::post('/user/details', 'ajaxController@userDetails')->name('user.details');
+
+
 Route::get('/feed', 'PostController@index')->name('feed');
 /**
  * User Side Routes

@@ -9,7 +9,6 @@
                 @include('layouts.error')
 
                 <div class="scrolling-pagination">
-
                 @foreach($publicQuestions as $key => $value)
                 <div class="card p-3">
                     <div class="question-wrapper">
@@ -18,11 +17,10 @@
                             @php  $src    =  ($value->seekers->profile_pic) ? ($value->seekers->profile_pic) : 'userIcon.png';  @endphp
                                 <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
                             </a>
-
                         </div>
 
                         <div class="name-wrap">
-                            <h6>{{ $value->seekers->name }}</h6>
+                               <h6>{{ $value->seekers->name }}</h6> 
                         </div>
                         <div class="question">
                         @if(Auth::check())
@@ -66,7 +64,7 @@
                                     </a>
                                 </div>
                                 <div class="name-wrap">
-                                    <h6>{{ $v->answerMentor->name }}</h6>
+                                <a href="javascript::void" onClick="getUserDetails({{ $v->answerMentor->id }})"> <h6>{{ $v->answerMentor->name }}</h6> </a>
                                     <span>{{ config('role.MENTORSTITLE.'.$v->answerMentor->mentor_type) }} 
                                      @if($v->answerMentor->cityRelation)
                                         from {{ $v->answerMentor->cityRelation->city_name }}
@@ -146,14 +144,7 @@
 
             </div>
             <div class="col-lg-4 col-md-4">
-               <!-- <div class="card sticky-dektop py-3 related-que">
-                   <h5 class="px-3">Related Questions</h5>
-                   <hr>
-                   <a href=""#> <span>Q.Someting someting someting someting someting</span> </a>
-                   <a href=""#><span>Q.Officia voluptatum nostrum repudiandae odit iste illum laborum consequuntur molestiae doloribus</span> </a>
-                   <a href=""#><span>Q.Officia voluptatum nostrum odit iste illum laborum consequuntur molestiae doloribus</span> </a>
-
-               </div> -->
+               
                <div class="card py-3 qna-sidebar sticky-desktop s-icons-sidebar">
                <h5 class="px-3">Filter By Topic</h5>
                 <hr>
@@ -194,6 +185,29 @@
                 </a>
               </div>
             </div>
+
+
+            <!-- profile model  --->
+
+            <div class="modal fade modal-about-mentor" id="about-mentor" tabindex="-1" role="dialog" aria-labelledby="about-mentorlLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body p-0" id="user-info">
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
         </div>
     </div>
 </section>
@@ -204,6 +218,34 @@
 
 <script>
 // $('ul.pagination').hide();
+
+function getUserDetails(userId)
+{
+    // alert(userId);
+    $('#about-mentor').modal('show');
+    $.ajaxSetup({
+        headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+    });
+    $('#user-info').empty();
+
+    $.ajax({
+        method: "POST",
+        url: "/user/details",
+        data: {userId:userId},
+        success:function(data){
+            console.log(data,'test');
+            $('#user-info').empty();
+            $('#user-info').append(data);
+        },
+        error:function(){
+
+        }
+    })
+
+
+}
 
 $(window).scroll(function() {
     var pageNo = 1;
@@ -239,7 +281,6 @@ tinymce.init({ selector:'.textarea' });
 
 function addLike(answerId)
     {
-      //  e.preventDefault();
 
       $.ajaxSetup({
         headers: {

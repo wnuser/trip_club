@@ -26,6 +26,14 @@ class ProfileController extends Controller
 
     }
 
+    /**
+     * function for show user profile 
+     */
+    public function userProfile($userId)
+    {
+        $userInfo           = \App\User::with(['countryRelation','seekerQuestions','stateRelation', 'cityRelation', 'mentorQuestions', 'userQuestions'])->whereId(Auth::user()->id)->first();
+        return view('userProfile', compact('userInfo'));
+    }
     
 
 
