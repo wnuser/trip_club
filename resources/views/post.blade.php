@@ -92,12 +92,6 @@
                 </div>
             @endforeach    
                 <!-- /card feed -->
-
-
-
-
-
-
                 
                 <div class="card feed-card p-3">
                    <div class="d-flex hover-box-wrap">
@@ -236,7 +230,9 @@
                      </div>
             </div>
                <textarea name="title" id="title" placeholder="Write something here.." autofocus="autofocus"></textarea>  
-               <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+               @if(Auth::check())
+                  <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+               @endif
                <div id="post-image">
                
                </div> 

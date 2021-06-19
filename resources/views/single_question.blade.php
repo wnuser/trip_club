@@ -124,7 +124,7 @@
                    <h5 class="px-3">Related Questions</h5>
                    <hr>
                    @foreach($relatedQuestions as $key => $value)
-                        <a href="{{ route('single.question', ['slug'=>$value->slug]) }}"> <span>Q. {{ $value->question }} </span> </a>
+                        <a href="{{ route('single.question', ['slug'=>$value->slug]) }}"> <span>{{ $value->question }} </span> </a>
                    @endforeach
                </div>
             </div>

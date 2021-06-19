@@ -20,8 +20,10 @@ class QuestionsController extends Controller
         else:
             $publicQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor', 'answers.answerLikes'])->whereIsPrivate(0)->orderBy('id', 'DESC')->paginate(10);
         endif;
+
+            $randamQuestions    =  \App\Models\questions::with(['seekers', 'answers.answerMentor', 'answers.answerLikes'])->whereIsPrivate(0)->orderBy('id', 'DESC')->skip(5)->take(10)->get();
         // aprint($publicQuestions->toArray());
-        return view('allquestions', compact('publicQuestions'));
+        return view('allquestions', compact('publicQuestions', 'randamQuestions'));
     }
 
     /**

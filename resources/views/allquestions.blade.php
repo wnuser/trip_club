@@ -184,9 +184,16 @@
                     </span>
                 </a>
               </div>
+              @if($randamQuestions->isNotEmpty())
+              <div class="card sticky-dektop py-3 related-que">
+                   <h5 class="px-3">Most Viewed Questions</h5>
+                   <hr>
+                   @foreach($randamQuestions as $key => $value)
+                        <a href="{{ route('single.question', ['slug'=>$value->slug]) }}"> <span> {{ $value->question }} </span> </a>
+                   @endforeach
+               </div>
+               @endif
             </div>
-
-
             <!-- profile model  --->
 
             <div class="modal fade modal-about-mentor" id="about-mentor" tabindex="-1" role="dialog" aria-labelledby="about-mentorlLabel" aria-hidden="true">
@@ -200,14 +207,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
         </div>
     </div>
 </section>
