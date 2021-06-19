@@ -2718,3 +2718,65 @@ span{
 		}
 	}
 }
+
+// commments section
+.comment-sec{
+	padding-top: 10px;
+    border-top: 1px solid $lighter-gray-body;
+	margin-top: 13px;
+	.profile-img{
+		min-width: 50px;
+	}
+}
+
+.post-sec{
+	.card {
+		&.side-card{
+			overflow: hidden;
+		}
+	}
+}
+.profile-box-side{
+	.cover-bg{
+		img{
+			height: 70px;
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+	.img-profile{
+		position: absolute;
+		left: 50%;
+		height: 70px;
+		width: 70px;
+		top: 35px;
+		transform: translate(-50%, 0%);
+		a{
+			display: block;
+			height: 70px;
+			width: 70px;
+			min-width: 70px;
+			padding: 0;
+			background: transparent;
+		}
+		img{
+			height: 100%;
+			width: 100%;
+			display: block;
+			object-fit: cover;
+			border-radius: 50%;
+			border: 2px solid #fff;
+		}
+	}
+	.info-box-side{
+		text-align: center;
+		border-bottom: 1px solid $lighter-gray-body;
+		margin-bottom: 10px;
+		h5{
+			font-size: 17px;
+		}
+		p{
+			font-size: 13px;
+		}
+	}
+}

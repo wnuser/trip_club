@@ -6,7 +6,21 @@
    <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-12 col-12">
-                 <div class="card side-card py-3 sticky-dektop card-anchors">
+                 <div class="card side-card pb-3 sticky-dektop card-anchors">
+                     <div class="profile-box-side">
+                         <div class="cover-bg">
+                            <img src="{{ asset('Images/all/adventure.jpg') }}" alt="profile" class="img-fluid">
+                         </div>
+                         <div class="img-profile">
+                             <a href="#">
+                             <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                             </a>
+                         </div>
+                         <div class="info-box-side pt-5">
+                         <h5>Jitendra Kumar</h5>
+                         <p>Gym trainer dehradun</p>
+                         </div>
+                     </div>
                      <a href="#">
                       connetions
                       <span>growth your network</span>
@@ -99,11 +113,40 @@
                      @endforeach
                      <div class="action-box">
                         <a href="javascript:void(0)" class="{{ ($isLiked) ? 'liked' : '' }} " id="like-button{{$value->id}}"  onClick="addLike({{ $value->id }})" ><span><i class="far fa-heart"></i></span> Like</a>
-                        <a href="#"><span><i class="far fa-comments"></i></span> Comment</a>
+                        <a href="#comments-sec" data-toggle="collapse"><span><i class="far fa-comments"></i></span> Comment</a>
+                     </div>
+
+                     <div class="comment-sec collapse" id="comments-sec">
+                     <div class="d-flex">
+                           <div class="profile-img">
+                              <a href="#">
+                                    <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="name-post">
+                              <h6> Jitendra kumar </h6>
+                              <span>comments content goes here......
+                              </span>
+                           </div>
+                        </div>
+                        <div class="d-flex">
+                           <div class="profile-img">
+                              <a href="#">
+                                    <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="name-post">
+                              <h6> Jitendra kumar </h6>
+                              <span>comments content goes here...... hwe iuhdv hev8h sduvue hvre89 udfhvuver uodveyg ve vuysdgv v uvev erver uvgfuv  uyvg87y458 6754868 uyrg54t345 ihugreug 548ty54jgfdgheruigrw dfvbjfis iughsdghuir 
+                              </span>
+                           </div>
+                        </div>
+
                      </div>
                   @endif   
                 </div>
             @endforeach    
+
                 <!-- /card feed -->
                 <!-- <div class="card feed-card p-3">
                    <div class="d-flex hover-box-wrap">
