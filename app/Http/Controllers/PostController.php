@@ -15,9 +15,11 @@ class PostController extends Controller
     {
         //
         
-        $posts    =  \App\Models\post::with(['user.cityRelation', 'postLikes'])->orderBy('id', 'DESC')->paginate(2);
+        $posts    =  \App\Models\post::with(['user.cityRelation', 'postLikes'])->orderBy('id', 'DESC')->paginate(10);
+
+        $sidePosts  = \App\Models\post::with(['user.cityRelation', 'postLikes'])->take(2);
         
-        return view('post', compact('posts'));
+        return view('post', compact('posts', 'sidePosts'));
     }
     /**
      * Show the form for creating a new resource.
@@ -39,14 +41,16 @@ class PostController extends Controller
     {
         //
         // aprint($request->all());
+        $data           = $request->all();
+
         if ($request->image) {
             $image          = $request->image;
             $image_new_name = time().$image->getClientOriginalName();
             $image->move('Images/uploads', $image_new_name);
+            $data['image']  = $image_new_name;
+
         }
 
-        $data           = $request->all();
-        $data['image']  = $image_new_name;
 
         $post   = new \App\Models\post;
         $post->fill($data)->save();

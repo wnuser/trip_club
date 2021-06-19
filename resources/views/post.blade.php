@@ -79,7 +79,7 @@
                         </div>
                    </div>
                    <div class="post-content">
-                      <p> {{ $value->title }} </p>
+                      <p> {!! $value->title !!} </p>
                       @if($value->image) 
                       <div class="img-block">
                           <img src="{{ asset('Images/uploads/'.$value->image) }}" alt="cover-bg" class="img-fluid">
@@ -152,14 +152,25 @@
             <div class="col-lg-3 col-md-12 col-12">
                  <div class="card py-3 sticky-dektop card-anchors">
                     <div class="filter-sd px-3">
-                       <h5>Sort</h5>
-                       <select name="filter" id="">
+                       <h5>Explore More</h5>
+                       <!-- <select name="filter" id="">
                           <option value="">Filter By Mentors</option>
                           {{ mentorsOption() }}
-                       </select>
+                       </select> -->
                     </div>
                     <hr>
-                    <a href="#">
+                  <!-- <a href="#">
+                   <div class="d-flex sidebar-list">
+                      <div class="profile-img">
+                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                      </div>
+                      <div class="name-post">
+                        <h6>John Doe</h6>
+                        <span>Gym trainer dehradun this is a </span>
+                      </div>
+                   </div>
+                   </a> -->
+                   <!-- <a href="#">
                    <div class="d-flex sidebar-list">
                       <div class="profile-img">
                         <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
@@ -169,8 +180,8 @@
                         <span>Gym trainer dehradun</span>
                       </div>
                    </div>
-                   </a>
-                   <a href="#">
+                   </a> -->
+                   <!-- <a href="#">
                    <div class="d-flex sidebar-list">
                       <div class="profile-img">
                         <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
@@ -180,24 +191,14 @@
                         <span>Gym trainer dehradun</span>
                       </div>
                    </div>
-                   </a>
-                   <a href="#">
-                   <div class="d-flex sidebar-list">
-                      <div class="profile-img">
-                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-                      </div>
-                      <div class="name-post">
-                        <h6>John Doe</h6>
-                        <span>Gym trainer dehradun</span>
-                      </div>
-                   </div>
-                   </a>
-                   <hr>
-                  <h5 class="px-3">Latest feed</h5>
+                   </a> -->
+                   
+                  <!-- <h5 class="px-3">Latest feed</h5> -->
                    <a href="#">
                      <h6>Product-based company or Service based company</h6>
-                      <span>Let's Connect on Twitter:</span>
+                      <!-- <span>Let's Connect on Twitter:</span> -->
                    </a>
+                   <hr>
                    <a href="#">
                      <h6>Product-based company or Service based company</h6>
                       <span>Let's Connect on Twitter:</span>
@@ -238,7 +239,7 @@
                      @endif
                      </div>
             </div>
-               <textarea name="title" id="title" placeholder="Write something here.." autofocus="autofocus"></textarea>  
+               <textarea name="title" id="title" class="textarea" placeholder="Write something here.." autofocus="autofocus"></textarea>  
                @if(Auth::check())
                   <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                @endif
@@ -316,6 +317,15 @@
 
 @section('custom_js')
 <script>
+
+tinymce.init({ 
+   selector:'.textarea',
+   block_formats: 'Paragraph=p; Header 1=h1; Header 2=h2; Header 3=h3',
+   branding: false,
+   plugins: 'link image table',
+   contextmenu: 'link image table'
+
+});
 
 function askQuestions(userData)
 {
