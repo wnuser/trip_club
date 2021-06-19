@@ -15,8 +15,7 @@ class PostController extends Controller
     {
         //
         
-        $posts    =  \App\Models\post::with(['user.cityRelation'])->orderBy('id', 'DESC')->paginate(2);
-        // aprint($posts->toArray());
+        $posts    =  \App\Models\post::with(['user.cityRelation', 'postLikes'])->orderBy('id', 'DESC')->paginate(2);
         
         return view('post', compact('posts'));
     }

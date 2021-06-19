@@ -22,6 +22,7 @@
                  </div>
             </div>
             <div class="col-lg-6 col-md-12 col-12">
+            @include('layouts.error')
 
             @if(Auth::check() && Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE'))
                <div class="card post-card p-3">
@@ -68,8 +69,12 @@
                               </div>
                            </div>
                            <div class="chat-btn d-flex">
-                               <a href="#" class="btn btn-small mr-2">Ask question</a>
-                               <a href="#" class="btn btn-small">View Profile</a>
+                              @php  $userId   = $value->user->id; 
+                                    $userName = $value->user->name ;
+                                    $array    = [$userId, $userName];
+                                    $json     = json_encode($array);  @endphp
+                               <a href="javascript:void(0)" onClick="askQuestions({{$json}})"  class="btn btn-small mr-2">Ask question</a>
+                               <a href="javascript:void(0)" onClick="getUserDetails({{ $value->user->id }})" class="btn btn-small">View Profile</a>
                            </div>
                         </div>
                    </div>
@@ -82,18 +87,25 @@
                       @endif
                    </div>
                    <div class="action-count">
-                      <span class="count"><span><i class="far fa-heart"></i></span> <span>145</span> </span>
-                      <span class="count"><span><i class="far fa-comments"></i></span> <span>78</span> </span>
+                      <span class="count"><span><i class="far fa-heart"></i></span> <span id="like-count{{$value->id}}"> {{ $value->postLikes->count() }} </span> </span>
+                      <span class="count"><span><i class="far fa-comments"></i></span> <span  >78</span> </span>
                    </div>
-                   <div class="action-box">
-                      <a href="javascript:void(0)"  onClick="addLike({{ $value->id }})" ><span><i class="far fa-heart"></i></span> Like</a>
-                      <a href="#"><span><i class="far fa-comments"></i></span> Comment</a>
-                   </div>
+                  @if(Auth::check())
+                     @php $isLiked  = false; @endphp
+                     @foreach($value->postLikes as $k => $v)
+                          @if(Auth::user()->id == $v->user_id)
+                              @php  $isLiked  = true; @endphp
+                          @endif
+                     @endforeach
+                     <div class="action-box">
+                        <a href="javascript:void(0)" class="{{ ($isLiked) ? 'liked' : '' }} " id="like-button{{$value->id}}"  onClick="addLike({{ $value->id }})" ><span><i class="far fa-heart"></i></span> Like</a>
+                        <a href="#"><span><i class="far fa-comments"></i></span> Comment</a>
+                     </div>
+                  @endif   
                 </div>
             @endforeach    
                 <!-- /card feed -->
-                
-                <div class="card feed-card p-3">
+                <!-- <div class="card feed-card p-3">
                    <div class="d-flex hover-box-wrap">
                        <div class="profile-img">
                           <a href="#">
@@ -134,7 +146,7 @@
                       <a href="#"><span><i class="far fa-heart"></i></span> Like </a>
                       <a href="#"><span><i class="far fa-comments"></i></span> Comment</a>
                    </div>
-                </div>
+                </div> -->
 
             </div>
             <div class="col-lg-3 col-md-12 col-12">
@@ -144,9 +156,6 @@
                        <select name="filter" id="">
                           <option value="">Filter By Mentors</option>
                           {{ mentorsOption() }}
-<!--                           
-                          <option value="1">Recent</option>
-                          <option value="2">Top</option> -->
                        </select>
                     </div>
                     <hr>
@@ -248,6 +257,59 @@
     </div>
   </div>
 </div>
+
+
+      <div class="modal fade modal-about-mentor" id="about-mentor" tabindex="-1" role="dialog" aria-labelledby="about-mentorlLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+               <div class="modal-body p-0" id="user-info">
+                        
+               </div>
+            </div>
+      </div>
+
+      <!--  ask question modal  --->
+      
+</div>
+
+<div class="modal fade modal-about-mentor" id="askQuestionModel" tabindex="-1" role="dialog" aria-labelledby="about-mentorlLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Ask Your Question </h5>
+            </div>
+            <form action="{{ route('save.question') }}" method="POST">
+            @csrf
+            <div class="modal-body ask-q-modal">
+               <p> You are asking from <span id="user-name" style="font-weight:bold" ></span> </p>
+               <!-- <p>  </p> -->
+
+               @if(Auth::check())
+                  <div class="form-group mt-2">
+                     <textarea name="question" required id="" placeholder="Type your quetion here"></textarea>
+                  </div>
+                  @if(Auth::check())
+                     <input type="hidden" value="{{ Auth::user()->id }}" name="seeker_id">
+                  @endif
+                  <input type="hidden" name="mentor_id" value="">
+                  <div class="text-right">
+                  <button type="submit" class="btn btn-small ml-auto">Submit</button>
+                  </div>
+               @else 
+
+               <p class="text-center">Please Login First <a href="{{ route('login') }}" class="btn btn-small" >Login</a> </p>   
+               @endif
+            </div>
+            </form>
+         </div>
+      </div>
+
 </section>
 
 @endsection('content')
@@ -255,11 +317,66 @@
 @section('custom_js')
 <script>
 
+function askQuestions(userData)
+{
+   var userId    =  userData[0];
+   var userName  =  userData[1];
+   $('#mentor_id').val(userId);
+   $('#user-name').empty();
+   $('#user-name').append(userName);
+   $('#askQuestionModel').modal('show');
+    
+}
+
+function getUserDetails(userId)
+{
+    $('#about-mentor').modal('show');
+    $.ajaxSetup({
+        headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+    });
+    $('#user-info').empty();
+    $.ajax({
+        method: "POST",
+        url: "/user/details",
+        data: {userId:userId},
+        success:function(data){
+            $('#user-info').append(data);
+        },
+        error:function(){
+        }
+    })
+}
+
     function addLike(postId)
     {
-      //  e.preventDefault();
 
-      //  alert(postId);
+      $.ajaxSetup({
+        headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+      });
+
+       $.ajax({
+          method: "POST",
+          url : "/add/post/likes",
+          data : {postId : postId},
+          success:function(data){
+             console.log(data);
+             $('#like-count'+postId).empty();
+             $('#like-count'+postId).append(data);
+             if(data > 0) {
+               $('#like-button'+postId).addClass('liked');
+             } else {
+               $('#like-button'+postId).removeClass('liked');  
+             }
+             
+          },
+          error:function(){
+
+          }
+       })
     }
 
      $('#upload-img').on('change', function(e){

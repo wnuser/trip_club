@@ -95,6 +95,7 @@ Route::post('ask', 'QuestionsController@askedQuestion')->name('ask.question');
 Route::get('/your/questions', 'ProfileController@askedQuestions')->name('your.questions');
 Route::post('/save/post', 'PostController@store')->name('save.post');
 Route::post('/add/like', 'ajaxController@addlikes')->name('add.like');
+Route::post('/add/post/likes', 'ajaxController@addLikestoPost')->name('add.post.likes');
 
 Route::post('/user/details', 'ajaxController@userDetails')->name('user.details');
 

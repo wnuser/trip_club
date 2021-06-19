@@ -8,6 +8,29 @@ use Auth;
 class ajaxController extends Controller
 {
 
+     public function addLikestoPost(Request $request)
+     {
+        $data['user_id']  = Auth::user()->id;
+        $data['post_id']  = $request->postId;
+        $data['likes']    = 1;
+
+
+        $isLikeExists  = \App\Models\Postlikes::whereUserId(Auth::user()->id)->wherePostId($request->postId)->exists();
+        if($isLikeExists)
+        {
+            $removeLike  = \App\Models\Postlikes::whereUserId(Auth::user()->id)->wherePostId($request->postId)->delete();
+        }
+        else 
+        {
+            $insetData  = \App\Models\Postlikes::insert($data);
+        }
+
+        $count = \App\Models\Postlikes::wherePostId($request->postId)->count();
+        return $count;
+     }
+
+
+
     /**
      * function for preparing user details for show in profile modal 
      */

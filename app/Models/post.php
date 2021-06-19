@@ -15,4 +15,8 @@ class post extends Model
     public function user() {
         return $this->hasOne('\App\User', 'id', 'user_id');
     }
+    
+    public function postLikes() {
+        return $this->hasMany('\App\Models\Postlikes', 'post_id', 'id');
+    }
 }
