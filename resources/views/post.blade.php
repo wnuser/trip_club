@@ -113,84 +113,50 @@
                      @endforeach
                      <div class="action-box">
                         <a href="javascript:void(0)" class="{{ ($isLiked) ? 'liked' : '' }} " id="like-button{{$value->id}}"  onClick="addLike({{ $value->id }})" ><span><i class="far fa-heart"></i></span> Like</a>
-                        <a href="#comments-sec" data-toggle="collapse"><span><i class="far fa-comments"></i></span> Comment</a>
+                        <a href="#comments-sec{{$value->id}}" data-toggle="collapse"><span><i class="far fa-comments"></i></span> Comment</a>
                      </div>
 
-                     <div class="comment-sec collapse" id="comments-sec">
-                     <div class="d-flex">
-                           <div class="profile-img">
-                              <a href="#">
-                                    <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-                              </a>
-                           </div>
-                           <div class="name-post">
-                              <h6> Jitendra kumar </h6>
-                              <span>comments content goes here......
-                              </span>
-                           </div>
-                        </div>
+                     <div class="comment-sec collapse" id="comments-sec{{$value->id}}">
+
+                     @if(Auth::check())
                         <div class="d-flex">
                            <div class="profile-img">
-                              <a href="#">
+                                 <a href="">
                                     <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-                              </a>
+                                 </a>
                            </div>
-                           <div class="name-post">
-                              <h6> Jitendra kumar </h6>
-                              <span>comments content goes here...... hwe iuhdv hev8h sduvue hvre89 udfhvuver uodveyg ve vuysdgv v uvev erver uvgfuv  uyvg87y458 6754868 uyrg54t345 ihugreug 548ty54jgfdgheruigrw dfvbjfis iughsdghuir 
-                              </span>
-                           </div>
+                           <div class="name-post d-flex">
+                                 <!-- <h6> Jitendra kumar </h6> -->
+                                 <form action="" id="comment-form{{$value->id}}" method="POST">
+                                    <input type="text" class="form-control" id="comment{{$value->id}}"  name="comment">
+                                    <input type="hidden" name="post_id" value="{{ $value->id }}" id="post-id{{$value->id}}" >
+                                    <button class="btn btn-small" onClick="submitForm({{$value->id}})" >Post</button>
+                                 </form>
+                              </div>
                         </div>
+                     @endif
 
+                     <div id="pre-comments">
+                        @foreach($value->postComments as $commentKey => $commentValue)
+                           <div class="d-flex">
+                              <div class="profile-img">
+                                 <a href="#">
+                                       <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                                 </a>
+                              </div>
+                              <div class="name-post">
+                                 <h6> {{ $commentValue->user->name }} </h6>
+                                 <span> {{ $commentValue->comment }}
+                                 </span>
+                              </div>
+                           </div>
+                        @endforeach   
+                     </div>
+                     
                      </div>
                   @endif   
                 </div>
             @endforeach    
-
-                <!-- /card feed -->
-                <!-- <div class="card feed-card p-3">
-                   <div class="d-flex hover-box-wrap">
-                       <div class="profile-img">
-                          <a href="#">
-                          <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-                          </a>
-                        </div>
-                        <div class="name-post">
-                           <h6>John Doe</h6>
-                           <span>Gym trainer dehradun</span>
-                        </div>
-                        <div class="hover-info">
-                           <div class="name-info">
-                              <div class="profile-img">
-                              <a href="#">
-                              <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-                              </a>
-                              </div>
-                              <div class="name-post">
-                                 <h6>John Doe</h6>
-                                 <span>Gym trainer dehradun</span>
-                              </div>
-                           </div>
-                           <div class="chat-btn d-flex">
-                               <a href="#" class="btn btn-small mr-2">Chat</a>
-                               <a href="#" class="btn btn-small">View Profile</a>
-                           </div>
-                        </div>
-                   </div>
-                   <div class="post-content">
-                      <p>I am looking for a job, I have arround 3 years experience in php developer. I can work only home.</p>
-                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo deleniti quibusdam nulla? Quidem, quam adipisci nobis consectetur facilis voluptatum, fuga reiciendis officiis beatae ratione nisi eligendi culpa corrupti officia. Earum!.</p>
-                   </div>
-                   <div class="action-count">
-                      <span class="count"><span><i class="far fa-heart"></i></span> <span>145</span> </span>
-                      <span class="count"><span><i class="far fa-comments"></i></span> <span>78</span> </span>
-                   </div>
-                   <div class="action-box">
-                      <a href="#"><span><i class="far fa-heart"></i></span> Like </a>
-                      <a href="#"><span><i class="far fa-comments"></i></span> Comment</a>
-                   </div>
-                </div> -->
-
             </div>
             <div class="col-lg-3 col-md-12 col-12">
                  <div class="card py-3 sticky-dektop card-anchors">
@@ -213,35 +179,12 @@
                       </div>
                    </div>
                    </a> -->
-                   <!-- <a href="#">
-                   <div class="d-flex sidebar-list">
-                      <div class="profile-img">
-                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-                      </div>
-                      <div class="name-post">
-                        <h6>John Doe</h6>
-                        <span>Gym trainer dehradun</span>
-                      </div>
-                   </div>
-                   </a> -->
-                   <!-- <a href="#">
-                   <div class="d-flex sidebar-list">
-                      <div class="profile-img">
-                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-                      </div>
-                      <div class="name-post">
-                        <h6>John Doe</h6>
-                        <span>Gym trainer dehradun</span>
-                      </div>
-                   </div>
-                   </a> -->
                    
                   <!-- <h5 class="px-3">Latest feed</h5> -->
                    <a href="#">
                      <h6>Product-based company or Service based company</h6>
-                      <!-- <span>Let's Connect on Twitter:</span> -->
                    </a>
-                   <hr>
+                   <!-- <hr> -->
                    <a href="#">
                      <h6>Product-based company or Service based company</h6>
                       <span>Let's Connect on Twitter:</span>
@@ -369,6 +312,41 @@ tinymce.init({
    contextmenu: 'link image table'
 
 });
+
+function submitForm(postId)
+{
+   event.preventDefault();
+
+   $.ajaxSetup({
+        headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+   });
+   var comment =  $('#comment'+postId).val();
+   var postId  =  $('#post-id'+postId).val();
+
+   if(comment) {
+
+   } else {
+      return false ; 
+      exit;
+   }
+
+   $.ajax({
+      method: "POST",
+      url: "/save/comment",
+      data : {comment:comment, postId : postId},
+      success:function(data){
+         console.log(data);
+            $('#comment-form'+postId).trigger("reset");
+      }, 
+      error:function(){
+
+      }
+   })
+}
+
+
 
 function askQuestions(userData)
 {

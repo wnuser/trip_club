@@ -15,7 +15,7 @@ class PostController extends Controller
     {
         //
         
-        $posts    =  \App\Models\post::with(['user.cityRelation', 'postLikes'])->orderBy('id', 'DESC')->paginate(10);
+        $posts    =  \App\Models\post::with(['user.cityRelation', 'postLikes', 'postComments.user'])->orderBy('id', 'DESC')->paginate(10);
 
         $sidePosts  = \App\Models\post::with(['user.cityRelation', 'postLikes'])->take(2);
         

@@ -19,4 +19,8 @@ class post extends Model
     public function postLikes() {
         return $this->hasMany('\App\Models\Postlikes', 'post_id', 'id');
     }
+
+    public function postComments() {
+        return $this->hasMany('\App\Models\Postcomment', 'post_id', 'id');
+    }
 }

@@ -8,6 +8,30 @@ use Auth;
 class ajaxController extends Controller
 {
 
+    /**
+     * saving comment 
+     */
+    public function saveComment(Request $request)
+    {
+        $data['user_id']    =  Auth::user()->id;
+        $data['post_id']    =  $request->postId;
+        $data['comment']    =  $request->comment;
+
+        $insertData  = \App\Models\Postcomment::insert($data);
+        if($insertData)
+        {
+            return "success";
+        }
+        else 
+        {
+            return "fail";
+        }
+
+
+    }
+
+
+
      public function addLikestoPost(Request $request)
      {
         $data['user_id']  = Auth::user()->id;
