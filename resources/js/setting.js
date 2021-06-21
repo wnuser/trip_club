@@ -29,10 +29,6 @@ $(document).ready(function(){
         $('body').toggleClass('overlay');
     });
 
-    $('.cmt-btn').click(function(e){
-        e.preventDefault();
-        $('.comment-sec').toggleClass('open-comment');
-    });
  
         //  $('#records-table').DataTable();
   });

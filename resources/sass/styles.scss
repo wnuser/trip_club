@@ -2724,10 +2724,6 @@ span{
 	padding-top: 10px;
     border-top: 1px solid $lighter-gray-body;
 	margin-top: 13px;
-	display: none;
-	&.open-comment{
-		display: block;
-	}
 	.profile-img{
 		min-width: 50px;
 	}
@@ -2799,5 +2795,54 @@ span{
 		p{
 			font-size: 13px;
 		}
+	}
+}
+
+.ac-side-box{
+	.card-header{
+		.btn{
+			width: 100%;
+			text-align: left;
+			span{
+				float: right;
+			}
+			&[aria-expanded="true"]{
+				span{
+					float: right;
+					transform: rotate(180deg);
+				}
+			}
+		}
+	}
+	.card-body{
+		font-size: 13px;
+		.listing-highlighted{
+			list-style: none;
+			padding: 0;
+			li{
+				display: flex;
+				align-items: center;
+				margin-bottom: 5px;
+				flex-wrap: wrap;
+				span{
+					font-size: 20px;
+					padding-right: 5px;
+					img{
+						height: 27px;
+						width: 27px;
+						object-fit: contain;
+					}
+				}
+				h6{
+					margin-bottom: 0;
+					font-weight: 700;
+				}
+			}
+		}
+	}
+	.card{
+		border-radius: 0;
+		margin-bottom: 5px !important;
+		border-bottom: none;
 	}
 }
