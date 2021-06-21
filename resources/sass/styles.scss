@@ -2724,8 +2724,29 @@ span{
 	padding-top: 10px;
     border-top: 1px solid $lighter-gray-body;
 	margin-top: 13px;
+	display: none;
+	&.open-comment{
+		display: block;
+	}
 	.profile-img{
 		min-width: 50px;
+	}
+	.name-post{
+		width: calc(100% - 50px);
+		form{
+			width: 100%;
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			textarea{
+				width: calc(100% - 20px);
+				border-radius: 10px;
+				margin-right: 10px;
+			}
+			.btn-small{
+				width: 90px;
+			}
+		}
 	}
 }
 

@@ -113,10 +113,10 @@
                      @endforeach
                      <div class="action-box">
                         <a href="javascript:void(0)" class="{{ ($isLiked) ? 'liked' : '' }} " id="like-button{{$value->id}}"  onClick="addLike({{ $value->id }})" ><span><i class="far fa-heart"></i></span> Like</a>
-                        <a href="#comments-sec{{$value->id}}" data-toggle="collapse"><span><i class="far fa-comments"></i></span> Comment</a>
+                        <a href="javascript:void(0)" class="cmt-btn"><span><i class="far fa-comments"></i></span> Comment</a>
                      </div>
 
-                     <div class="comment-sec collapse" id="comments-sec{{$value->id}}">
+                     <div class="comment-sec" id="comments-sec{{$value->id}}">
 
                      @if(Auth::check())
                         <div class="d-flex">
@@ -128,7 +128,7 @@
                            <div class="name-post d-flex">
                                  <!-- <h6> Jitendra kumar </h6> -->
                                  <form action="" id="comment-form{{$value->id}}" method="POST">
-                                    <input type="text" class="form-control" id="comment{{$value->id}}"  name="comment">
+                                    <textarea class="form-control" id="comment{{$value->id}}"  name="comment" placeholder="Add a comment.."> </textarea>
                                     <input type="hidden" name="post_id" value="{{ $value->id }}" id="post-id{{$value->id}}" >
                                     <button class="btn btn-small" onClick="submitForm({{$value->id}})" >Post</button>
                                  </form>

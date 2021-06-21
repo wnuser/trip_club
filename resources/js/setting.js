@@ -28,6 +28,12 @@ $(document).ready(function(){
         $('.navbar-collapse').toggleClass('open-sidebar');
         $('body').toggleClass('overlay');
     });
+
+    $('.cmt-btn').click(function(e){
+        e.preventDefault();
+        $('.comment-sec').toggleClass('open-comment');
+    });
+ 
         //  $('#records-table').DataTable();
   });
 
