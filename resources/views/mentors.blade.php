@@ -31,7 +31,7 @@
                       
                         @if($value->experience)
                            @php  $years  = ($value->experience == 1) ? 'year' : 'years';  @endphp
-                           <h6><span><i class="fas fa-atom"></i></span> {{ $value->experience }} {{ $years }} of experience</h6>
+                           <h6><span><i class="fas fa-atom"></i></span> {{ config('constants.experience.'.$value->experience) }} {{ $years }} of experience</h6>
                         @else
                            <h6><span><i class="fas fa-atom"></i></span> Experienced </h6>
                         @endif
@@ -70,14 +70,14 @@
             </div>
          <div class="profile-box">
             <a class="profile-popup" href="#">
-                  @php  $src    =  ($value->profile_pic) ? ($value->profile_pic) : 'userIcon.png';  @endphp
+                  @php  $src    =  ($v->profile_pic) ? ($v->profile_pic) : 'userIcon.png';  @endphp
                  <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
             </a>
          </div>
          <div class="about-body">
             <div class="button-strip">
                 <!-- <a href="#" class="btn btn-small">Connect</a> -->
-                @if(Auth::check() && $value->id == Auth::user()->id)
+                @if(Auth::check() && $v->id == Auth::user()->id)
                   <a href="#" disable  data-toggle="modal" class="btn btn-small">Ask Question</a>
                 @else
                   <a href="#askQuestionModel{{$value->id}}"  data-toggle="modal" class="btn btn-small">Ask Question</a>
@@ -119,6 +119,10 @@
       <div class="about-info-sec">
          <h5> <i class="fas fa-map-marked"></i> Office Address </h5>
          <p> {{ $v->office_address }} </p>
+      </div>
+
+      <div class="about-info-sec p-2">
+           <p></p>
       </div>
 
       </div>
