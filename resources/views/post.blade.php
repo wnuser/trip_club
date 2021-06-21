@@ -21,18 +21,58 @@
                          <p>Gym trainer dehradun</p>
                          </div>
                      </div>
-                     <a href="#">
-                      connetions
-                      <span>growth your network</span>
-                     </a>
-                     <a href="#">
-                      connetions
-                      <span>growth your network</span>
-                     </a>
-                     <a href="#">
-                      connetions
-                      <span>growth your network</span>
-                     </a>
+                     <div class="ac-side-box">
+                     <div id="accordion">
+                        <div class="card">
+                           <div class="card-header p-0" id="headingOne">
+                              <h5 class="mb-0">
+                              <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Item  <span><i class="fas fa-angle-down"></i> </span>
+                              </button>
+                              </h5>
+                           </div>
+
+                           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                              <div class="card-body">
+                              <ul class="listing-highlighted">
+                                 <li><span> <i class="fas fa-calendar"></i> </span> <h6>Events</h6>
+                                   <P>srthsrthdty rthrhjs rjyr  paagakp here si hoes hg</P>
+                                 </li>
+                                 <li><span> <i class="fas fa-calendar"></i> </span> <h6>Events</h6></li>
+                              </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card">
+                           <div class="card-header p-0" id="headingTwo">
+                              <h5 class="mb-0">
+                              <button class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                 Item  <span><i class="fas fa-angle-down"></i> </span>
+                              </button>
+                              </h5>
+                           </div>
+                           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                              <div class="card-body">
+                              Anim pariatur cliche reprehenderit, occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card">
+                           <div class="card-header p-0" id="headingThree">
+                              <h5 class="mb-0">
+                              <button class="btn collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Item <span><i class="fas fa-angle-down"></i> </span>
+                              </button>
+                              </h5>
+                           </div>
+                           <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                              <div class="card-body">
+                              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch.
+                              </div>
+                           </div>
+                        </div>
+                        </div>
+                     </div>
                  </div>
             </div>
             <div class="col-lg-6 col-md-12 col-12">
@@ -113,10 +153,10 @@
                      @endforeach
                      <div class="action-box">
                         <a href="javascript:void(0)" class="{{ ($isLiked) ? 'liked' : '' }} " id="like-button{{$value->id}}"  onClick="addLike({{ $value->id }})" ><span><i class="far fa-heart"></i></span> Like</a>
-                        <a href="javascript:void(0)" class="cmt-btn"><span><i class="far fa-comments"></i></span> Comment</a>
+                        <a href="#comments-sec{{$value->id}}" data-toggle="collapse" class="cmt-btn"><span><i class="far fa-comments"></i></span> Comment</a>
                      </div>
 
-                     <div class="comment-sec" id="comments-sec{{$value->id}}">
+                     <div class="comment-sec collapse" id="comments-sec{{$value->id}}">
 
                      @if(Auth::check())
                         <div class="d-flex">

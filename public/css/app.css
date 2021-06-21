@@ -2936,11 +2936,6 @@ span.dot {
   padding-top: 10px;
   border-top: 1px solid #f3f2ef;
   margin-top: 13px;
-  display: none;
-}
-
-.comment-sec.open-comment {
-  display: block;
 }
 
 .comment-sec .profile-img {
@@ -3019,6 +3014,59 @@ span.dot {
 
 .profile-box-side .info-box-side p {
   font-size: 13px;
+}
+
+.ac-side-box .card-header .btn {
+  width: 100%;
+  text-align: left;
+}
+
+.ac-side-box .card-header .btn span {
+  float: right;
+}
+
+.ac-side-box .card-header .btn[aria-expanded=true] span {
+  float: right;
+  transform: rotate(180deg);
+}
+
+.ac-side-box .card-body {
+  font-size: 13px;
+}
+
+.ac-side-box .card-body .listing-highlighted {
+  list-style: none;
+  padding: 0;
+}
+
+.ac-side-box .card-body .listing-highlighted li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+
+.ac-side-box .card-body .listing-highlighted li span {
+  font-size: 20px;
+  padding-right: 5px;
+}
+
+.ac-side-box .card-body .listing-highlighted li span img {
+  height: 27px;
+  width: 27px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.ac-side-box .card-body .listing-highlighted li h6 {
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+.ac-side-box .card {
+  border-radius: 0;
+  margin-bottom: 5px !important;
+  border-bottom: none;
 }
 
 /* Conatct start */
