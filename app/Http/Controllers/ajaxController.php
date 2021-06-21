@@ -17,10 +17,35 @@ class ajaxController extends Controller
         $data['post_id']    =  $request->postId;
         $data['comment']    =  $request->comment;
 
-        $insertData  = \App\Models\Postcomment::insert($data);
+        $insertData      = \App\Models\Postcomment::insert($data);
+        $commentesData   = \App\Models\Postcomment::with(['user'])->wherePostId($request->postId)->orderBy('id', 'DESC');
+        $commentes       = $commentesData->get();
+        $commentCount    = $commentesData->count();
+
+        $html     =  '';                                       
+        foreach ($commentes as $key => $value) {
+            # code...
+            $userImg   = ($value->user->profile_pic) ? ($value->user->profile_pic) : 'userIcon.png';
+            $userName  =  $value->user->name;
+            $comment   =  $value->comment;
+            $html.= '<div class="d-flex">
+                        <div class="profile-img">
+                        <a href="#">
+                                <img src="/Images/user_image/'.$userImg.'" alt="profile" class="img-fluid">
+                        </a>
+                        </div>
+                        <div class="name-post">
+                        <h6> '.$userName.'  </h6>
+                        <span> '.$comment.'
+                        </span>
+                        </div>
+                    </div>';
+        }                                       
         if($insertData)
         {
-            return "success";
+            $array = [$html, $commentCount];
+            return json_encode($array);
+
         }
         else 
         {

@@ -102,7 +102,7 @@
                    </div>
                    <div class="action-count">
                       <span class="count"><span><i class="far fa-heart"></i></span> <span id="like-count{{$value->id}}"> {{ $value->postLikes->count() }} </span> </span>
-                      <span class="count"><span><i class="far fa-comments"></i></span> <span  >78</span> </span>
+                      <span class="count"><span><i class="far fa-comments"></i></span> <span  id="comment-count{{$value->id}}"> {{ $value->postComments->count() }}  </span> </span>
                    </div>
                   @if(Auth::check())
                      @php $isLiked  = false; @endphp
@@ -122,7 +122,8 @@
                         <div class="d-flex">
                            <div class="profile-img">
                                  <a href="">
-                                    <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                                 @php  $userImg   =  ($value->user->profile_pic) ? ($value->user->profile_pic) : 'userIcon.png'; @endphp
+                                    <img src="{{ asset('Images/user_image/'.$userImg) }}" alt="profile" class="img-fluid">
                                  </a>
                            </div>
                            <div class="name-post d-flex">
@@ -136,12 +137,13 @@
                         </div>
                      @endif
 
-                     <div id="pre-comments">
+                     <div id="pre-comments{{$value->id}}">
                         @foreach($value->postComments as $commentKey => $commentValue)
                            <div class="d-flex">
                               <div class="profile-img">
                                  <a href="#">
-                                       <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                                       @php  $userImg   =  ($commentValue->user->profile_pic) ? ($commentValue->user->profile_pic) : 'userIcon.png'; @endphp
+                                       <img src="{{ asset('Images/user_image/'.$userImg) }}" alt="profile" class="img-fluid">
                                  </a>
                               </div>
                               <div class="name-post">
@@ -338,7 +340,13 @@ function submitForm(postId)
       data : {comment:comment, postId : postId},
       success:function(data){
          console.log(data);
+            $('#pre-comments'+postId).empty();
+            $('#pre-comments'+postId).append(data[0]);
             $('#comment-form'+postId).trigger("reset");
+            $('#comment-count'+postId).empty();
+            $('#comment-count'+postId).append(data[1]);
+
+
       }, 
       error:function(){
 
@@ -437,56 +445,5 @@ function getUserDetails(userId)
      });
 </script>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
