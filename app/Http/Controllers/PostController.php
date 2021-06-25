@@ -15,10 +15,8 @@ class PostController extends Controller
     {
         //
         
-        $posts      =  \App\Models\post::with(['user.cityRelation', 'postLikes', 'postComments.user'])->orderBy('id', 'DESC')->paginate(10);
-        $sidePosts  =  \App\Models\post::with(['user.cityRelation', 'postLikes'])->take(2);
-        
-        return view('post', compact('posts', 'sidePosts'));
+        $posts      =  \App\Models\post::with(['user.cityRelation', 'postLikes', 'postComments.user'])->orderBy('id', 'DESC')->get();
+        return view('post', compact('posts'));
     }
     /**
      * Show the form for creating a new resource.

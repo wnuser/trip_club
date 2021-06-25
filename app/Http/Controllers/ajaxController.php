@@ -44,7 +44,8 @@ class ajaxController extends Controller
         if($insertData)
         {
             $array = [$html, $commentCount];
-            return json_encode($array);
+            $json  = json_encode($array);
+            return $json;
 
         }
         else 
@@ -62,6 +63,7 @@ class ajaxController extends Controller
         $data['user_id']  = Auth::user()->id;
         $data['post_id']  = $request->postId;
         $data['likes']    = 1;
+        $isLiked          = 0;
 
 
         $isLikeExists  = \App\Models\Postlikes::whereUserId(Auth::user()->id)->wherePostId($request->postId)->exists();
@@ -71,11 +73,13 @@ class ajaxController extends Controller
         }
         else 
         {
+            $isLiked    = 1;
             $insetData  = \App\Models\Postlikes::insert($data);
         }
 
         $count = \App\Models\Postlikes::wherePostId($request->postId)->count();
-        return $count;
+        $data  = [$count, $isLiked];
+        return $data;
      }
 
 
@@ -155,15 +159,6 @@ class ajaxController extends Controller
         }
 
 
-
-
-
-
-
-
-
-
-
     public function addlikes(Request $request)
     {
        //  aprint($request->all());
@@ -194,12 +189,6 @@ class ajaxController extends Controller
         ];
         return $response;
     }
-
-
-
-
-
-
 
 
 

@@ -5,92 +5,69 @@
 <section class="post-sec">
    <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-12 col-12">
-                 <div class="card side-card pb-3 sticky-dektop card-anchors">
+            <div class="col-lg-3 col-md-12 col-12 ">
+                 <div class="card side-card pb-3 sticky-dektop card-anchors 	d-none d-sm-block ">
+                     
                      <div class="profile-box-side">
                          <div class="cover-bg">
-                            <img src="{{ asset('Images/all/adventure.jpg') }}" alt="profile" class="img-fluid">
+                            <img src="{{ asset('Images/cover-mentors.jpg') }}" alt="profile" class="img-fluid">
                          </div>
                          <div class="img-profile">
                              <a href="#">
-                             <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                             @php  $userImg  = (Auth::check()) ? Auth::user()->profile_pic : 'userIcon.png';   @endphp
+                             <img src="{{ asset('Images/user_image/'.$userImg) }}" alt="profile" class="img-fluid">
                              </a>
                          </div>
                          <div class="info-box-side pt-5">
-                         <h5>Jitendra Kumar</h5>
-                         <p>Gym trainer dehradun</p>
+                         <h5> 
+                           @if(Auth::check())
+                                {{ Auth::user()->name }}      
+                           @else 
+                                Health Mentors
+                           @endif
+                         </h5>
+                         @if(Auth::check())
+                           <p> {{ config('role.MENTORSTITLE.'.Auth::user()->mentor_type) }} </p>
+                         @endif
                          </div>
                      </div>
-                     <div class="ac-side-box">
-                     <div id="accordion">
-                        <div class="card">
-                           <div class="card-header p-0" id="headingOne">
-                              <h5 class="mb-0">
-                              <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Item  <span><i class="fas fa-angle-down"></i> </span>
-                              </button>
-                              </h5>
-                           </div>
+                    <!-- <div class="list">
+                        <h6 class="text-center" style="font-weight:bold">Read Blogs</h6>
+                        <ul class="listing-highlighted" style="list-style: none;">
+                           <li><span> <i class="fas fa-briefcase-medical text-danger"></i> </span>  <a href="{{ route('category.blogs', ['id'=>3]) }}">Health Care   </a> 
+                           </li>
+                           <li><span> <i class="fas fa-user-secret text-primary"></i> </span>  <a href="{{ route('category.blogs', ['id'=>4]) }}">Fashion & Lifestyle   </a> 
+                           </li>
+                           <li><span> <i class="fas fa-walking bold text-success"></i> </span>  <a href="{{ route('category.blogs', ['id'=>5]) }}"> Fitness   </a> 
+                           </li>
+                        </ul>
+                    </div> -->
+                     
+                     
+                </div>
 
-                           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                              <div class="card-body">
-                              <ul class="listing-highlighted">
-                                 <li><span> <i class="fas fa-calendar"></i> </span> <h6>Events</h6>
-                                   <P>srthsrthdty rthrhjs rjyr  paagakp here si hoes hg</P>
-                                 </li>
-                                 <li><span> <i class="fas fa-calendar"></i> </span> <h6>Events</h6></li>
-                              </ul>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="card">
-                           <div class="card-header p-0" id="headingTwo">
-                              <h5 class="mb-0">
-                              <button class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                 Item  <span><i class="fas fa-angle-down"></i> </span>
-                              </button>
-                              </h5>
-                           </div>
-                           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                              <div class="card-body">
-                              Anim pariatur cliche reprehenderit, occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                              </div>
-                           </div>
-                        </div>
-                        <div class="card">
-                           <div class="card-header p-0" id="headingThree">
-                              <h5 class="mb-0">
-                              <button class="btn collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Item <span><i class="fas fa-angle-down"></i> </span>
-                              </button>
-                              </h5>
-                           </div>
-                           <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                              <div class="card-body">
-                              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch.
-                              </div>
-                           </div>
-                        </div>
-                        </div>
-                     </div>
-                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-12">
             @include('layouts.error')
 
-            @if(Auth::check() && Auth::user()->user_type == config('role.ROLES.MENTOR.TYPE'))
                <div class="card post-card p-3">
                    <div class="d-flex">
                      <div class="profile-img">
-                     @php  $src    =  (Auth::user()->profile_pic) ? (Auth::user()->profile_pic) : 'userIcon.png';  @endphp
+                     @php  $src    =   (Auth::check()) ? ( (Auth::user()->profile_pic) ? (Auth::user()->profile_pic) : 'userIcon.png') : 'userIcon.png' ;  @endphp
                      <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
                     </div>
+                  @if(Auth::check())  
                     <a href="#create-post" data-toggle="modal">
                       Write a post
                     </a>
+                  @else 
+                     <a href="#ask-login" data-toggle="modal">
+                      Write a post
+                    </a>
+                  @endif  
                    </div>
                </div>
-            @endif   
+           
 
             @foreach($posts as $key => $value)
                 <div class="card feed-card p-3">
@@ -111,7 +88,8 @@
                            <div class="name-info">
                               <div class="profile-img">
                               <a href="#">
-                              <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
+                              @php  $mentorImg   = ($value->user->profile_pic) ?  ($value->user->profile_pic) : 'userIcon.png';  @endphp
+                              <img src="{{ asset('Images/user_image/'.$mentorImg) }}" alt="profile" class="img-fluid">
                               </a>
                               </div>
                               <div class="name-post">
@@ -192,9 +170,56 @@
                                  </span>
                               </div>
                            </div>
+                           
                         @endforeach   
                      </div>
-                     
+                     </div>
+                  @else 
+
+                    <div class="action-box">
+                        <a href="javascript:void(0)" class="" data-toggle="modal" data-target="#ask-login" ><span><i class="far fa-heart"></i></span> Like</a>
+                        <a href="#comments-sec{{$value->id}}" data-toggle="collapse" class="cmt-btn"><span><i class="far fa-comments"></i></span> Comment</a>
+                     </div>
+
+                     <div class="comment-sec collapse" id="comments-sec{{$value->id}}">
+
+                     @if(Auth::check())
+                        <div class="d-flex">
+                           <div class="profile-img">
+                                 <a href="">
+                                 @php  $userImg   =  ($value->user->profile_pic) ? ($value->user->profile_pic) : 'userIcon.png'; @endphp
+                                    <img src="{{ asset('Images/user_image/'.$userImg) }}" alt="profile" class="img-fluid">
+                                 </a>
+                           </div>
+                           <div class="name-post d-flex">
+                                 <!-- <h6> Jitendra kumar </h6> -->
+                                 <form action="" id="comment-form{{$value->id}}" method="POST">
+                                    <textarea class="form-control" id="comment{{$value->id}}"  name="comment" placeholder="Add a comment.."> </textarea>
+                                    <input type="hidden" name="post_id" value="{{ $value->id }}" id="post-id{{$value->id}}" >
+                                    <button class="btn btn-small" onClick="submitForm({{$value->id}})" >Post</button>
+                                 </form>
+                              </div>
+                        </div>
+                     @endif
+
+                     <div id="pre-comments{{$value->id}}">
+                        @foreach($value->postComments as $commentKey => $commentValue)
+                           <div class="d-flex">
+                              <div class="profile-img">
+                                 <a href="#">
+                                       @php  $userImg   =  ($commentValue->user->profile_pic) ? ($commentValue->user->profile_pic) : 'userIcon.png'; @endphp
+                                       <img src="{{ asset('Images/user_image/'.$userImg) }}" alt="profile" class="img-fluid">
+                                 </a>
+                              </div>
+                              <div class="name-post">
+                                 <h6> {{ $commentValue->user->name }} </h6>
+                                 <span> {{ $commentValue->comment }}
+                                 </span>
+                              </div>
+                           </div>
+                           
+                        @endforeach   
+                     </div>
                      </div>
                   @endif   
                 </div>
@@ -223,18 +248,76 @@
                    </a> -->
                    
                   <!-- <h5 class="px-3">Latest feed</h5> -->
-                   <a href="#">
-                     <h6>Product-based company or Service based company</h6>
-                   </a>
-                   <!-- <hr> -->
-                   <a href="#">
-                     <h6>Product-based company or Service based company</h6>
-                      <span>Let's Connect on Twitter:</span>
-                   </a>
-                   <a href="#">
-                     <h6>Product-based company or Service based company</h6>
-                      <span>Let's Connect on Twitter:</span>
-                   </a>
+                  <div class="ac-side-box">
+                        <div id="accordion">
+                           <div class="card">
+                              <div class="card-header p-0" id="headingTwo">
+                                 <h5 class="mb-0">
+                                 <button class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    Health Mentors  <span><i class="fas fa-angle-down"></i> </span>
+                                 </button>
+                                 </h5>
+                              </div>
+                              <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                                 <div class="card-body">
+                                 <ul class="listing-highlighted">
+                                    <li><span>  <img src="{{ asset('Images/icons/yoga.png') }}" class="img-fluid" height="15" width="15" alt=""></span>  <a href="{{ route('mentors', ['id'=>2]) }}"> Yoga Teachers  </a> 
+                                    </li>
+                                    <li><span> <img src="{{ asset('Images/icons/fitness.png') }}" class="img-fluid" height="15" width="15" alt=""></span>  <a href="{{ route('mentors', ['id'=>1]) }}">Gym Trainers   </a> 
+                                    </li>
+                                    <li><span> <img src="{{ asset('Images/icons/healthcare.png') }}" class="img-fluid" height="15" width="15" alt=""></span>  <a href="{{ route('mentors', ['id'=>3]) }}"> Doctos   </a> 
+                                    </li>
+                                    <li><span> <img src="{{ asset('Images/icons/relationship.png') }}" class="img-fluid" height="15" width="15" alt=""></span>  <a href="{{ route('mentors', ['id'=>4]) }}">Relationship Coach   </a> 
+                                    </li>
+
+                                 </ul>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-header p-0" id="headingOne">
+                                 <h5 class="mb-0">
+                                 <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Forum <span><i class="fas fa-angle-down"></i> </span>
+                                 </button>
+                                 </h5>
+                              </div>
+
+                              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                 <div class="card-body">
+                                 <ul class="listing-highlighted">
+                                    <li><span> <i class="fas fa-edit text-success"></i> </span>  <a href="{{ route('forum') }}">View Answers   </a> 
+                                    </li>
+                                 </ul>
+                                 </div>
+                              </div>
+                           </div>
+
+                           
+
+                           <div class="card">
+                              <div class="card-header p-0" id="headingThree">
+                                 <h5 class="mb-0">
+                                 <button class="btn collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                 Read Blogs <span><i class="fas fa-angle-down"></i> </span>
+                                 </button>
+                                 </h5>
+                              </div>
+                              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                 <div class="card-body">
+                                    <ul class="listing-highlighted">
+                                       <li><span> <i class="fas fa-briefcase-medical text-danger"></i> </span>  <a href="{{ route('category.blogs', ['id'=>3]) }}">Health Care   </a> 
+                                       </li>
+                                       <li><span> <i class="fas fa-user-secret text-primary"></i> </span>  <a href="{{ route('category.blogs', ['id'=>4]) }}">Fashion & Lifestyle   </a> 
+                                       </li>
+                                       <li><span> <i class="fas fa-walking bold text-success"></i> </span>  <a href="{{ route('category.blogs', ['id'=>5]) }}">Fitness   </a> 
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                           </div>
+                        </div>
                  </div>
             </div>
         </div>
@@ -256,9 +339,12 @@
          <div class="modal-body feed-card">
             <div class="d-flex">
                   <div class="profile-img">
-                     <a href="#">
-                        <img src="{{ asset('Images/solo.jpg') }}" alt="profile" class="img-fluid">
-                     </a>
+                     @if(Auth::check())
+                        <a href="#">
+                        @php  $src    =  (Auth::user()->profile_pic) ? (Auth::user()->profile_pic) : 'userIcon.png';  @endphp
+                           <img src="{{ asset('Images/user_image/'.$src) }}" alt="profile" class="img-fluid">
+                        </a>
+                     @endif
                   </div>
                      <div class="name-post">
                      @if(Auth::check())
@@ -267,7 +353,7 @@
                      @endif
                      </div>
             </div>
-               <textarea name="title" id="title" class="textarea" placeholder="Write something here.." autofocus="autofocus"></textarea>  
+               <textarea name="title" id="title"  placeholder="Write something here.." autofocus="autofocus"></textarea>  
                @if(Auth::check())
                   <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                @endif
@@ -304,6 +390,8 @@
       
 </div>
 
+      
+
 <div class="modal fade modal-about-mentor" id="askQuestionModel" tabindex="-1" role="dialog" aria-labelledby="about-mentorlLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
          <div class="modal-content">
@@ -338,7 +426,24 @@
             </form>
          </div>
       </div>
+      </div>
 
+
+      <div class="modal fade modal-about-mentor" id="ask-login" tabindex="-1" role="dialog" aria-labelledby="about-mentorlLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+               <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Welcome to Health Mentors</h5>
+               </div>
+            <div class="modal-body ask-q-modal">
+               <p class="text-center">Please Login  <a href="{{ route('login') }}" class="btn btn-small" >Login</a> </p>   
+            </div>
+            </div>
+         </div>
+      </div>
 </section>
 
 @endsection('content')
@@ -379,12 +484,13 @@ function submitForm(postId)
       url: "/save/comment",
       data : {comment:comment, postId : postId},
       success:function(data){
-         console.log(data);
+            var responseData   =  $.parseJSON(data);
+         console.log($.parseJSON(data));
             $('#pre-comments'+postId).empty();
-            $('#pre-comments'+postId).append(data[0]);
+            $('#pre-comments'+postId).append(responseData[0]);
             $('#comment-form'+postId).trigger("reset");
             $('#comment-count'+postId).empty();
-            $('#comment-count'+postId).append(data[1]);
+            $('#comment-count'+postId).append(responseData[1]);
 
 
       }, 
@@ -444,8 +550,8 @@ function getUserDetails(userId)
           success:function(data){
              console.log(data);
              $('#like-count'+postId).empty();
-             $('#like-count'+postId).append(data);
-             if(data > 0) {
+             $('#like-count'+postId).append(data[0]);
+             if(data[1] == 1) {
                $('#like-button'+postId).addClass('liked');
              } else {
                $('#like-button'+postId).removeClass('liked');  
