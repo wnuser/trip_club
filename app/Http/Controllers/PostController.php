@@ -16,7 +16,9 @@ class PostController extends Controller
         //
         
         $posts      =  \App\Models\post::with(['user.cityRelation', 'postLikes', 'postComments.user'])->orderBy('id', 'DESC')->get();
-        return view('post', compact('posts'));
+        $blogs      =  \App\Blog::inRandomOrder()->limit(8)->get();
+        
+        return view('post', compact('posts', 'blogs'));
     }
     /**
      * Show the form for creating a new resource.

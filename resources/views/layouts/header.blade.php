@@ -25,7 +25,7 @@
                   <a class="nav-link" href="{{ route('category.blogs', ['id'=>5]) }}"> <span><i class="fas fa-heartbeat"></i></span> fitness</a>
                </li> -->
                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('feed') }}"><span><i class="fas fa-newspaper"></i></span>  feed</a>
+                  <a class="nav-link" href="{{ route('feed') }}"><span><i class="fas fa-newspaper"></i></span> News Feed</a>
                </li>
 
                <li class="nav-item dropdown">

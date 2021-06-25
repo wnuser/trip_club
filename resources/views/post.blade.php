@@ -31,6 +31,15 @@
                          @endif
                          </div>
                      </div>
+                     <h6 class="text-center" style="font-weight:bold">Read Blogs </h6>
+                     @php  $count = 1; @endphp
+                     @foreach($blogs as $key => $value)
+                        <p  style="font-weight:bold" class="p-2"> <a  href="{{ route('single.blog', ['id'=> $value['slug']]) }}" > 
+                         {{ $count++ }} .  {{ mb_strimwidth($value->title, 0, 60 , ".....") }} </a></p>
+                         <hr>
+                     @endforeach   
+
+                     
                     <!-- <div class="list">
                         <h6 class="text-center" style="font-weight:bold">Read Blogs</h6>
                         <ul class="listing-highlighted" style="list-style: none;">
