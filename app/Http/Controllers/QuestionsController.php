@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Mail\AskedQuestion;
+use Illuminate\Support\Facades\Mail;
 
 class QuestionsController extends Controller
 {
@@ -73,6 +75,7 @@ class QuestionsController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * saving questions which are asked privatly 
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -96,9 +99,6 @@ class QuestionsController extends Controller
         }
         $slug      =  str_slug($question);
 
-
-
-
         // $question  = $request->question;
         // echo $question;
         // exit;
@@ -112,8 +112,26 @@ class QuestionsController extends Controller
             $data['is_private']  =  config('constants.QUESTIONSTATUS.ISPUBLIC');
 
         }
-        $questions = new \App\Models\questions;
-        $questions->fill($data)->save();
+        // aprint($data);
+        $questions    =  new \App\Models\questions;
+        $saveQuestion =  $questions->fill($data)->save();
+
+        if($saveQuestion) {
+            $userData            = \App\User::whereId($data['mentor_id'])->first();
+            $root_url            = url('/');
+            $emailData['name']        = $userData->name;
+            $emailData['email']       = $userData->email;
+            $emailData['seekerName']  = Auth::user()->name;
+            $emailData['domain']      = config('role.MENTORSTITLE.'.$userData->mentor_type);
+            $emailData['url']         = $root_url.'/new/questions';
+            $emailData['profile_pic'] = ($userData->profile_pic) ? ($userData->profile_pic) : 'userIcon.png';
+            $sendMail                 = Mail::to($userData->email)->send(new AskedQuestion($emailData));
+
+        }
+
+        // aprint($emailData);
+
+
         return back()->with('success', 'Your question added successfully');
     }
 

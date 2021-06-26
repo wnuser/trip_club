@@ -72,6 +72,10 @@ Route::get('/privacy', 'PrivacyController@index')->name('privacy');
 
 Route::post('/contact/save', 'ContactController@store')->name('save.contact');
 
+Route::get('/template', function(){
+    return view('template');
+});
+
 /**
  * ajax Routes
  */

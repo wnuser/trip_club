@@ -1,0 +1,1 @@
+<p>This is test message {{ $data }} </p>

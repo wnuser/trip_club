@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Mail\Signup;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -72,12 +74,26 @@ class RegisterController extends Controller
             $userType     = config('role.ROLES.MENTEE.TYPE');
         }
 
-        return User::create([
+        $createUser =  User::create([
             'name'       => $data['name'],
             'email'      => $data['email'],
             'user_type'  => $userType,
             'mentor_type'=> $mentorType,
             'password'   => Hash::make($data['password']),
         ]);
+
+        
+            $root_url                 =  url('/');
+            $emailData['name']        =  $data['name'];
+            $emailData['email']       =  $data['email'];
+            $emailData['domain']      =  ($mentorType) ? config('role.MENTORSTITLE.'.$mentorType) : '';
+            $emailData['url']         =  $root_url.'/login';
+            $emailData['profile_pic'] = 'healthlogo.png';
+            $sendMail                 =  Mail::to($data['email'])->send(new Signup($emailData));
+
+            
+            return $createUser;
+        
+
     }
 }
