@@ -90,7 +90,7 @@ class RegisterController extends Controller
             $emailData['url']         =  $root_url.'/login';
             $emailData['profile_pic'] = 'healthlogo.png';
             $sendMail                 =  Mail::to($data['email'])->send(new Signup($emailData));
-
+           
             
             return $createUser;
         

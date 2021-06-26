@@ -123,6 +123,36 @@
                   <small>Check answers</small>
                   <!-- <span class="tag new">New</span> -->
                </a>
+               <a href="{{ route('feed') }}">
+                  <strong><i class="fas fa-newspaper text-primary"></i> News Feed</strong>
+                  <small>Posts by Health Mentors their services </small>
+                  <!-- <span class="tag completed">Completed</span> -->
+               </a>
+               <a href="{{ route('forum') }}">
+                  <strong> <i class="fas fa-question"></i> View Questions </strong>
+                  <small>View all publically asked questions</small>
+                  <!-- <span class="tag completed">Completed</span> -->
+               </a>
+               <a href="{{ route('mentors', ['id'=>2]) }}">
+                  <strong> <i class="fas fa-walking bold"></i> Yoga Teachers </strong>
+                  <small>All Yoga Teachers who registered with us</small>
+                  <!-- <span class="tag completed">Completed</span> -->
+               </a>
+               <a href="{{ route('mentors', ['id'=>4]) }}">
+                  <strong> <i class="fas fa-hand-holding-heart"></i> Relationship Coaches </strong>
+                  <small>All Relationship coaches </small>
+                  <!-- <span class="tag completed">Completed</span> -->
+               </a>
+               <a href="{{ route('mentors', ['id'=>3]) }}">
+                  <strong> <i class="fas fa-briefcase-medical"></i> Doctors </strong>
+                  <small>All Doctors who registed with us</small>
+                  <!-- <span class="tag completed">Completed</span> -->
+               </a>
+               <a href="{{ route('mentors', ['id'=>1]) }}">
+                  <strong> <i class="fas fa-dumbbell"></i> Gym Trainers </strong>
+                  <small>All Gym Trainers who registered with us</small>
+                  <!-- <span class="tag completed">Completed</span> -->
+               </a>
               </div>
             </div>
          @endif

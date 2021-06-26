@@ -16,9 +16,10 @@ class AnswerQuestion extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
         //
+        $this->data  = $data;
     }
 
     /**
@@ -28,6 +29,8 @@ class AnswerQuestion extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $data = $this->data;
+        // aprint($data);
+        return $this->subject('Check answer of your question on Health Mentors')->view('emailTemplates.answer', compact('data'));
     }
 }

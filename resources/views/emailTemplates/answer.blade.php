@@ -312,7 +312,7 @@ ul.social li{
             	<tr>
             		<td style="padding: 0 1.5em; text-align: center; padding-bottom: 1em;">
             			<div class="text">
-            				<h3>Hi {{ $data['name'] }} , {{ $data['seekerName'] }} have asked a question from you on healthmentors. Can you please answer it now?</h3>
+            				<h3>Hi {{ $data['userName'] }}, Your question answered by {{ $data['mentorName'] }} check  it now.</h3>
             			</div>
             		</td>
             	</tr>
@@ -320,9 +320,9 @@ ul.social li{
 			          <td style="text-align: center;">
 			          	<div class="text-author">
 				          	<img src="{{ asset('Images/user_image/'.$data['profile_pic']) }}" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
-				          	<h3 class="name">{{ $data['name'] }}</h3>
-				          	<span class="position"> {{ $data['domain'] }}  </span>
-				           	<p><a href="{{ $data['url'] }}" target="_blank" class="btn btn-primary">Answer Now</a></p>
+				          	<h3 class="name">{{ $data['userName'] }}</h3>
+				          	<span class="position"> {{ $data['questionsText'] }}  </span>
+				           	<p><a href="{{ $data['url'] }}" target="_blank" class="btn btn-primary">View Answer </a></p>
 				           	<!-- <p><a href="#" class="btn-custom">Ignore Request</a></p> -->
 			           	</div>
 			          </td>

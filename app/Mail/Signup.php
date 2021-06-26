@@ -30,6 +30,6 @@ class Signup extends Mailable
     public function build()
     {
         $data  = $this->data;
-        return $this->view('emailTemplates.signnup', compact('data'));
+        return $this->subject('Welcome to Health Mentors!')->view('emailTemplates.signnup', compact('data'));
     }
 }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AnswerQuestion;
+use Auth;
+
 
 class AnswerController extends Controller
 {
@@ -44,7 +48,7 @@ class AnswerController extends Controller
     {
         //
         $request->validate([
-            'answer' => 'required',
+            'answer'      => 'required',
             'question_id' => 'required'
         ]);
 
@@ -54,13 +58,29 @@ class AnswerController extends Controller
         try {
             //code...
 
-            $question   = \App\Models\questions::whereId($request->question_id)->first();
+            $question              = \App\Models\questions::with(['seekers'])->whereId($request->question_id)->first();
+            
             $question->is_answered = 1;
             $question->save();
 
-            $data  = $request->all();
-            $answer   = new  \App\Models\answers;
-            $answer->fill($data)->save();
+            $data         =  $request->all();
+            $answer       =  new  \App\Models\answers;
+            $updateAnswer =  $answer->fill($data)->save();
+
+            $rootUrl                             = url('/');
+            $emailData['userName']              = $question->seekers->name;
+            $emailData['questionsText']          = $question->question;
+            $emailData['mentorName']             = Auth::user()->name;
+            $emailData['url']                    = $rootUrl.'/your/questions';
+            $emailData['profile_pic']            = ($question->seekers->profile_pic) ? ($question->seekers->profile_pic) : 'userIcon.png';
+
+            if($updateAnswer)
+            {
+                $sendMail                 = Mail::to($question->seekers->email)->send(new AnswerQuestion($emailData));
+
+            }
+
+
 
         } catch (\Throwable $th) {
             throw $th;

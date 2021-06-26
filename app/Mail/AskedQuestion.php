@@ -30,6 +30,6 @@ class AskedQuestion extends Mailable
     public function build()
     {
         $data  = $this->data;
-        return $this->view('emailTemplates.askedmentors', compact('data'));
+        return $this->subject('Your client is waiting on Health Mentors')->view('emailTemplates.askedmentors', compact('data'));
     }
 }
