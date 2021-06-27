@@ -21,8 +21,9 @@ class ProfileController extends Controller
         $userInfo           = \App\User::with(['countryRelation','seekerQuestions','stateRelation', 'cityRelation', 'mentorQuestions', 'userQuestions'])->whereId(Auth::user()->id)->first();
         $newQuestions       = \App\Models\questions::whereMentorId(Auth::user()->id)->whereIsAnswered(0)->count();
         $completedQuestions = \App\Models\questions::whereMentorId(Auth::user()->id)->whereIsAnswered(1)->count();
+        $blogs              =  \App\Blog::inRandomOrder()->limit(8)->get();
 
-        return view('profile', compact('userInfo', 'newQuestions', 'completedQuestions'));
+        return view('profile', compact('userInfo', 'newQuestions', 'completedQuestions', 'blogs'));
 
     }
 

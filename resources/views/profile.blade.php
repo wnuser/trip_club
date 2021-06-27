@@ -112,6 +112,15 @@
                
                
               </div>
+
+              <div class="card sticky-dektop py-3 related-que">
+                   <h5 class="px-3">Read Blogs About Health </h5>
+                   <hr>
+                     @foreach($blogs as $key => $value)
+                        <a href="{{ route('single.blog', ['slug'=>$value->slug]) }}"> <span> {{ $value->title }} </span> </a>
+                     @endforeach   
+               </div>
+            
             </div>
          @endif   
 
@@ -154,6 +163,13 @@
                   <!-- <span class="tag completed">Completed</span> -->
                </a>
               </div>
+              <div class="card sticky-dektop py-3 related-que">
+                   <h5 class="px-3">Read Blogs About Health </h5>
+                   <hr>
+                     @foreach($blogs as $key => $value)
+                        <a href="{{ route('single.blog', ['slug'=>$value->slug]) }}"> <span> {{ $value->title }} </span> </a>
+                     @endforeach   
+               </div>
             </div>
          @endif
         </div>

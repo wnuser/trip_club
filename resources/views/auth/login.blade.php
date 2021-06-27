@@ -180,9 +180,17 @@ body {
               </div>
               <button class="btn btn-custom btn-block text-uppercase" type="submit">Sign in</button>
               <hr>
+              
               <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button> -->
               <p>Not having account? <a href="{{ route('register') }}">Register Now</a></p>
+              @if (Route::has('password.request'))
+                  <!-- <p> -->
+                  <a class="btn btn-link" style="margin-top:-24px; margin-left:-14px;" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                  <!-- </p> -->
+                @endif
             </form>
           </div>
         </div>
