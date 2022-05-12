@@ -18,7 +18,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @if(isset($blogData)) 
+    <title>{{ $blogData->title }}</title>
+
+    @else
     <title>Health Mentors | We are the hub of mentors in all walks of life.</title>
+
+    @endif
+
     <link rel="icon" type="image/png" href="{{ asset('Images/healthlogo.png') }}"/>
 
     <!-- Fonts -->
